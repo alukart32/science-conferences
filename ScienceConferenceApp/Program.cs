@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ScienceConferenceApp.Forms;
+using ScienceConferenceApp.Forms.Utils;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,7 +18,8 @@ namespace ScienceConferenceApp
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            BaseForm mainForm = new MainForm();
+            Application.Run(mainForm);
         }
     }
 }
