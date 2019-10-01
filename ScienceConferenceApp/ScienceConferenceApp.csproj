@@ -65,6 +65,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ConferencesDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Filter\ConferenceFilter.cs" />
     <Compile Include="Forms\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
