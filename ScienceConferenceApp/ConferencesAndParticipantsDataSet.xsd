@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="ConferencesAndParticipantsDataSet" targetNamespace="http://tempuri.org/ConferencesAndParticipantsDataSet.xsd" xmlns:mstns="http://tempuri.org/ConferencesAndParticipantsDataSet.xsd" xmlns="http://tempuri.org/ConferencesAndParticipantsDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="ScienceConferencesConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="ScienceConferencesConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.ScienceConferenceApp.Properties.Settings.GlobalReference.Default.ScienceConferencesConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ViewConferencesWithParticipantsTableAdapter" GeneratorDataComponentClassName="ViewConferencesWithParticipantsTableAdapter" Name="ViewConferencesWithParticipants" UserDataComponentName="ViewConferencesWithParticipantsTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="ScienceConferencesConnectionString (Settings)" DbObjectName="ScienceConferences.dbo.ViewConferencesWithParticipants" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT conferenceName, date, address, subject, theme, publication, scientist, subjectId, countryId, conferenceCountry, conferenceId FROM dbo.ViewConferencesWithParticipants</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="conferenceName" DataSetColumn="conferenceName" />
+              <Mapping SourceColumn="date" DataSetColumn="date" />
+              <Mapping SourceColumn="address" DataSetColumn="address" />
+              <Mapping SourceColumn="subject" DataSetColumn="subject" />
+              <Mapping SourceColumn="theme" DataSetColumn="theme" />
+              <Mapping SourceColumn="publication" DataSetColumn="publication" />
+              <Mapping SourceColumn="scientist" DataSetColumn="scientist" />
+              <Mapping SourceColumn="subjectId" DataSetColumn="subjectId" />
+              <Mapping SourceColumn="countryId" DataSetColumn="countryId" />
+              <Mapping SourceColumn="conferenceCountry" DataSetColumn="conferenceCountry" />
+              <Mapping SourceColumn="conferenceId" DataSetColumn="conferenceId" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="ConferencesAndParticipantsDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="ConferencesAndParticipantsDataSet" msprop:Generator_UserDSName="ConferencesAndParticipantsDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="ViewConferencesWithParticipants" msprop:Generator_TableClassName="ViewConferencesWithParticipantsDataTable" msprop:Generator_TableVarName="tableViewConferencesWithParticipants" msprop:Generator_TablePropName="ViewConferencesWithParticipants" msprop:Generator_RowDeletingName="ViewConferencesWithParticipantsRowDeleting" msprop:Generator_RowChangingName="ViewConferencesWithParticipantsRowChanging" msprop:Generator_RowEvHandlerName="ViewConferencesWithParticipantsRowChangeEventHandler" msprop:Generator_RowDeletedName="ViewConferencesWithParticipantsRowDeleted" msprop:Generator_UserTableName="ViewConferencesWithParticipants" msprop:Generator_RowChangedName="ViewConferencesWithParticipantsRowChanged" msprop:Generator_RowEvArgName="ViewConferencesWithParticipantsRowChangeEvent" msprop:Generator_RowClassName="ViewConferencesWithParticipantsRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="conferenceName" msprop:Generator_ColumnVarNameInTable="columnconferenceName" msprop:Generator_ColumnPropNameInRow="conferenceName" msprop:Generator_ColumnPropNameInTable="conferenceNameColumn" msprop:Generator_UserColumnName="conferenceName">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="date" msprop:Generator_ColumnVarNameInTable="columndate" msprop:Generator_ColumnPropNameInRow="date" msprop:Generator_ColumnPropNameInTable="dateColumn" msprop:Generator_UserColumnName="date" type="xs:dateTime" />
+              <xs:element name="address" msprop:Generator_ColumnVarNameInTable="columnaddress" msprop:Generator_ColumnPropNameInRow="address" msprop:Generator_ColumnPropNameInTable="addressColumn" msprop:Generator_UserColumnName="address" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="subject" msprop:Generator_ColumnVarNameInTable="columnsubject" msprop:Generator_ColumnPropNameInRow="subject" msprop:Generator_ColumnPropNameInTable="subjectColumn" msprop:Generator_UserColumnName="subject" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="theme" msprop:Generator_ColumnVarNameInTable="columntheme" msprop:Generator_ColumnPropNameInRow="theme" msprop:Generator_ColumnPropNameInTable="themeColumn" msprop:Generator_UserColumnName="theme" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="publication" msprop:Generator_ColumnVarNameInTable="columnpublication" msprop:Generator_ColumnPropNameInRow="publication" msprop:Generator_ColumnPropNameInTable="publicationColumn" msprop:Generator_UserColumnName="publication" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="scientist" msprop:Generator_ColumnVarNameInTable="columnscientist" msprop:Generator_ColumnPropNameInRow="scientist" msprop:Generator_ColumnPropNameInTable="scientistColumn" msprop:Generator_UserColumnName="scientist" type="xs:int" minOccurs="0" />
+              <xs:element name="subjectId" msprop:Generator_ColumnVarNameInTable="columnsubjectId" msprop:Generator_ColumnPropNameInRow="subjectId" msprop:Generator_ColumnPropNameInTable="subjectIdColumn" msprop:Generator_UserColumnName="subjectId" type="xs:int" />
+              <xs:element name="countryId" msprop:Generator_ColumnVarNameInTable="columncountryId" msprop:Generator_ColumnPropNameInRow="countryId" msprop:Generator_ColumnPropNameInTable="countryIdColumn" msprop:Generator_UserColumnName="countryId" type="xs:int" />
+              <xs:element name="conferenceCountry" msprop:Generator_ColumnVarNameInTable="columnconferenceCountry" msprop:Generator_ColumnPropNameInRow="conferenceCountry" msprop:Generator_ColumnPropNameInTable="conferenceCountryColumn" msprop:Generator_UserColumnName="conferenceCountry" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="3" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="conferenceId" msprop:Generator_ColumnVarNameInTable="columnconferenceId" msprop:Generator_ColumnPropNameInRow="conferenceId" msprop:Generator_ColumnPropNameInTable="conferenceIdColumn" msprop:Generator_UserColumnName="conferenceId" type="xs:int" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

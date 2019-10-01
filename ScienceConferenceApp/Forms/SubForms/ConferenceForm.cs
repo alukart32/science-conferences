@@ -28,6 +28,8 @@ namespace ScienceConferenceApp.Forms.SubForms
 
         private void ConferenceForm_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'conferencesAndParticipantsDataSet.ViewConferencesWithParticipants' table. You can move, or remove it, as needed.
+            this.viewConferencesWithParticipantsTableAdapter.Fill(this.conferencesAndParticipantsDataSet.ViewConferencesWithParticipants);
 
         }
 

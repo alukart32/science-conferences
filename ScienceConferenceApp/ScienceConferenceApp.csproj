@@ -33,8 +33,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -46,6 +55,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConferencesAndParticipantsDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ConferencesAndParticipantsDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Forms\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -94,6 +108,29 @@
     <Compile Include="Forms\Utils\Menu\HelpForm.Designer.cs">
       <DependentUpon>HelpForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Model\car.cs" />
+    <Compile Include="Model\carType.cs" />
+    <Compile Include="Model\colour.cs" />
+    <Compile Include="Model\DbAppContext.cs" />
+    <Compile Include="Model\engine.cs" />
+    <Compile Include="Model\engineType.cs" />
+    <Compile Include="Model\manualTransmission.cs" />
+    <Compile Include="Model\manufacturer.cs" />
+    <Compile Include="Model\merchandise.cs" />
+    <Compile Include="Model\model.cs" />
+    <Compile Include="Model\order.cs" />
+    <Compile Include="Model\orderDetail.cs" />
+    <Compile Include="Model\role.cs" />
+    <Compile Include="Model\status.cs" />
+    <Compile Include="Model\transmission.cs" />
+    <Compile Include="Model\user.cs" />
+    <Compile Include="Model\ViewCar.cs" />
+    <Compile Include="Model\ViewEngineCar.cs" />
+    <Compile Include="Model\ViewManufacturerCar.cs" />
+    <Compile Include="Model\ViewOrderDetail.cs" />
+    <Compile Include="Model\ViewTransmissionCar.cs" />
+    <Compile Include="Model\ViewUser.cs" />
+    <Compile Include="Model\ViewUserOrder.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Forms\MainForm.resx">
@@ -129,6 +166,18 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="ConferencesAndParticipantsDataSet.xsc">
+      <DependentUpon>ConferencesAndParticipantsDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ConferencesAndParticipantsDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ConferencesAndParticipantsDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ConferencesAndParticipantsDataSet.xss">
+      <DependentUpon>ConferencesAndParticipantsDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
