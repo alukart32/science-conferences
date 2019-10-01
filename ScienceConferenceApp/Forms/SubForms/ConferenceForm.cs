@@ -28,6 +28,10 @@ namespace ScienceConferenceApp.Forms.SubForms
 
         private void ConferenceForm_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'subjectDataSet.subjects' table. You can move, or remove it, as needed.
+            this.subjectsTableAdapter.Fill(this.subjectDataSet.subjects);
+            // TODO: This line of code loads data into the 'conferencesDataSet.conferences' table. You can move, or remove it, as needed.
+            this.conferencesTableAdapter.Fill(this.conferencesDataSet.conferences);
             // TODO: This line of code loads data into the 'conferencesAndParticipantsDataSet.ViewConferencesWithParticipants' table. You can move, or remove it, as needed.
             this.viewConferencesWithParticipantsTableAdapter.Fill(this.conferencesAndParticipantsDataSet.ViewConferencesWithParticipants);
 
@@ -41,6 +45,13 @@ namespace ScienceConferenceApp.Forms.SubForms
         private void BackButton_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            cbConference.SelectedIndex = 0;
+            cbSubject.SelectedIndex = 0;
+            cbTheme.SelectedIndex = 0;
         }
     }
 }
