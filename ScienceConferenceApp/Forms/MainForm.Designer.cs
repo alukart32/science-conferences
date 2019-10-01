@@ -74,28 +74,28 @@
             // conferencesToolStripMenuItem
             // 
             this.conferencesToolStripMenuItem.Name = "conferencesToolStripMenuItem";
-            this.conferencesToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.conferencesToolStripMenuItem.Size = new System.Drawing.Size(165, 26);
             this.conferencesToolStripMenuItem.Text = "Conferences";
             this.conferencesToolStripMenuItem.Click += new System.EventHandler(this.conferencesToolStripMenuItem_Click);
             // 
             // participantsToolStripMenuItem
             // 
             this.participantsToolStripMenuItem.Name = "participantsToolStripMenuItem";
-            this.participantsToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.participantsToolStripMenuItem.Size = new System.Drawing.Size(165, 26);
             this.participantsToolStripMenuItem.Text = "Participants";
             this.participantsToolStripMenuItem.Click += new System.EventHandler(this.participantsToolStripMenuItem_Click);
             // 
             // companiesToolStripMenuItem
             // 
             this.companiesToolStripMenuItem.Name = "companiesToolStripMenuItem";
-            this.companiesToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.companiesToolStripMenuItem.Size = new System.Drawing.Size(165, 26);
             this.companiesToolStripMenuItem.Text = "Companies";
             this.companiesToolStripMenuItem.Click += new System.EventHandler(this.companiesToolStripMenuItem_Click);
             // 
             // searchToolStripMenuItem
             // 
             this.searchToolStripMenuItem.Name = "searchToolStripMenuItem";
-            this.searchToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.searchToolStripMenuItem.Size = new System.Drawing.Size(165, 26);
             this.searchToolStripMenuItem.Text = "Search";
             this.searchToolStripMenuItem.Click += new System.EventHandler(this.searchToolStripMenuItem_Click);
             // 
