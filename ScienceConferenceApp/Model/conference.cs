@@ -6,27 +6,28 @@ namespace ScienceConferenceApp.Model
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class car
+    public partial class conference
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public car()
+        public conference()
         {
-            merchandises = new HashSet<merchandise>();
+            participants = new HashSet<participant>();
         }
 
-        public int carId { get; set; }
+        public int conferenceId { get; set; }
 
-        public int manufacturer { get; set; }
+        [Required]
+        [StringLength(100)]
+        public string conferenceName { get; set; }
 
-        public int? price { get; set; }
+        public int? address { get; set; }
 
-        public int? model { get; set; }
+        [Column(TypeName = "date")]
+        public DateTime date { get; set; }
 
-        public virtual manufacturer manufacturer1 { get; set; }
+        public virtual address address1 { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<merchandise> merchandises { get; set; }
-
-        public virtual model model1 { get; set; }
+        public virtual ICollection<participant> participants { get; set; }
     }
 }

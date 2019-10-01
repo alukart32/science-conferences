@@ -10,13 +10,13 @@ namespace ScienceConferenceApp.Filter
     {
         public ConferenceFilter()
         {
-            conference = 1;
+            conference = 2;
             subject = 1;
             theme = 1;
         }
 
         public int conference { get; set; }
         public int subject { get; set; }
-        public string theme { get; set; }
+        public int theme { get; set; }
     }
 }

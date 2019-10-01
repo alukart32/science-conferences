@@ -6,22 +6,21 @@ namespace ScienceConferenceApp.Model
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class manualTransmission
+    public partial class theme
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public manualTransmission()
+        public theme()
         {
-            transmissions = new HashSet<transmission>();
+            participants = new HashSet<participant>();
         }
 
-        [Key]
-        public int manualTransId { get; set; }
+        public int themeId { get; set; }
 
         [Required]
-        [StringLength(100)]
-        public string manualTrans { get; set; }
+        [StringLength(255)]
+        public string themeName { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<transmission> transmissions { get; set; }
+        public virtual ICollection<participant> participants { get; set; }
     }
 }

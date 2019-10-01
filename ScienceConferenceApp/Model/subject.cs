@@ -6,21 +6,21 @@ namespace ScienceConferenceApp.Model
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class carType
+    public partial class subject
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public carType()
+        public subject()
         {
-            models = new HashSet<model>();
+            participants = new HashSet<participant>();
         }
 
-        [Key]
-        public int typeId { get; set; }
+        public int subjectId { get; set; }
 
-        [StringLength(25)]
-        public string type { get; set; }
+        [Column("subject")]
+        [StringLength(50)]
+        public string subject1 { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<model> models { get; set; }
+        public virtual ICollection<participant> participants { get; set; }
     }
 }

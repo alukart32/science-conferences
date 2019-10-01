@@ -6,21 +6,24 @@ namespace ScienceConferenceApp.Model
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class engineType
+    public partial class company
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public engineType()
+        public company()
         {
-            engines = new HashSet<engine>();
+            scientists = new HashSet<scientist>();
         }
 
-        public int engineTypeId { get; set; }
+        public int companyId { get; set; }
 
-        [Column("engineType")]
-        [StringLength(30)]
-        public string engineType1 { get; set; }
+        [StringLength(50)]
+        public string companyName { get; set; }
+
+        public int? country { get; set; }
+
+        public virtual country country1 { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<engine> engines { get; set; }
+        public virtual ICollection<scientist> scientists { get; set; }
     }
 }

@@ -12,249 +12,167 @@ namespace ScienceConferenceApp.Model
         {
         }
 
-        public virtual DbSet<car> cars { get; set; }
-        public virtual DbSet<carType> carTypes { get; set; }
-        public virtual DbSet<colour> colours { get; set; }
-        public virtual DbSet<engine> engines { get; set; }
-        public virtual DbSet<engineType> engineTypes { get; set; }
-        public virtual DbSet<manualTransmission> manualTransmissions { get; set; }
-        public virtual DbSet<manufacturer> manufacturers { get; set; }
-        public virtual DbSet<merchandise> merchandises { get; set; }
-        public virtual DbSet<model> models { get; set; }
-        public virtual DbSet<orderDetail> orderDetails { get; set; }
-        public virtual DbSet<order> orders { get; set; }
-        public virtual DbSet<role> roles { get; set; }
-        public virtual DbSet<status> statuses { get; set; }
-        public virtual DbSet<transmission> transmissions { get; set; }
-        public virtual DbSet<user> users { get; set; }
-        public virtual DbSet<ViewCar> ViewCars { get; set; }
-        public virtual DbSet<ViewEngineCar> ViewEngineCars { get; set; }
-        public virtual DbSet<ViewManufacturerCar> ViewManufacturerCars { get; set; }
-        public virtual DbSet<ViewOrderDetail> ViewOrderDetails { get; set; }
-        public virtual DbSet<ViewTransmissionCar> ViewTransmissionCars { get; set; }
-        public virtual DbSet<ViewUser> ViewUsers { get; set; }
-        public virtual DbSet<ViewUserOrder> ViewUserOrders { get; set; }
+        public virtual DbSet<academicDegree> academicDegrees { get; set; }
+        public virtual DbSet<address> addresses { get; set; }
+        public virtual DbSet<company> companies { get; set; }
+        public virtual DbSet<conference> conferences { get; set; }
+        public virtual DbSet<country> countries { get; set; }
+        public virtual DbSet<participant> participants { get; set; }
+        public virtual DbSet<scientist> scientists { get; set; }
+        public virtual DbSet<subject> subjects { get; set; }
+        public virtual DbSet<theme> themes { get; set; }
+        public virtual DbSet<ViewConferencesWithParticipant> ViewConferencesWithParticipants { get; set; }
+        public virtual DbSet<ViewScientist> ViewScientists { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<car>()
-                .HasMany(e => e.merchandises)
-                .WithRequired(e => e.car1)
-                .HasForeignKey(e => e.car)
+            modelBuilder.Entity<academicDegree>()
+                .Property(e => e.degree)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<academicDegree>()
+                .HasMany(e => e.scientists)
+                .WithOptional(e => e.academicDegree1)
+                .HasForeignKey(e => e.academicDegree);
+
+            modelBuilder.Entity<address>()
+                .Property(e => e.address1)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<address>()
+                .HasMany(e => e.conferences)
+                .WithOptional(e => e.address1)
+                .HasForeignKey(e => e.address);
+
+            modelBuilder.Entity<company>()
+                .Property(e => e.companyName)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<company>()
+                .HasMany(e => e.scientists)
+                .WithOptional(e => e.company1)
+                .HasForeignKey(e => e.company);
+
+            modelBuilder.Entity<conference>()
+                .Property(e => e.conferenceName)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<conference>()
+                .HasMany(e => e.participants)
+                .WithRequired(e => e.conference1)
+                .HasForeignKey(e => e.conference)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<carType>()
-                .Property(e => e.type)
+            modelBuilder.Entity<country>()
+                .Property(e => e.code)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<carType>()
-                .HasMany(e => e.models)
-                .WithOptional(e => e.carType)
-                .HasForeignKey(e => e.type);
+            modelBuilder.Entity<country>()
+                .HasMany(e => e.addresses)
+                .WithOptional(e => e.country1)
+                .HasForeignKey(e => e.country);
 
-            modelBuilder.Entity<colour>()
-                .Property(e => e.colourName)
+            modelBuilder.Entity<country>()
+                .HasMany(e => e.companies)
+                .WithOptional(e => e.country1)
+                .HasForeignKey(e => e.country);
+
+            modelBuilder.Entity<country>()
+                .HasMany(e => e.scientists)
+                .WithOptional(e => e.country1)
+                .HasForeignKey(e => e.country);
+
+            modelBuilder.Entity<participant>()
+                .Property(e => e.publication)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<colour>()
-                .HasMany(e => e.models)
-                .WithOptional(e => e.colour1)
-                .HasForeignKey(e => e.colour);
-
-            modelBuilder.Entity<engine>()
-                .Property(e => e.engine1)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<engine>()
-                .HasMany(e => e.models)
-                .WithOptional(e => e.engine1)
-                .HasForeignKey(e => e.engine);
-
-            modelBuilder.Entity<engineType>()
-                .Property(e => e.engineType1)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<engineType>()
-                .HasMany(e => e.engines)
-                .WithOptional(e => e.engineType1)
-                .HasForeignKey(e => e.engineType);
-
-            modelBuilder.Entity<manualTransmission>()
-                .Property(e => e.manualTrans)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<manualTransmission>()
-                .HasMany(e => e.transmissions)
-                .WithRequired(e => e.manualTransmission)
-                .HasForeignKey(e => e.manualTrans)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<manufacturer>()
-                .Property(e => e.company)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<manufacturer>()
-                .HasMany(e => e.cars)
-                .WithRequired(e => e.manufacturer1)
-                .HasForeignKey(e => e.manufacturer)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<manufacturer>()
-                .HasMany(e => e.models)
-                .WithOptional(e => e.manufacturer1)
-                .HasForeignKey(e => e.manufacturer);
-
-            modelBuilder.Entity<merchandise>()
-                .HasMany(e => e.orderDetails)
-                .WithRequired(e => e.merchandise1)
-                .HasForeignKey(e => e.merchandise)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<model>()
-                .Property(e => e.model1)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<model>()
-                .HasMany(e => e.cars)
-                .WithOptional(e => e.model1)
-                .HasForeignKey(e => e.model);
-
-            modelBuilder.Entity<orderDetail>()
-                .Property(e => e.approved)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<order>()
-                .HasMany(e => e.orderDetails)
-                .WithRequired(e => e.order1)
-                .HasForeignKey(e => e.order)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<role>()
-                .Property(e => e.role1)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<role>()
-                .HasMany(e => e.users)
-                .WithOptional(e => e.role)
-                .HasForeignKey(e => e.sysRole);
-
-            modelBuilder.Entity<status>()
-                .Property(e => e.status1)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<status>()
-                .HasMany(e => e.users)
-                .WithOptional(e => e.status1)
-                .HasForeignKey(e => e.status);
-
-            modelBuilder.Entity<transmission>()
-                .Property(e => e.autoTrans)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<transmission>()
-                .HasMany(e => e.models)
-                .WithOptional(e => e.transmission1)
-                .HasForeignKey(e => e.transmission);
-
-            modelBuilder.Entity<user>()
+            modelBuilder.Entity<scientist>()
                 .Property(e => e.firstName)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<user>()
+            modelBuilder.Entity<scientist>()
                 .Property(e => e.secondName)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<user>()
-                .Property(e => e.email)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<user>()
-                .Property(e => e.login)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<user>()
-                .HasMany(e => e.orders)
-                .WithRequired(e => e.user)
+            modelBuilder.Entity<scientist>()
+                .HasMany(e => e.participants)
+                .WithRequired(e => e.scientist1)
+                .HasForeignKey(e => e.scientist)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<ViewCar>()
-                .Property(e => e.company)
+            modelBuilder.Entity<subject>()
+                .Property(e => e.subject1)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<ViewCar>()
-                .Property(e => e.model)
+            modelBuilder.Entity<subject>()
+                .HasMany(e => e.participants)
+                .WithRequired(e => e.subject1)
+                .HasForeignKey(e => e.subject)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<theme>()
+                .Property(e => e.themeName)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<ViewCar>()
-                .Property(e => e.engine)
+            modelBuilder.Entity<theme>()
+                .HasMany(e => e.participants)
+                .WithOptional(e => e.theme1)
+                .HasForeignKey(e => e.theme);
+
+            modelBuilder.Entity<ViewConferencesWithParticipant>()
+                .Property(e => e.conferenceName)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<ViewCar>()
-                .Property(e => e.type)
+            modelBuilder.Entity<ViewConferencesWithParticipant>()
+                .Property(e => e.address)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<ViewCar>()
-                .Property(e => e.manualTrans)
+            modelBuilder.Entity<ViewConferencesWithParticipant>()
+                .Property(e => e.subject)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<ViewCar>()
-                .Property(e => e.autoTrans)
+            modelBuilder.Entity<ViewConferencesWithParticipant>()
+                .Property(e => e.publication)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<ViewCar>()
-                .Property(e => e.colourName)
+            modelBuilder.Entity<ViewConferencesWithParticipant>()
+                .Property(e => e.conferenceCountry)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<ViewEngineCar>()
-                .Property(e => e.engine)
+            modelBuilder.Entity<ViewConferencesWithParticipant>()
+                .Property(e => e.themeName)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<ViewEngineCar>()
-                .Property(e => e.engineType)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<ViewManufacturerCar>()
-                .Property(e => e.company)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<ViewManufacturerCar>()
-                .Property(e => e.model)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<ViewOrderDetail>()
-                .Property(e => e.approved)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<ViewTransmissionCar>()
-                .Property(e => e.autoTrans)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<ViewTransmissionCar>()
-                .Property(e => e.manualTrans)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<ViewUser>()
-                .Property(e => e.role)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<ViewUser>()
+            modelBuilder.Entity<ViewScientist>()
                 .Property(e => e.firstName)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<ViewUser>()
+            modelBuilder.Entity<ViewScientist>()
                 .Property(e => e.secondName)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<ViewUser>()
-                .Property(e => e.email)
+            modelBuilder.Entity<ViewScientist>()
+                .Property(e => e.degree)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<ViewUser>()
-                .Property(e => e.login)
+            modelBuilder.Entity<ViewScientist>()
+                .Property(e => e.institution)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<ViewUser>()
-                .Property(e => e.status)
+            modelBuilder.Entity<ViewScientist>()
+                .Property(e => e.scientistCountry)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<ViewScientist>()
+                .Property(e => e.subject)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<ViewScientist>()
+                .Property(e => e.theme)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<ViewScientist>()
+                .Property(e => e.publication)
                 .IsUnicode(false);
         }
     }

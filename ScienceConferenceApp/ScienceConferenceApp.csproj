@@ -55,16 +55,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ConferencesAndParticipantsDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ConferencesAndParticipantsDataSet.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="ConferencesDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ConferencesDataSet.xsd</DependentUpon>
-    </Compile>
+    <Compile Include="Controllers\ConferenceViewController.cs" />
     <Compile Include="Filter\ConferenceFilter.cs" />
     <Compile Include="Forms\MainForm.cs">
       <SubType>Form</SubType>
@@ -114,36 +105,20 @@
     <Compile Include="Forms\Utils\Menu\HelpForm.Designer.cs">
       <DependentUpon>HelpForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Model\car.cs" />
-    <Compile Include="Model\carType.cs" />
-    <Compile Include="Model\colour.cs" />
+    <Compile Include="Model\academicDegree.cs" />
+    <Compile Include="Model\address.cs" />
+    <Compile Include="Model\company.cs" />
+    <Compile Include="Model\conference.cs" />
+    <Compile Include="Model\country.cs" />
     <Compile Include="Model\DbAppContext.cs" />
-    <Compile Include="Model\engine.cs" />
-    <Compile Include="Model\engineType.cs" />
-    <Compile Include="Model\manualTransmission.cs" />
-    <Compile Include="Model\manufacturer.cs" />
-    <Compile Include="Model\merchandise.cs" />
-    <Compile Include="Model\model.cs" />
-    <Compile Include="Model\order.cs" />
-    <Compile Include="Model\orderDetail.cs" />
-    <Compile Include="Model\role.cs" />
-    <Compile Include="Model\status.cs" />
-    <Compile Include="Model\transmission.cs" />
-    <Compile Include="Model\user.cs" />
-    <Compile Include="Model\ViewCar.cs" />
-    <Compile Include="Model\ViewEngineCar.cs" />
-    <Compile Include="Model\ViewManufacturerCar.cs" />
-    <Compile Include="Model\ViewOrderDetail.cs" />
-    <Compile Include="Model\ViewTransmissionCar.cs" />
-    <Compile Include="Model\ViewUser.cs" />
-    <Compile Include="Model\ViewUserOrder.cs" />
+    <Compile Include="Model\participant.cs" />
+    <Compile Include="Model\scientist.cs" />
+    <Compile Include="Model\subject.cs" />
+    <Compile Include="Model\theme.cs" />
+    <Compile Include="Model\ViewConferencesWithParticipant.cs" />
+    <Compile Include="Model\ViewScientist.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SubjectDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>SubjectDataSet.xsd</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -177,29 +152,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <None Include="ConferencesAndParticipantsDataSet.xsc">
-      <DependentUpon>ConferencesAndParticipantsDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="ConferencesAndParticipantsDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>ConferencesAndParticipantsDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="ConferencesAndParticipantsDataSet.xss">
-      <DependentUpon>ConferencesAndParticipantsDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="ConferencesDataSet.xsc">
-      <DependentUpon>ConferencesDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="ConferencesDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>ConferencesDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="ConferencesDataSet.xss">
-      <DependentUpon>ConferencesDataSet.xsd</DependentUpon>
-    </None>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\ScienceConferenceApp.Model.conference.datasource" />
+    <None Include="Properties\DataSources\ScienceConferenceApp.Model.participant.datasource" />
+    <None Include="Properties\DataSources\ScienceConferenceApp.Model.subject.datasource" />
+    <None Include="Properties\DataSources\ScienceConferenceApp.Model.theme.datasource" />
+    <None Include="Properties\DataSources\ScienceConferenceApp.Model.ViewConferencesWithParticipant.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -209,20 +167,10 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="SubjectDataSet.xsc">
-      <DependentUpon>SubjectDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="SubjectDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>SubjectDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="SubjectDataSet.xss">
-      <DependentUpon>SubjectDataSet.xsd</DependentUpon>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
