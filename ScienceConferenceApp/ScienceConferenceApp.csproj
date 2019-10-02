@@ -55,8 +55,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controllers\ConferenceCrud.cs" />
+    <Compile Include="CRUD\AddressCrud.cs" />
+    <Compile Include="CRUD\ConferenceCrud.cs" />
     <Compile Include="Controllers\ConferenceController.cs" />
+    <Compile Include="CRUD\CountryCrud.cs" />
+    <Compile Include="CRUD\Utils\Crud.cs" />
     <Compile Include="DataInitializer\ConferenceFormDataInit.cs" />
     <Compile Include="DataInitializer\DataInit.cs" />
     <Compile Include="Filter\ConferenceFilter.cs" />

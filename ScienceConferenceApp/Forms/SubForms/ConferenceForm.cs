@@ -74,7 +74,6 @@ namespace ScienceConferenceApp.Forms.SubForms
             cbAddress.SelectedIndex = 0;
             cbCountry.SelectedIndex = 0;
         }
-
         private void button1_Click(object sender, EventArgs e)
         {
             dataGridView1.DataSource = conferenceController.GetConferences(filter);
@@ -90,7 +89,6 @@ namespace ScienceConferenceApp.Forms.SubForms
             address a = (address)cbAddress.SelectedItem;
             filter.address = a.addressId;
         }
-
         private void cbCountry_SelectedIndexChanged(object sender, EventArgs e)
         {
             country c = (country)cbCountry.SelectedItem;
