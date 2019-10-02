@@ -1,4 +1,5 @@
 ﻿using ScienceConferenceApp.Controllers;
+using ScienceConferenceApp.DataInitializer;
 using ScienceConferenceApp.Filter;
 using ScienceConferenceApp.Forms.Utils;
 using ScienceConferenceApp.Model;
@@ -41,47 +42,13 @@ namespace ScienceConferenceApp.Forms.SubForms
             conferenceController = new ConferenceController();
             filter = new ConferenceFilter();
 
-            addConferences();
-            addAddresses();
-            addCountries();
+            ConferenceFormDataInit dataInit = new ConferenceFormDataInit(db);
+
+            dataInit.addConferences(cbConference);
+            dataInit.addAddresses(cbAddress);
+            dataInit.addCountries(cbCountry);
 
             dataGridView1.DataSource = db.ViewConferences.ToList();
-        }
-
-        private void addConferences()
-        {
-            conference all = new conference();
-            all.conferenceName = "all";
-            all.conferenceId = 0;
-            List<conference> confs = new List<conference>();
-            confs.Add(all);
-            confs.AddRange(db.conferences.ToList());
-
-            cbConference.DataSource = confs;
-        }
-
-        private void addAddresses()
-        {
-            address all = new address();
-            all.address1 = "all";
-            all.addressId = 0;
-            List<address> adds = new List<address>();
-            adds.Add(all);
-            adds.AddRange(db.addresses.ToList());
-
-            cbAddress.DataSource = adds;
-        }
-
-        private void addCountries()
-        {
-            country all = new country();
-            all.code = "all";
-            all.countryId = 0;
-            List<country> cs = new List<country>();
-            cs.Add(all);
-            cs.AddRange(db.countries.ToList());
-
-            cbCountry.DataSource = cs;
         }
 
         private void ConferenceForm_Load(object sender, EventArgs e)

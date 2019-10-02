@@ -57,6 +57,8 @@
   <ItemGroup>
     <Compile Include="Controllers\ConferenceCrud.cs" />
     <Compile Include="Controllers\ConferenceController.cs" />
+    <Compile Include="DataInitializer\ConferenceFormDataInit.cs" />
+    <Compile Include="DataInitializer\DataInit.cs" />
     <Compile Include="Filter\ConferenceFilter.cs" />
     <Compile Include="Forms\MainForm.cs">
       <SubType>Form</SubType>
