@@ -58,6 +58,8 @@
             this.conferenceBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.themeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.subjectBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.label4 = new System.Windows.Forms.Label();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.viewConferenceBindingSource)).BeginInit();
@@ -156,7 +158,7 @@
             this.dataGridView1.DataSource = this.viewConferenceBindingSource;
             this.dataGridView1.Location = new System.Drawing.Point(259, 64);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(443, 282);
+            this.dataGridView1.Size = new System.Drawing.Size(443, 294);
             this.dataGridView1.TabIndex = 2;
             // 
             // conferenceNameDataGridViewTextBoxColumn
@@ -190,6 +192,8 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.panel1.Controls.Add(this.dateTimePicker);
+            this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.label3);
@@ -200,14 +204,14 @@
             this.panel1.Controls.Add(this.cbConference);
             this.panel1.Location = new System.Drawing.Point(22, 64);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(200, 282);
+            this.panel1.Size = new System.Drawing.Size(200, 294);
             this.panel1.TabIndex = 3;
             // 
             // button2
             // 
             this.button2.BackColor = System.Drawing.SystemColors.ButtonShadow;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button2.Location = new System.Drawing.Point(121, 195);
+            this.button2.Location = new System.Drawing.Point(121, 246);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(35, 33);
             this.button2.TabIndex = 8;
@@ -219,7 +223,7 @@
             // 
             this.button1.BackColor = System.Drawing.SystemColors.ButtonShadow;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.Location = new System.Drawing.Point(35, 195);
+            this.button1.Location = new System.Drawing.Point(35, 246);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 33);
             this.button1.TabIndex = 7;
@@ -231,7 +235,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(63, 128);
+            this.label3.Location = new System.Drawing.Point(63, 132);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(57, 17);
             this.label3.TabIndex = 6;
@@ -251,7 +255,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(54, 20);
+            this.label1.Location = new System.Drawing.Point(53, 10);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(81, 17);
             this.label1.TabIndex = 4;
@@ -263,7 +267,7 @@
             this.cbCountry.DisplayMember = "code";
             this.cbCountry.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.cbCountry.FormattingEnabled = true;
-            this.cbCountry.Location = new System.Drawing.Point(35, 148);
+            this.cbCountry.Location = new System.Drawing.Point(35, 152);
             this.cbCountry.Name = "cbCountry";
             this.cbCountry.Size = new System.Drawing.Size(121, 23);
             this.cbCountry.TabIndex = 2;
@@ -297,7 +301,7 @@
             this.cbConference.DisplayMember = "conferenceName";
             this.cbConference.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.cbConference.FormattingEnabled = true;
-            this.cbConference.Location = new System.Drawing.Point(35, 40);
+            this.cbConference.Location = new System.Drawing.Point(35, 30);
             this.cbConference.Name = "cbConference";
             this.cbConference.Size = new System.Drawing.Size(121, 23);
             this.cbConference.TabIndex = 0;
@@ -315,6 +319,25 @@
             // subjectBindingSource
             // 
             this.subjectBindingSource.DataSource = typeof(ScienceConferenceApp.Model.subject);
+            // 
+            // dateTimePicker
+            // 
+            this.dateTimePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.dateTimePicker.Location = new System.Drawing.Point(25, 207);
+            this.dateTimePicker.Name = "dateTimePicker";
+            this.dateTimePicker.Size = new System.Drawing.Size(144, 23);
+            this.dateTimePicker.TabIndex = 4;
+            this.dateTimePicker.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label4.Location = new System.Drawing.Point(72, 187);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(38, 17);
+            this.label4.TabIndex = 9;
+            this.label4.Text = "Date";
             // 
             // ConferenceForm
             // 
@@ -379,5 +402,7 @@
         private System.Windows.Forms.BindingSource addressBindingSource;
         private System.Windows.Forms.BindingSource countryBindingSource;
         public System.Windows.Forms.ComboBox cbConference;
+        private System.Windows.Forms.DateTimePicker dateTimePicker;
+        private System.Windows.Forms.Label label4;
     }
 }

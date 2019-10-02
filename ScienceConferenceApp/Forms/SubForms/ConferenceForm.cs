@@ -94,5 +94,11 @@ namespace ScienceConferenceApp.Forms.SubForms
             country c = (country)cbCountry.SelectedItem;
             filter.country = c.countryId;
         }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+            dataGridView1.DataSource = conferenceController.GetDate(dateTimePicker.Value);
+            //filter.date = dateTimePicker.Value;
+        }
     }
 }

@@ -71,6 +71,19 @@ namespace ScienceConferenceApp.Controllers
             return viewCountries;
         }
 
+        public List<ViewConference>
+            GetDate(DateTime date)
+        {
+            IQueryable<ViewConference> viewCountries;
+
+            viewCountries = db.ViewConferences;
+
+            viewCountries = viewCountries.Where(c => c.date == date);
+
+            return viewCountries.ToList();
+        }
+
+
         public List<ViewConference> GetConferences(ConferenceFilter filter)
         {
             IQueryable<ViewConference> conf = db.ViewConferences;
@@ -85,7 +98,7 @@ namespace ScienceConferenceApp.Controllers
             conf = GetViewConferences(filter.conference, conf);
             conf = GetCountry(filter.country, conf);
             conf = GetAddresses(filter.address, conf);
-
+            
             return conf.ToList();
         }
     }
