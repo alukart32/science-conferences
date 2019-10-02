@@ -18,9 +18,6 @@ namespace ScienceConferenceApp.Model
         public DateTime date { get; set; }
 
         [StringLength(50)]
-        public string address { get; set; }
-
-        [StringLength(50)]
         public string subject { get; set; }
 
         [StringLength(1)]
@@ -41,9 +38,6 @@ namespace ScienceConferenceApp.Model
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int countryId { get; set; }
 
-        [StringLength(3)]
-        public string conferenceCountry { get; set; }
-
         [Key]
         [Column(Order = 5)]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
@@ -58,5 +52,21 @@ namespace ScienceConferenceApp.Model
         [Column(Order = 7)]
         [StringLength(255)]
         public string themeName { get; set; }
+
+        [Key]
+        [Column(Order = 8)]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public int addressId { get; set; }
+
+        [StringLength(50)]
+        public string address { get; set; }
+
+        [Key]
+        [Column(Order = 9)]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public int participantId { get; set; }
+
+        [StringLength(3)]
+        public string code { get; set; }
     }
 }

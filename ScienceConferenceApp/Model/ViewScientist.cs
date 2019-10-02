@@ -19,39 +19,28 @@ namespace ScienceConferenceApp.Model
         [StringLength(50)]
         public string secondName { get; set; }
 
-        [StringLength(5)]
-        public string degree { get; set; }
-
-        [StringLength(50)]
-        public string institution { get; set; }
-
         [Key]
         [Column(Order = 1)]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int institutionId { get; set; }
+        public int degreeId { get; set; }
 
-        [StringLength(3)]
-        public string scientistCountry { get; set; }
+        [StringLength(5)]
+        public string degree { get; set; }
 
         [Key]
         [Column(Order = 2)]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int scientistCountryId { get; set; }
+        public int countryId { get; set; }
+
+        [StringLength(3)]
+        public string code { get; set; }
 
         [StringLength(50)]
-        public string subject { get; set; }
+        public string companyName { get; set; }
 
         [Key]
         [Column(Order = 3)]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int subjectId { get; set; }
-
-        public int? conference { get; set; }
-
-        [StringLength(50)]
-        public string theme { get; set; }
-
-        [StringLength(1)]
-        public string publication { get; set; }
+        public int companyId { get; set; }
     }
 }

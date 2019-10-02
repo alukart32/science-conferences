@@ -23,7 +23,7 @@ namespace ScienceConferenceApp.Forms.SubForms
         }
 
         BaseForm caller;
-        ConferenceViewController conferenceViewController;
+        ConferenceController conferenceController;
         ConferenceFilter filter;
         DbAppContext db;
 
@@ -38,14 +38,50 @@ namespace ScienceConferenceApp.Forms.SubForms
         private void initData()
         {
             db = new DbAppContext();
-            conferenceViewController = new ConferenceViewController();
+            conferenceController = new ConferenceController();
             filter = new ConferenceFilter();
 
-            cbConference.DataSource = db.conferences.ToList();
-            cbSubject.DataSource = db.subjects.ToList();      
-            cbTheme.DataSource = db.themes.ToList();
+            addConferences();
+            addAddresses();
+            addCountries();
 
-            dataGridView1.DataSource = db.ViewConferencesWithParticipants.ToList();
+            dataGridView1.DataSource = db.ViewConferences.ToList();
+        }
+
+        private void addConferences()
+        {
+            conference all = new conference();
+            all.conferenceName = "all";
+            all.conferenceId = 0;
+            List<conference> confs = new List<conference>();
+            confs.Add(all);
+            confs.AddRange(db.conferences.ToList());
+
+            cbConference.DataSource = confs;
+        }
+
+        private void addAddresses()
+        {
+            address all = new address();
+            all.address1 = "all";
+            all.addressId = 0;
+            List<address> adds = new List<address>();
+            adds.Add(all);
+            adds.AddRange(db.addresses.ToList());
+
+            cbAddress.DataSource = adds;
+        }
+
+        private void addCountries()
+        {
+            country all = new country();
+            all.code = "all";
+            all.countryId = 0;
+            List<country> cs = new List<country>();
+            cs.Add(all);
+            cs.AddRange(db.countries.ToList());
+
+            cbCountry.DataSource = cs;
         }
 
         private void ConferenceForm_Load(object sender, EventArgs e)
@@ -65,19 +101,16 @@ namespace ScienceConferenceApp.Forms.SubForms
 
         private void button2_Click(object sender, EventArgs e)
         {
-            filter.theme = 1;
-            filter.subject = 1;
-            filter.conference = 2;
-            dataGridView1.DataSource = conferenceViewController.GetConferences(filter);
+            dataGridView1.DataSource = db.ViewConferences.ToList();
 
             cbConference.SelectedIndex = 0;
-            cbSubject.SelectedIndex = 0;
-            cbTheme.SelectedIndex = 0;
+            cbAddress.SelectedIndex = 0;
+            cbCountry.SelectedIndex = 0;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            dataGridView1.DataSource = conferenceViewController.GetConferences(filter);
+            dataGridView1.DataSource = conferenceController.GetConferences(filter);
         }
 
         private void cbConference_SelectedIndexChanged(object sender, EventArgs e)
@@ -85,17 +118,16 @@ namespace ScienceConferenceApp.Forms.SubForms
             conference c = (conference)cbConference.SelectedItem;
             filter.conference = c.conferenceId;
         }
-
-        private void cbSubject_SelectedIndexChanged(object sender, EventArgs e)
+        private void cbAddress_SelectedIndexChanged(object sender, EventArgs e)
         {
-            subject s = (subject)cbSubject.SelectedItem;
-            filter.subject = s.subjectId;
+            address a = (address)cbAddress.SelectedItem;
+            filter.address = a.addressId;
         }
 
-        private void cbTheme_SelectedIndexChanged(object sender, EventArgs e)
+        private void cbCountry_SelectedIndexChanged(object sender, EventArgs e)
         {
-            theme t = (theme)cbTheme.SelectedItem;
-            filter.theme = t.themeId;
+            country c = (country)cbCountry.SelectedItem;
+            filter.country = c.countryId;
         }
     }
 }

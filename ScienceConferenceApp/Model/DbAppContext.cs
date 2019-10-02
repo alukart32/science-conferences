@@ -21,7 +21,9 @@ namespace ScienceConferenceApp.Model
         public virtual DbSet<scientist> scientists { get; set; }
         public virtual DbSet<subject> subjects { get; set; }
         public virtual DbSet<theme> themes { get; set; }
+        public virtual DbSet<ViewConference> ViewConferences { get; set; }
         public virtual DbSet<ViewConferencesWithParticipant> ViewConferencesWithParticipants { get; set; }
+        public virtual DbSet<ViewParticipant> ViewParticipants { get; set; }
         public virtual DbSet<ViewScientist> ViewScientists { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -119,12 +121,20 @@ namespace ScienceConferenceApp.Model
                 .WithOptional(e => e.theme1)
                 .HasForeignKey(e => e.theme);
 
-            modelBuilder.Entity<ViewConferencesWithParticipant>()
+            modelBuilder.Entity<ViewConference>()
                 .Property(e => e.conferenceName)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<ViewConferencesWithParticipant>()
+            modelBuilder.Entity<ViewConference>()
                 .Property(e => e.address)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<ViewConference>()
+                .Property(e => e.code)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<ViewConferencesWithParticipant>()
+                .Property(e => e.conferenceName)
                 .IsUnicode(false);
 
             modelBuilder.Entity<ViewConferencesWithParticipant>()
@@ -136,11 +146,19 @@ namespace ScienceConferenceApp.Model
                 .IsUnicode(false);
 
             modelBuilder.Entity<ViewConferencesWithParticipant>()
-                .Property(e => e.conferenceCountry)
+                .Property(e => e.themeName)
                 .IsUnicode(false);
 
             modelBuilder.Entity<ViewConferencesWithParticipant>()
-                .Property(e => e.themeName)
+                .Property(e => e.address)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<ViewConferencesWithParticipant>()
+                .Property(e => e.code)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<ViewParticipant>()
+                .Property(e => e.publication)
                 .IsUnicode(false);
 
             modelBuilder.Entity<ViewScientist>()
@@ -156,23 +174,11 @@ namespace ScienceConferenceApp.Model
                 .IsUnicode(false);
 
             modelBuilder.Entity<ViewScientist>()
-                .Property(e => e.institution)
+                .Property(e => e.code)
                 .IsUnicode(false);
 
             modelBuilder.Entity<ViewScientist>()
-                .Property(e => e.scientistCountry)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<ViewScientist>()
-                .Property(e => e.subject)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<ViewScientist>()
-                .Property(e => e.theme)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<ViewScientist>()
-                .Property(e => e.publication)
+                .Property(e => e.companyName)
                 .IsUnicode(false);
         }
     }

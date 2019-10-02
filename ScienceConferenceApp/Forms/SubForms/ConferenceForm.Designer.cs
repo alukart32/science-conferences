@@ -39,30 +39,34 @@
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.viewConferencesWithParticipantBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.conferenceNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.addressDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.codeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.viewConferenceBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.cbTheme = new System.Windows.Forms.ComboBox();
-            this.themeBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.cbSubject = new System.Windows.Forms.ComboBox();
-            this.subjectBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.cbCountry = new System.Windows.Forms.ComboBox();
+            this.countryBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.cbAddress = new System.Windows.Forms.ComboBox();
+            this.addressBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.cbConference = new System.Windows.Forms.ComboBox();
             this.conferenceBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.conferenceNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.subjectDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.themeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.themeBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.subjectBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.viewConferencesWithParticipantBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.viewConferenceBindingSource)).BeginInit();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.countryBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.addressBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.conferenceBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.themeBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.subjectBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.conferenceBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // BackButton
@@ -147,17 +151,41 @@
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.conferenceNameDataGridViewTextBoxColumn,
             this.dateDataGridViewTextBoxColumn,
-            this.subjectDataGridViewTextBoxColumn,
-            this.themeName});
-            this.dataGridView1.DataSource = this.viewConferencesWithParticipantBindingSource;
+            this.addressDataGridViewTextBoxColumn,
+            this.codeDataGridViewTextBoxColumn});
+            this.dataGridView1.DataSource = this.viewConferenceBindingSource;
             this.dataGridView1.Location = new System.Drawing.Point(259, 64);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(443, 282);
             this.dataGridView1.TabIndex = 2;
             // 
-            // viewConferencesWithParticipantBindingSource
+            // conferenceNameDataGridViewTextBoxColumn
             // 
-            this.viewConferencesWithParticipantBindingSource.DataSource = typeof(ScienceConferenceApp.Model.ViewConferencesWithParticipant);
+            this.conferenceNameDataGridViewTextBoxColumn.DataPropertyName = "conferenceName";
+            this.conferenceNameDataGridViewTextBoxColumn.HeaderText = "Conference";
+            this.conferenceNameDataGridViewTextBoxColumn.Name = "conferenceNameDataGridViewTextBoxColumn";
+            // 
+            // dateDataGridViewTextBoxColumn
+            // 
+            this.dateDataGridViewTextBoxColumn.DataPropertyName = "date";
+            this.dateDataGridViewTextBoxColumn.HeaderText = "Date";
+            this.dateDataGridViewTextBoxColumn.Name = "dateDataGridViewTextBoxColumn";
+            // 
+            // addressDataGridViewTextBoxColumn
+            // 
+            this.addressDataGridViewTextBoxColumn.DataPropertyName = "address";
+            this.addressDataGridViewTextBoxColumn.HeaderText = "Address";
+            this.addressDataGridViewTextBoxColumn.Name = "addressDataGridViewTextBoxColumn";
+            // 
+            // codeDataGridViewTextBoxColumn
+            // 
+            this.codeDataGridViewTextBoxColumn.DataPropertyName = "code";
+            this.codeDataGridViewTextBoxColumn.HeaderText = "Country";
+            this.codeDataGridViewTextBoxColumn.Name = "codeDataGridViewTextBoxColumn";
+            // 
+            // viewConferenceBindingSource
+            // 
+            this.viewConferenceBindingSource.DataSource = typeof(ScienceConferenceApp.Model.ViewConference);
             // 
             // panel1
             // 
@@ -167,8 +195,8 @@
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.cbTheme);
-            this.panel1.Controls.Add(this.cbSubject);
+            this.panel1.Controls.Add(this.cbCountry);
+            this.panel1.Controls.Add(this.cbAddress);
             this.panel1.Controls.Add(this.cbConference);
             this.panel1.Location = new System.Drawing.Point(22, 64);
             this.panel1.Name = "panel1";
@@ -179,7 +207,7 @@
             // 
             this.button2.BackColor = System.Drawing.SystemColors.ButtonShadow;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button2.Location = new System.Drawing.Point(121, 222);
+            this.button2.Location = new System.Drawing.Point(121, 195);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(35, 33);
             this.button2.TabIndex = 8;
@@ -191,7 +219,7 @@
             // 
             this.button1.BackColor = System.Drawing.SystemColors.ButtonShadow;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.Location = new System.Drawing.Point(35, 222);
+            this.button1.Location = new System.Drawing.Point(35, 195);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 33);
             this.button1.TabIndex = 7;
@@ -205,9 +233,9 @@
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label3.Location = new System.Drawing.Point(63, 128);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(52, 17);
+            this.label3.Size = new System.Drawing.Size(57, 17);
             this.label3.TabIndex = 6;
-            this.label3.Text = "Theme";
+            this.label3.Text = "Country";
             // 
             // label2
             // 
@@ -215,9 +243,9 @@
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label2.Location = new System.Drawing.Point(63, 73);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(55, 17);
+            this.label2.Size = new System.Drawing.Size(60, 17);
             this.label2.TabIndex = 5;
-            this.label2.Text = "Subject";
+            this.label2.Text = "Address";
             // 
             // label1
             // 
@@ -229,39 +257,39 @@
             this.label1.TabIndex = 4;
             this.label1.Text = "Conference";
             // 
-            // cbTheme
+            // cbCountry
             // 
-            this.cbTheme.DataSource = this.themeBindingSource;
-            this.cbTheme.DisplayMember = "themeName";
-            this.cbTheme.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.cbTheme.FormattingEnabled = true;
-            this.cbTheme.Location = new System.Drawing.Point(35, 148);
-            this.cbTheme.Name = "cbTheme";
-            this.cbTheme.Size = new System.Drawing.Size(121, 23);
-            this.cbTheme.TabIndex = 2;
-            this.cbTheme.ValueMember = "themeId";
-            this.cbTheme.SelectedIndexChanged += new System.EventHandler(this.cbTheme_SelectedIndexChanged);
+            this.cbCountry.DataSource = this.countryBindingSource;
+            this.cbCountry.DisplayMember = "code";
+            this.cbCountry.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.cbCountry.FormattingEnabled = true;
+            this.cbCountry.Location = new System.Drawing.Point(35, 148);
+            this.cbCountry.Name = "cbCountry";
+            this.cbCountry.Size = new System.Drawing.Size(121, 23);
+            this.cbCountry.TabIndex = 2;
+            this.cbCountry.ValueMember = "countryId";
+            this.cbCountry.SelectedIndexChanged += new System.EventHandler(this.cbCountry_SelectedIndexChanged);
             // 
-            // themeBindingSource
+            // countryBindingSource
             // 
-            this.themeBindingSource.DataSource = typeof(ScienceConferenceApp.Model.theme);
+            this.countryBindingSource.DataSource = typeof(ScienceConferenceApp.Model.country);
             // 
-            // cbSubject
+            // cbAddress
             // 
-            this.cbSubject.DataSource = this.subjectBindingSource;
-            this.cbSubject.DisplayMember = "subject1";
-            this.cbSubject.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.cbSubject.FormattingEnabled = true;
-            this.cbSubject.Location = new System.Drawing.Point(35, 93);
-            this.cbSubject.Name = "cbSubject";
-            this.cbSubject.Size = new System.Drawing.Size(121, 23);
-            this.cbSubject.TabIndex = 1;
-            this.cbSubject.ValueMember = "subjectId";
-            this.cbSubject.SelectedIndexChanged += new System.EventHandler(this.cbSubject_SelectedIndexChanged);
+            this.cbAddress.DataSource = this.addressBindingSource;
+            this.cbAddress.DisplayMember = "address1";
+            this.cbAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.cbAddress.FormattingEnabled = true;
+            this.cbAddress.Location = new System.Drawing.Point(35, 93);
+            this.cbAddress.Name = "cbAddress";
+            this.cbAddress.Size = new System.Drawing.Size(121, 23);
+            this.cbAddress.TabIndex = 1;
+            this.cbAddress.ValueMember = "addressId";
+            this.cbAddress.SelectedIndexChanged += new System.EventHandler(this.cbAddress_SelectedIndexChanged);
             // 
-            // subjectBindingSource
+            // addressBindingSource
             // 
-            this.subjectBindingSource.DataSource = typeof(ScienceConferenceApp.Model.subject);
+            this.addressBindingSource.DataSource = typeof(ScienceConferenceApp.Model.address);
             // 
             // cbConference
             // 
@@ -280,29 +308,13 @@
             // 
             this.conferenceBindingSource.DataSource = typeof(ScienceConferenceApp.Model.conference);
             // 
-            // conferenceNameDataGridViewTextBoxColumn
+            // themeBindingSource
             // 
-            this.conferenceNameDataGridViewTextBoxColumn.DataPropertyName = "conferenceName";
-            this.conferenceNameDataGridViewTextBoxColumn.HeaderText = "Conference";
-            this.conferenceNameDataGridViewTextBoxColumn.Name = "conferenceNameDataGridViewTextBoxColumn";
+            this.themeBindingSource.DataSource = typeof(ScienceConferenceApp.Model.theme);
             // 
-            // dateDataGridViewTextBoxColumn
+            // subjectBindingSource
             // 
-            this.dateDataGridViewTextBoxColumn.DataPropertyName = "date";
-            this.dateDataGridViewTextBoxColumn.HeaderText = "Date";
-            this.dateDataGridViewTextBoxColumn.Name = "dateDataGridViewTextBoxColumn";
-            // 
-            // subjectDataGridViewTextBoxColumn
-            // 
-            this.subjectDataGridViewTextBoxColumn.DataPropertyName = "subject";
-            this.subjectDataGridViewTextBoxColumn.HeaderText = "Subject";
-            this.subjectDataGridViewTextBoxColumn.Name = "subjectDataGridViewTextBoxColumn";
-            // 
-            // themeName
-            // 
-            this.themeName.DataPropertyName = "themeName";
-            this.themeName.HeaderText = "Theme";
-            this.themeName.Name = "themeName";
+            this.subjectBindingSource.DataSource = typeof(ScienceConferenceApp.Model.subject);
             // 
             // ConferenceForm
             // 
@@ -323,12 +335,14 @@
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.viewConferencesWithParticipantBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.viewConferenceBindingSource)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.countryBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.addressBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.conferenceBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.themeBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.subjectBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.conferenceBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -349,19 +363,21 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox cbTheme;
-        private System.Windows.Forms.ComboBox cbSubject;
-        private System.Windows.Forms.ComboBox cbConference;
+        private System.Windows.Forms.ComboBox cbCountry;
+        private System.Windows.Forms.ComboBox cbAddress;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataGridViewTextBoxColumn themeDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource subjectBindingSource;
         private System.Windows.Forms.BindingSource conferenceBindingSource;
-        private System.Windows.Forms.BindingSource viewConferencesWithParticipantBindingSource;
         private System.Windows.Forms.BindingSource themeBindingSource;
         private System.Windows.Forms.DataGridViewTextBoxColumn conferenceNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dateDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn subjectDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn themeName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn addressDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn codeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.BindingSource viewConferenceBindingSource;
+        private System.Windows.Forms.BindingSource addressBindingSource;
+        private System.Windows.Forms.BindingSource countryBindingSource;
+        public System.Windows.Forms.ComboBox cbConference;
     }
 }
