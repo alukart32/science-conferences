@@ -14,9 +14,9 @@ namespace ScienceConferenceApp.DataInitializer
      * 
      * 
      */
-    class ConferenceFormDataInit : DataInit
+    class CheckBoxDataInit : DataInit
     {
-        public ConferenceFormDataInit(DbAppContext db) : base(db)
+        public CheckBoxDataInit(DbAppContext db) : base(db)
         {}
 
         public ComboBox addConferences(ComboBox cb)
@@ -38,12 +38,12 @@ namespace ScienceConferenceApp.DataInitializer
             address all = new address();
             all.address1 = "all";
             all.addressId = 0;
+
             List<address> adds = new List<address>();
             adds.Add(all);
             adds.AddRange(db.addresses.ToList());
 
             cb.DataSource = adds;
-
         }
 
         public void addCountries(ComboBox cb)

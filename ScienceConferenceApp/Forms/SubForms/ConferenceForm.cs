@@ -1,6 +1,7 @@
 ﻿using ScienceConferenceApp.Controllers;
 using ScienceConferenceApp.DataInitializer;
 using ScienceConferenceApp.Filter;
+using ScienceConferenceApp.Forms.Crud;
 using ScienceConferenceApp.Forms.Utils;
 using ScienceConferenceApp.Model;
 using System;
@@ -26,7 +27,12 @@ namespace ScienceConferenceApp.Forms.SubForms
         BaseForm caller;
         ConferenceController conferenceController;
         ConferenceFilter filter;
+
+        ConferenceCrud conferenceCrud;
+
+
         DbAppContext db;
+
 
         public ConferenceForm(BaseForm form)
         {
@@ -42,7 +48,9 @@ namespace ScienceConferenceApp.Forms.SubForms
             conferenceController = new ConferenceController();
             filter = new ConferenceFilter();
 
-            ConferenceFormDataInit dataInit = new ConferenceFormDataInit(db);
+            conferenceCrud = new ConferenceCrud(db);
+
+            CheckBoxDataInit dataInit = new CheckBoxDataInit(db);
 
             dataInit.addConferences(cbConference);
             dataInit.addAddresses(cbAddress);
@@ -53,7 +61,7 @@ namespace ScienceConferenceApp.Forms.SubForms
 
         private void ConferenceForm_Load(object sender, EventArgs e)
         {
-            
+
         }
 
         private void ConferenceForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -99,6 +107,65 @@ namespace ScienceConferenceApp.Forms.SubForms
         {
             dataGridView1.DataSource = conferenceController.GetDate(dateTimePicker.Value);
             //filter.date = dateTimePicker.Value;
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // Здесь в кв. скобках используем значения свойства Name для столбцов
+            conference c = new conference();
+
+            c.conferenceId = Convert.ToInt32(dataGridView1.CurrentRow.Cells["conferenceId"].Value);
+            //c.conferenceName = dataGridView1.CurrentRow.Cells["Conference"].Value.ToString();
+            //c.address = Convert.ToInt32(dataGridView1.CurrentRow.Cells["Id"].Value);
+
+            // Щелчок по кнопке Удалить (она 4-я, начиная с нуля)
+            if (e.ColumnIndex == 6)
+            {
+                // Запрашиваем подтверждение
+                string message = "Do you want to delete?";
+                string caption = "Y/n";
+                var result = MessageBox.Show(message, caption,
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+                    // deleting
+                    if (conferenceCrud.delete(c))
+                    {
+                        MessageBox.Show("Conference was deleted!");
+                        dataGridView1.DataSource = db.ViewConferences.ToList();
+                    }
+                    else MessageBox.Show("Deleting was denied");
+                }
+            }
+            //// Щелчок по кнопке Изменить
+            //if (e.ColumnIndex == 3)
+            //{
+            //    using (TeacherForm frm = new TeacherForm(fio, post))
+            //    {
+            //        if (frm.ShowDialog() == DialogResult.OK)
+            //        {
+            //            // Находим объект по этому ID
+            //            if (!b.UpdateTeacher(id, frm.tFIO.Text, frm.tPost.Text))
+            //            {
+            //                MessageBox.Show("Ошибка модификации. Возможно, строка не
+            //                найдена!");
+            //            };
+            //            dgTeachers.Refresh();
+            //        }
+            //    }
+            //}
+        }
+
+        private void AddConferenceButton_Click(object sender, EventArgs e)
+        {
+            AddConferenceForm f = new AddConferenceForm(this, db);
+            f.Show();
+        }
+
+        private void toolStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
         }
     }
 }
