@@ -59,7 +59,18 @@ namespace ScienceConferenceApp.Controllers
 
         public override bool update(conference obj)
         {
-            throw new NotImplementedException();
+            // Find(id) выполнит запрос и найдет объект по этому ID
+            conference c = db.conferences.Find(obj.conferenceId);
+            if (c != null)
+            {
+                c.address = obj.address;
+                c.conferenceName = obj.conferenceName;
+                c.date = obj.date;
+                
+                db.SaveChanges();
+                return true;
+            }
+            else return false;
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using ScienceConferenceApp.Controllers;
+using ScienceConferenceApp.CRUD.Model.DTO;
 using ScienceConferenceApp.DataInitializer;
 using ScienceConferenceApp.Filter;
 using ScienceConferenceApp.Forms.Crud;
@@ -30,9 +31,8 @@ namespace ScienceConferenceApp.Forms.SubForms
 
         ConferenceCrud conferenceCrud;
 
-
+        CUConferenceFormDTO formDTO;
         DbAppContext db;
-
 
         public ConferenceForm(BaseForm form)
         {
@@ -50,6 +50,9 @@ namespace ScienceConferenceApp.Forms.SubForms
 
             conferenceCrud = new ConferenceCrud(db);
 
+            formDTO = new CUConferenceFormDTO();
+            formDTO.contex = db;
+            
             CheckBoxDataInit dataInit = new CheckBoxDataInit(db);
 
             dataInit.addConferences(cbConference);
@@ -111,14 +114,24 @@ namespace ScienceConferenceApp.Forms.SubForms
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            // Здесь в кв. скобках используем значения свойства Name для столбцов
             conference c = new conference();
 
             c.conferenceId = Convert.ToInt32(dataGridView1.CurrentRow.Cells["conferenceId"].Value);
-            //c.conferenceName = dataGridView1.CurrentRow.Cells["Conference"].Value.ToString();
-            //c.address = Convert.ToInt32(dataGridView1.CurrentRow.Cells["Id"].Value);
 
-            // Щелчок по кнопке Удалить (она 4-я, начиная с нуля)
+          
+            // updating
+            if(e.ColumnIndex == 5)
+            {
+                formDTO.op = CrudOpr.Update;
+
+                conference findConf = db.conferences.Find(c.conferenceId);
+                formDTO.obj = findConf;
+
+                CreateUpdateConferenceForm form = new CreateUpdateConferenceForm(this, formDTO);
+                form.Show();
+            }
+
+            // deleting
             if (e.ColumnIndex == 6)
             {
                 // Запрашиваем подтверждение
@@ -138,28 +151,12 @@ namespace ScienceConferenceApp.Forms.SubForms
                     else MessageBox.Show("Deleting was denied");
                 }
             }
-            //// Щелчок по кнопке Изменить
-            //if (e.ColumnIndex == 3)
-            //{
-            //    using (TeacherForm frm = new TeacherForm(fio, post))
-            //    {
-            //        if (frm.ShowDialog() == DialogResult.OK)
-            //        {
-            //            // Находим объект по этому ID
-            //            if (!b.UpdateTeacher(id, frm.tFIO.Text, frm.tPost.Text))
-            //            {
-            //                MessageBox.Show("Ошибка модификации. Возможно, строка не
-            //                найдена!");
-            //            };
-            //            dgTeachers.Refresh();
-            //        }
-            //    }
-            //}
         }
 
         private void AddConferenceButton_Click(object sender, EventArgs e)
         {
-            AddConferenceForm f = new AddConferenceForm(this, db);
+            formDTO.op = CrudOpr.Create;
+            CreateUpdateConferenceForm f = new CreateUpdateConferenceForm(this, formDTO);
             f.Show();
         }
 
