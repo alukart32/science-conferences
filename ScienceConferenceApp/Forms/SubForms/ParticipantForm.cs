@@ -11,33 +11,33 @@ using System.Windows.Forms;
 
 namespace ScienceConferenceApp.Forms.SubForms
 {
-    public partial class ParticipantForm :BaseForm
+    public partial class ParticipantForm : BaseForm
     {
+
+        BaseForm caller;
+
         public ParticipantForm()
         {
             InitializeComponent();
         }
 
-        BaseForm caller;
         public ParticipantForm(BaseForm form)
         {
             caller = form;
             form.Hide();
             InitializeComponent();
         }
+
         private void ParticipantForm_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'scienceConferencesParticipantsDataSet.ViewConferencesWithParticipants' table. You can move, or remove it, as needed.
+            this.viewConferencesWithParticipantsTableAdapter.Fill(this.scienceConferencesParticipantsDataSet.ViewConferencesWithParticipants);
 
         }
 
         private void ParticipantForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             caller.Show();
-        }
-
-        private void BackButton_Click(object sender, EventArgs e)
-        {
-            this.Close();
         }
     }
 }

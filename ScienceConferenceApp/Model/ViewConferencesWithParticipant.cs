@@ -10,63 +10,57 @@ namespace ScienceConferenceApp.Model
     {
         [Key]
         [Column(Order = 0)]
-        [StringLength(100)]
-        public string conferenceName { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public int participantId { get; set; }
 
         [Key]
-        [Column(Order = 1, TypeName = "date")]
-        public DateTime date { get; set; }
+        [Column(Order = 1)]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public int subjectId { get; set; }
 
         [StringLength(50)]
         public string subject { get; set; }
 
-        [StringLength(1)]
-        public string publication { get; set; }
-
         [Key]
         [Column(Order = 2)]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int scientist { get; set; }
-
-        [Key]
-        [Column(Order = 3)]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int subjectId { get; set; }
-
-        [Key]
-        [Column(Order = 4)]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int countryId { get; set; }
-
-        [Key]
-        [Column(Order = 5)]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int conferenceId { get; set; }
-
-        [Key]
-        [Column(Order = 6)]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int themeId { get; set; }
 
         [Key]
-        [Column(Order = 7)]
+        [Column(Order = 3)]
         [StringLength(255)]
         public string themeName { get; set; }
 
         [Key]
-        [Column(Order = 8)]
+        [Column(Order = 4)]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int addressId { get; set; }
+        public int scientistId { get; set; }
 
         [StringLength(50)]
-        public string address { get; set; }
+        public string firstName { get; set; }
+
+        [StringLength(50)]
+        public string secondName { get; set; }
 
         [Key]
-        [Column(Order = 9)]
+        [Column(Order = 5)]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int participantId { get; set; }
+        public int degreeId { get; set; }
 
-        [StringLength(3)]
-        public string code { get; set; }
+        [StringLength(5)]
+        public string degree { get; set; }
+
+        [Key]
+        [Column(Order = 6)]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public int companyId { get; set; }
+
+        [StringLength(50)]
+        public string companyName { get; set; }
+
+        [Key]
+        [Column(Order = 7)]
+        [StringLength(100)]
+        public string conferenceName { get; set; }
     }
 }

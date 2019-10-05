@@ -134,15 +134,7 @@ namespace ScienceConferenceApp.Model
                 .IsUnicode(false);
 
             modelBuilder.Entity<ViewConferencesWithParticipant>()
-                .Property(e => e.conferenceName)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<ViewConferencesWithParticipant>()
                 .Property(e => e.subject)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<ViewConferencesWithParticipant>()
-                .Property(e => e.publication)
                 .IsUnicode(false);
 
             modelBuilder.Entity<ViewConferencesWithParticipant>()
@@ -150,11 +142,23 @@ namespace ScienceConferenceApp.Model
                 .IsUnicode(false);
 
             modelBuilder.Entity<ViewConferencesWithParticipant>()
-                .Property(e => e.address)
+                .Property(e => e.firstName)
                 .IsUnicode(false);
 
             modelBuilder.Entity<ViewConferencesWithParticipant>()
-                .Property(e => e.code)
+                .Property(e => e.secondName)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<ViewConferencesWithParticipant>()
+                .Property(e => e.degree)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<ViewConferencesWithParticipant>()
+                .Property(e => e.companyName)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<ViewConferencesWithParticipant>()
+                .Property(e => e.conferenceName)
                 .IsUnicode(false);
 
             modelBuilder.Entity<ViewParticipant>()

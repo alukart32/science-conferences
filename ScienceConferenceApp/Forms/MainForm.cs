@@ -51,8 +51,8 @@ namespace ScienceConferenceApp.Forms
 
         private void companiesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CompanyForm companyForm = new CompanyForm(this);
-            companyForm.Show();
+      //      CompanyForm companyForm = new CompanyForm(this);
+      //      companyForm.Show();
         }
 
         private void searchToolStripMenuItem_Click(object sender, EventArgs e)
