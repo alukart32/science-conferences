@@ -14,11 +14,13 @@ namespace ScienceConferenceApp.Filter
             address = 0;
             country = 0;
             date = DateTime.MinValue;
+            withDate = false;
         }
 
         public int conference { get; set; }
         public int address { get; set; }
         public int country { get; set; }
         public DateTime date { get; set; }
+        public bool withDate { get; set; }
     }
 }

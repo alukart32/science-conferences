@@ -48,11 +48,11 @@
             this.delButton = new System.Windows.Forms.DataGridViewButtonColumn();
             this.viewConferenceBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button3 = new System.Windows.Forms.Button();
+            this.ResetButton = new System.Windows.Forms.Button();
             this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.ClearButton = new System.Windows.Forms.Button();
+            this.GoButton = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -66,6 +66,7 @@
             this.themeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.subjectBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.AddConferenceButton = new System.Windows.Forms.Button();
+            this.cbDateInFilter = new System.Windows.Forms.CheckBox();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.viewConferenceBindingSource)).BeginInit();
@@ -82,7 +83,7 @@
             // 
             this.BackButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.BackButton.Location = new System.Drawing.Point(768, 405);
-            this.BackButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.BackButton.Margin = new System.Windows.Forms.Padding(2);
             this.BackButton.Name = "BackButton";
             this.BackButton.Size = new System.Drawing.Size(78, 33);
             this.BackButton.TabIndex = 0;
@@ -227,7 +228,8 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.panel1.Controls.Add(this.button3);
+            this.panel1.Controls.Add(this.cbDateInFilter);
+            this.panel1.Controls.Add(this.ResetButton);
             this.panel1.Controls.Add(this.dateTimePicker);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.label4);
@@ -242,17 +244,17 @@
             this.panel1.Size = new System.Drawing.Size(200, 346);
             this.panel1.TabIndex = 3;
             // 
-            // button3
+            // ResetButton
             // 
-            this.button3.BackColor = System.Drawing.SystemColors.ButtonShadow;
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button3.Location = new System.Drawing.Point(25, 310);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(76, 33);
-            this.button3.TabIndex = 10;
-            this.button3.Text = "Reset";
-            this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.button1_Click);
+            this.ResetButton.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            this.ResetButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ResetButton.Location = new System.Drawing.Point(25, 310);
+            this.ResetButton.Name = "ResetButton";
+            this.ResetButton.Size = new System.Drawing.Size(76, 33);
+            this.ResetButton.TabIndex = 10;
+            this.ResetButton.Text = "Reset";
+            this.ResetButton.UseVisualStyleBackColor = false;
+            this.ResetButton.Click += new System.EventHandler(this.button3_Click);
             // 
             // dateTimePicker
             // 
@@ -261,48 +263,49 @@
             this.dateTimePicker.Name = "dateTimePicker";
             this.dateTimePicker.Size = new System.Drawing.Size(144, 23);
             this.dateTimePicker.TabIndex = 4;
+            this.dateTimePicker.Value = new System.DateTime(2019, 10, 5, 20, 30, 54, 0);
             this.dateTimePicker.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.panel2.Controls.Add(this.button2);
-            this.panel2.Controls.Add(this.button1);
+            this.panel2.Controls.Add(this.ClearButton);
+            this.panel2.Controls.Add(this.GoButton);
             this.panel2.Location = new System.Drawing.Point(25, 246);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(143, 58);
             this.panel2.TabIndex = 5;
             // 
-            // button2
+            // ClearButton
             // 
-            this.button2.BackColor = System.Drawing.SystemColors.ButtonShadow;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button2.Location = new System.Drawing.Point(76, 12);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(55, 33);
-            this.button2.TabIndex = 8;
-            this.button2.Text = "Clear";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.ClearButton.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            this.ClearButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ClearButton.Location = new System.Drawing.Point(76, 12);
+            this.ClearButton.Name = "ClearButton";
+            this.ClearButton.Size = new System.Drawing.Size(55, 33);
+            this.ClearButton.TabIndex = 8;
+            this.ClearButton.Text = "Clear";
+            this.ClearButton.UseVisualStyleBackColor = false;
+            this.ClearButton.Click += new System.EventHandler(this.button2_Click);
             // 
-            // button1
+            // GoButton
             // 
-            this.button1.BackColor = System.Drawing.SystemColors.ButtonShadow;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.Location = new System.Drawing.Point(10, 12);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(44, 33);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "Go";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.GoButton.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            this.GoButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.GoButton.Location = new System.Drawing.Point(10, 12);
+            this.GoButton.Name = "GoButton";
+            this.GoButton.Size = new System.Drawing.Size(44, 33);
+            this.GoButton.TabIndex = 7;
+            this.GoButton.Text = "Go";
+            this.GoButton.UseVisualStyleBackColor = false;
+            this.GoButton.Click += new System.EventHandler(this.button1_Click);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label4.Location = new System.Drawing.Point(72, 187);
+            this.label4.Location = new System.Drawing.Point(73, 187);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(38, 17);
             this.label4.TabIndex = 9;
@@ -401,13 +404,23 @@
             // 
             this.AddConferenceButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.AddConferenceButton.Location = new System.Drawing.Point(242, 405);
-            this.AddConferenceButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.AddConferenceButton.Margin = new System.Windows.Forms.Padding(2);
             this.AddConferenceButton.Name = "AddConferenceButton";
             this.AddConferenceButton.Size = new System.Drawing.Size(74, 33);
             this.AddConferenceButton.TabIndex = 4;
             this.AddConferenceButton.Text = "Add";
             this.AddConferenceButton.UseVisualStyleBackColor = true;
             this.AddConferenceButton.Click += new System.EventHandler(this.AddConferenceButton_Click);
+            // 
+            // cbDateInFilter
+            // 
+            this.cbDateInFilter.AutoSize = true;
+            this.cbDateInFilter.Location = new System.Drawing.Point(54, 188);
+            this.cbDateInFilter.Name = "cbDateInFilter";
+            this.cbDateInFilter.Size = new System.Drawing.Size(15, 14);
+            this.cbDateInFilter.TabIndex = 11;
+            this.cbDateInFilter.UseVisualStyleBackColor = true;
+            this.cbDateInFilter.CheckedChanged += new System.EventHandler(this.cbDateInFilter_CheckedChanged);
             // 
             // ConferenceForm
             // 
@@ -420,7 +433,7 @@
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.BackButton);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.Margin = new System.Windows.Forms.Padding(3);
             this.Name = "ConferenceForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ConferenceForm";
@@ -460,8 +473,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cbCountry;
         private System.Windows.Forms.ComboBox cbAddress;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button ClearButton;
+        private System.Windows.Forms.Button GoButton;
         private System.Windows.Forms.DataGridViewTextBoxColumn themeDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource subjectBindingSource;
         private System.Windows.Forms.BindingSource conferenceBindingSource;
@@ -480,7 +493,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn codeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewButtonColumn updButton;
         private System.Windows.Forms.DataGridViewButtonColumn delButton;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button ResetButton;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.CheckBox cbDateInFilter;
     }
 }

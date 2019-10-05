@@ -33,7 +33,7 @@ namespace ScienceConferenceApp.Forms.SubForms
 
         CUConferenceFormDTO formDTO;
         DbAppContext db;
-
+        
         public ConferenceForm(BaseForm form)
         {
             caller = form;
@@ -55,6 +55,7 @@ namespace ScienceConferenceApp.Forms.SubForms
             
             CheckBoxDataInit dataInit = new CheckBoxDataInit(db);
 
+            filter.date = DateTime.Now;
             dataInit.addConferences(cbConference);
             dataInit.addAddresses(cbAddress);
             dataInit.addCountries(cbCountry);
@@ -79,17 +80,28 @@ namespace ScienceConferenceApp.Forms.SubForms
 
         private void button2_Click(object sender, EventArgs e)
         {          
+            resetData();
+        }
+        private void button1_Click(object sender, EventArgs e)
+        {
+            dataGridView1.DataSource = conferenceController.GetConferences(filter);
+        }
+
+        private void resetData()
+        {
             cbConference.SelectedIndex = 0;
             cbAddress.SelectedIndex = 0;
             cbCountry.SelectedIndex = 0;
 
             dateTimePicker.Value = DateTime.Now;
 
+            filter.address = 0;
+            filter.conference = 0;
+            filter.country = 0;
+
+            filter.date = DateTime.Now;
+
             dataGridView1.DataSource = db.ViewConferences.ToList();
-        }
-        private void button1_Click(object sender, EventArgs e)
-        {
-            dataGridView1.DataSource = conferenceController.GetConferences(filter);
         }
 
         private void cbConference_SelectedIndexChanged(object sender, EventArgs e)
@@ -110,8 +122,8 @@ namespace ScienceConferenceApp.Forms.SubForms
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
-            dataGridView1.DataSource = conferenceController.GetDate(dateTimePicker.Value);
-            //filter.date = dateTimePicker.Value;
+            //dataGridView1.DataSource = conferenceController.GetDate(dateTimePicker.Value);
+            filter.date = dateTimePicker.Value;
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -120,7 +132,14 @@ namespace ScienceConferenceApp.Forms.SubForms
 
             c.conferenceId = Convert.ToInt32(dataGridView1.CurrentRow.Cells["conferenceId"].Value);
 
-          
+            // picking date
+            //if(e.ColumnIndex == 3)
+            //{
+            //    dateTimePicker.Value = Convert.ToDateTime(dataGridView1.CurrentRow.Cells["date"].Value);
+            //    filter.date = dateTimePicker.Value;
+            //}
+
+
             // updating
             if(e.ColumnIndex == 5)
             {
@@ -130,7 +149,7 @@ namespace ScienceConferenceApp.Forms.SubForms
                 formDTO.obj = findConf;
 
                 CreateUpdateConferenceForm form = new CreateUpdateConferenceForm(this, formDTO);
-                form.Show();
+                form.Show();              
             }
 
             // deleting
@@ -148,7 +167,7 @@ namespace ScienceConferenceApp.Forms.SubForms
                     if (conferenceCrud.delete(c))
                     {
                         MessageBox.Show("Conference was deleted!");
-                        dataGridView1.DataSource = db.ViewConferences.ToList();
+                        resetData();
                     }
                     else MessageBox.Show("Deleting was denied");
                 }
@@ -160,10 +179,36 @@ namespace ScienceConferenceApp.Forms.SubForms
             formDTO.op = CrudOpr.Create;
             CreateUpdateConferenceForm f = new CreateUpdateConferenceForm(this, formDTO);
             f.Show();
+            resetData();
         }
 
         private void toolStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            resetData();
+        }
+
+        
+        bool isDateInFilterChecked = false;
+        
+        private void cbDateInFilter_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbDateInFilter.Checked && !isDateInFilterChecked)
+            {
+                filter.withDate = true;
+                isDateInFilterChecked = true;
+                return;
+            }
+            else
+            {
+                cbDateInFilter.CheckState = CheckState.Unchecked;
+                isDateInFilterChecked = false;
+                filter.withDate = false;
+            }
 
         }
     }

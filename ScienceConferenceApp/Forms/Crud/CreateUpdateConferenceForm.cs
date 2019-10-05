@@ -48,6 +48,7 @@ namespace ScienceConferenceApp.Forms.Crud
 
             currentCrudOp = formDTO.op;
             this.formDTO = formDTO;
+            formDTO.obj.date = DateTime.Now;
 
             switch (currentCrudOp)
             {

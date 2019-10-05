@@ -29,6 +29,8 @@ namespace ScienceConferenceApp.Controllers
             }
             else
                 viewConferences = conferences;
+
+            // 0 - id мнимый элемент
             if (conferenceId != 0)       
               viewConferences = viewConferences.Where(c => c.conferenceId == conferenceId);
 
@@ -47,6 +49,7 @@ namespace ScienceConferenceApp.Controllers
             else
                 viewAddresses = conferences;
 
+            // 0 - id мнимый элемент
             if (addressId != 0)
                 viewAddresses = viewAddresses.Where(a => a.addressId == addressId);
 
@@ -65,6 +68,7 @@ namespace ScienceConferenceApp.Controllers
             else
                 viewCountries = conferences;
 
+            // 0 - id мнимый элемент
             if (countryId != 0)
                 viewCountries = viewCountries.Where(c => c.countryId == countryId);
 
@@ -83,6 +87,25 @@ namespace ScienceConferenceApp.Controllers
             return viewCountries.ToList();
         }
 
+        public IQueryable<ViewConference>
+           GetDate(DateTime date, IQueryable<ViewConference> conferences)
+        {
+            IQueryable<ViewConference> viewCountries;
+
+            //if (date == DateTime.MinValue)
+            //    return conferences;
+
+            if (conferences == null)
+            {
+                viewCountries = db.ViewConferences;
+            }
+            else
+                viewCountries = conferences;
+
+            viewCountries = viewCountries.Where(c => c.date == date);
+
+            return viewCountries;
+        }
 
         public List<ViewConference> GetConferences(ConferenceFilter filter)
         {
@@ -98,7 +121,12 @@ namespace ScienceConferenceApp.Controllers
             conf = GetViewConferences(filter.conference, conf);
             conf = GetCountry(filter.country, conf);
             conf = GetAddresses(filter.address, conf);
-            
+
+            if (filter.withDate)
+            {
+                conf = GetDate(filter.date.Date, conf);
+            }
+
             return conf.ToList();
         }
     }
