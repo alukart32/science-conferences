@@ -50,9 +50,10 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.button3 = new System.Windows.Forms.Button();
             this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.label4 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -69,6 +70,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.viewConferenceBindingSource)).BeginInit();
             this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.countryBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.addressBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.conferenceBindingSource)).BeginInit();
@@ -79,7 +81,7 @@
             // BackButton
             // 
             this.BackButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.BackButton.Location = new System.Drawing.Point(837, 405);
+            this.BackButton.Location = new System.Drawing.Point(768, 405);
             this.BackButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.BackButton.Name = "BackButton";
             this.BackButton.Size = new System.Drawing.Size(78, 33);
@@ -98,7 +100,7 @@
             this.toolStripButton2});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(939, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(870, 25);
             this.toolStrip1.TabIndex = 1;
             this.toolStrip1.Text = "toolStrip1";
             this.toolStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.toolStrip1_ItemClicked);
@@ -167,7 +169,7 @@
             this.dataGridView1.DataSource = this.viewConferenceBindingSource;
             this.dataGridView1.Location = new System.Drawing.Point(242, 47);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(673, 336);
+            this.dataGridView1.Size = new System.Drawing.Size(604, 346);
             this.dataGridView1.TabIndex = 2;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -227,9 +229,8 @@
             this.panel1.BackColor = System.Drawing.SystemColors.ControlLight;
             this.panel1.Controls.Add(this.button3);
             this.panel1.Controls.Add(this.dateTimePicker);
+            this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.button2);
-            this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
@@ -238,14 +239,14 @@
             this.panel1.Controls.Add(this.cbConference);
             this.panel1.Location = new System.Drawing.Point(24, 47);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(200, 336);
+            this.panel1.Size = new System.Drawing.Size(200, 346);
             this.panel1.TabIndex = 3;
             // 
             // button3
             // 
             this.button3.BackColor = System.Drawing.SystemColors.ButtonShadow;
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button3.Location = new System.Drawing.Point(24, 286);
+            this.button3.Location = new System.Drawing.Point(25, 310);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(76, 33);
             this.button3.TabIndex = 10;
@@ -262,23 +263,24 @@
             this.dateTimePicker.TabIndex = 4;
             this.dateTimePicker.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
-            // label4
+            // panel2
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label4.Location = new System.Drawing.Point(72, 187);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(38, 17);
-            this.label4.TabIndex = 9;
-            this.label4.Text = "Date";
+            this.panel2.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.panel2.Controls.Add(this.button2);
+            this.panel2.Controls.Add(this.button1);
+            this.panel2.Location = new System.Drawing.Point(25, 246);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(143, 58);
+            this.panel2.TabIndex = 5;
             // 
             // button2
             // 
             this.button2.BackColor = System.Drawing.SystemColors.ButtonShadow;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button2.Location = new System.Drawing.Point(119, 286);
+            this.button2.Location = new System.Drawing.Point(76, 12);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(62, 33);
+            this.button2.Size = new System.Drawing.Size(55, 33);
             this.button2.TabIndex = 8;
             this.button2.Text = "Clear";
             this.button2.UseVisualStyleBackColor = false;
@@ -288,13 +290,23 @@
             // 
             this.button1.BackColor = System.Drawing.SystemColors.ButtonShadow;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.Location = new System.Drawing.Point(25, 246);
+            this.button1.Location = new System.Drawing.Point(10, 12);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 33);
+            this.button1.Size = new System.Drawing.Size(44, 33);
             this.button1.TabIndex = 7;
             this.button1.Text = "Go";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label4.Location = new System.Drawing.Point(72, 187);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(38, 17);
+            this.label4.TabIndex = 9;
+            this.label4.Text = "Date";
             // 
             // label3
             // 
@@ -388,7 +400,7 @@
             // AddConferenceButton
             // 
             this.AddConferenceButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.AddConferenceButton.Location = new System.Drawing.Point(24, 405);
+            this.AddConferenceButton.Location = new System.Drawing.Point(242, 405);
             this.AddConferenceButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.AddConferenceButton.Name = "AddConferenceButton";
             this.AddConferenceButton.Size = new System.Drawing.Size(74, 33);
@@ -401,7 +413,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(939, 461);
+            this.ClientSize = new System.Drawing.Size(870, 449);
             this.Controls.Add(this.AddConferenceButton);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.dataGridView1);
@@ -420,6 +432,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.viewConferenceBindingSource)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.countryBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.addressBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.conferenceBindingSource)).EndInit();
@@ -468,5 +481,6 @@
         private System.Windows.Forms.DataGridViewButtonColumn updButton;
         private System.Windows.Forms.DataGridViewButtonColumn delButton;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Panel panel2;
     }
 }
