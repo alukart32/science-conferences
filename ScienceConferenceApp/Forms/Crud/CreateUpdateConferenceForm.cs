@@ -25,7 +25,7 @@ namespace ScienceConferenceApp.Forms.Crud
 
         DbAppContext db;
 
-        CrudOpr currentOp;
+        CrudOpr currentCrudOp;
 
         Regex r = new Regex("^[a-zA-Z0-9]*$");
 
@@ -46,10 +46,10 @@ namespace ScienceConferenceApp.Forms.Crud
 
             cbAddress.DataSource = addresses;
 
-            currentOp = formDTO.op;
+            currentCrudOp = formDTO.op;
             this.formDTO = formDTO;
 
-            switch (currentOp)
+            switch (currentCrudOp)
             {
                 case CrudOpr.Update:
                     initDataForUpdate(formDTO.obj);
@@ -103,7 +103,13 @@ namespace ScienceConferenceApp.Forms.Crud
                 conferenceDTO.name = tbConferenceName.Text;
             else
             {
-                tbConferenceName.Text = "";
+                if(currentCrudOp != CrudOpr.Update)
+                    tbConferenceName.Text = "";
+                else
+                    tbConferenceName.Text = conferenceDTO.name;
+
+                MessageBox.Show("Incorrect conference name!");
+
                 return;
             }
 
@@ -118,7 +124,7 @@ namespace ScienceConferenceApp.Forms.Crud
 
         private void doCrud(conference c)
         {
-            switch (currentOp)
+            switch (currentCrudOp)
             {
                 // create
                 case CrudOpr.Create:
@@ -144,7 +150,7 @@ namespace ScienceConferenceApp.Forms.Crud
 
         private void tbConferenceName_Click(object sender, EventArgs e)
         {
-            switch (currentOp)
+            switch (currentCrudOp)
             {
                 case CrudOpr.Create:
                     tbConferenceName.Text = "";

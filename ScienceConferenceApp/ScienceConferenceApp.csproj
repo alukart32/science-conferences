@@ -182,6 +182,7 @@
     <None Include="Properties\DataSources\ScienceConferenceApp.Model.theme.datasource" />
     <None Include="Properties\DataSources\ScienceConferenceApp.Model.ViewConference.datasource" />
     <None Include="Properties\DataSources\ScienceConferenceApp.Model.ViewConferencesWithParticipant.datasource" />
+    <None Include="Properties\DataSources\ScienceConferenceApp.Model.ViewParticipant.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

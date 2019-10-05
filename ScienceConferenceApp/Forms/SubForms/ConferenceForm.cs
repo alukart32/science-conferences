@@ -78,12 +78,14 @@ namespace ScienceConferenceApp.Forms.SubForms
         }
 
         private void button2_Click(object sender, EventArgs e)
-        {
-            dataGridView1.DataSource = db.ViewConferences.ToList();
-
+        {          
             cbConference.SelectedIndex = 0;
             cbAddress.SelectedIndex = 0;
             cbCountry.SelectedIndex = 0;
+
+            dateTimePicker.Value = DateTime.Now;
+
+            dataGridView1.DataSource = db.ViewConferences.ToList();
         }
         private void button1_Click(object sender, EventArgs e)
         {
