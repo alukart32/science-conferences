@@ -47,5 +47,16 @@ namespace ScienceConferenceApp.Forms.SubForms
         {
 
         }
+
+        private void conferencesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ConferenceForm conferenceForm = new ConferenceForm(this);
+            conferenceForm.Show();
+        }
+
+        private void companiesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 }
