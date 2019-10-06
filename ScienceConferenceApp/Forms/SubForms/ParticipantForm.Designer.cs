@@ -67,6 +67,7 @@
             this.cbConference = new System.Windows.Forms.ComboBox();
             this.viewConferenceBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.AddConferenceButton = new System.Windows.Forms.Button();
+            this.BackButton = new System.Windows.Forms.Button();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.viewConferencesWithParticipantBindingSource)).BeginInit();
@@ -287,6 +288,7 @@
             this.ResetButton.TabIndex = 10;
             this.ResetButton.Text = "Reset";
             this.ResetButton.UseVisualStyleBackColor = false;
+            this.ResetButton.Click += new System.EventHandler(this.ResetButton_Click);
             // 
             // panel2
             // 
@@ -410,11 +412,23 @@
             this.AddConferenceButton.Text = "Add";
             this.AddConferenceButton.UseVisualStyleBackColor = true;
             // 
+            // BackButton
+            // 
+            this.BackButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.BackButton.Location = new System.Drawing.Point(1077, 404);
+            this.BackButton.Name = "BackButton";
+            this.BackButton.Size = new System.Drawing.Size(81, 33);
+            this.BackButton.TabIndex = 6;
+            this.BackButton.Text = "Back";
+            this.BackButton.UseVisualStyleBackColor = true;
+            this.BackButton.Click += new System.EventHandler(this.BackButton_Click);
+            // 
             // ParticipantForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1171, 537);
+            this.ClientSize = new System.Drawing.Size(1171, 450);
+            this.Controls.Add(this.BackButton);
             this.Controls.Add(this.AddConferenceButton);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.dataGridView1);
@@ -480,5 +494,6 @@
         private System.Windows.Forms.BindingSource subjectBindingSource;
         private System.Windows.Forms.BindingSource academicDegreeBindingSource;
         private System.Windows.Forms.Button AddConferenceButton;
+        private System.Windows.Forms.Button BackButton;
     }
 }

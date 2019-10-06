@@ -86,23 +86,6 @@ namespace ScienceConferenceApp.Forms.SubForms
             dataGridView1.DataSource = conferenceController.GetConferences(filter);
         }
 
-        private void resetData()
-        {
-            cbConference.SelectedIndex = 0;
-            cbAddress.SelectedIndex = 0;
-            cbCountry.SelectedIndex = 0;
-
-            dateTimePicker.Value = DateTime.Now;
-
-            filter.address = 0;
-            filter.conference = 0;
-            filter.country = 0;
-
-            filter.date = DateTime.Now;
-
-            dataGridView1.DataSource = db.ViewConferences.ToList();
-        }
-
         private void cbConference_SelectedIndexChanged(object sender, EventArgs e)
         {
             conference c = (conference)cbConference.SelectedItem;
@@ -209,6 +192,23 @@ namespace ScienceConferenceApp.Forms.SubForms
                 filter.withDate = false;
             }
 
+        }
+
+        private void resetData()
+        {
+            cbConference.SelectedIndex = 0;
+            cbAddress.SelectedIndex = 0;
+            cbCountry.SelectedIndex = 0;
+
+            dateTimePicker.Value = DateTime.Now;
+
+            filter.address = 0;
+            filter.conference = 0;
+            filter.country = 0;
+
+            filter.date = DateTime.Now;
+
+            dataGridView1.DataSource = db.ViewConferences.ToList();
         }
     }
 }

@@ -78,5 +78,27 @@ namespace ScienceConferenceApp.Forms.SubForms
         {
             
         }
+
+        private void BackButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void resetData()
+        {
+            cbConference.SelectedIndex = 0;
+            cbTheme.SelectedIndex = 0;
+            cbSubject.SelectedIndex = 0;
+            cbDegree.SelectedIndex = 0;
+
+            // filter
+
+            dataGridView1.DataSource = db.ViewConferencesWithParticipants.ToList();
+        }
+
+        private void ResetButton_Click(object sender, EventArgs e)
+        {
+            resetData();
+        }
     }
 }
