@@ -53,7 +53,6 @@
             this.cbDegree = new System.Windows.Forms.ComboBox();
             this.academicDegreeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label4 = new System.Windows.Forms.Label();
-            this.ResetButton = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.ClearButton = new System.Windows.Forms.Button();
             this.GoButton = new System.Windows.Forms.Button();
@@ -239,7 +238,6 @@
             this.panel1.BackColor = System.Drawing.SystemColors.ControlLight;
             this.panel1.Controls.Add(this.cbDegree);
             this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.ResetButton);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label2);
@@ -263,6 +261,7 @@
             this.cbDegree.Size = new System.Drawing.Size(121, 23);
             this.cbDegree.TabIndex = 12;
             this.cbDegree.ValueMember = "degreeId";
+            this.cbDegree.SelectedIndexChanged += new System.EventHandler(this.cbDegree_SelectedIndexChanged);
             // 
             // academicDegreeBindingSource
             // 
@@ -277,18 +276,6 @@
             this.label4.Size = new System.Drawing.Size(55, 17);
             this.label4.TabIndex = 11;
             this.label4.Text = "Degree";
-            // 
-            // ResetButton
-            // 
-            this.ResetButton.BackColor = System.Drawing.SystemColors.ButtonShadow;
-            this.ResetButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ResetButton.Location = new System.Drawing.Point(25, 310);
-            this.ResetButton.Name = "ResetButton";
-            this.ResetButton.Size = new System.Drawing.Size(76, 33);
-            this.ResetButton.TabIndex = 10;
-            this.ResetButton.Text = "Reset";
-            this.ResetButton.UseVisualStyleBackColor = false;
-            this.ResetButton.Click += new System.EventHandler(this.ResetButton_Click);
             // 
             // panel2
             // 
@@ -311,6 +298,7 @@
             this.ClearButton.TabIndex = 8;
             this.ClearButton.Text = "Clear";
             this.ClearButton.UseVisualStyleBackColor = false;
+            this.ClearButton.Click += new System.EventHandler(this.ClearButton_Click);
             // 
             // GoButton
             // 
@@ -322,6 +310,7 @@
             this.GoButton.TabIndex = 7;
             this.GoButton.Text = "Go";
             this.GoButton.UseVisualStyleBackColor = false;
+            this.GoButton.Click += new System.EventHandler(this.GoButton_Click);
             // 
             // label3
             // 
@@ -364,6 +353,7 @@
             this.cbSubject.Size = new System.Drawing.Size(121, 23);
             this.cbSubject.TabIndex = 2;
             this.cbSubject.ValueMember = "subjectId";
+            this.cbSubject.SelectedIndexChanged += new System.EventHandler(this.cbSubject_SelectedIndexChanged);
             // 
             // subjectBindingSource
             // 
@@ -380,6 +370,7 @@
             this.cbTheme.Size = new System.Drawing.Size(121, 23);
             this.cbTheme.TabIndex = 1;
             this.cbTheme.ValueMember = "themeId";
+            this.cbTheme.SelectedIndexChanged += new System.EventHandler(this.cbTheme_SelectedIndexChanged);
             // 
             // themeBindingSource
             // 
@@ -396,6 +387,7 @@
             this.cbConference.Size = new System.Drawing.Size(121, 23);
             this.cbConference.TabIndex = 0;
             this.cbConference.ValueMember = "conferenceId";
+            this.cbConference.SelectedIndexChanged += new System.EventHandler(this.cbConference_SelectedIndexChanged);
             // 
             // viewConferenceBindingSource
             // 
@@ -477,7 +469,6 @@
         private System.Windows.Forms.DataGridViewButtonColumn updateParticipant;
         private System.Windows.Forms.DataGridViewButtonColumn deleteParticipant;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button ResetButton;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button ClearButton;
         private System.Windows.Forms.Button GoButton;

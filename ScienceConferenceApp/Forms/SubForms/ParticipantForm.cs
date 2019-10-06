@@ -1,4 +1,6 @@
-﻿using ScienceConferenceApp.DataInitializer;
+﻿using ScienceConferenceApp.Controllers;
+using ScienceConferenceApp.DataInitializer;
+using ScienceConferenceApp.Filter;
 using ScienceConferenceApp.Forms.Utils;
 using ScienceConferenceApp.Model;
 using System;
@@ -19,6 +21,10 @@ namespace ScienceConferenceApp.Forms.SubForms
         BaseForm caller;
         DbAppContext db;
 
+        ParticipantFilter filter;
+
+        ParticipantController participantController; 
+
         public ParticipantForm()
         {
             InitializeComponent();
@@ -29,7 +35,6 @@ namespace ScienceConferenceApp.Forms.SubForms
             caller = form;
             form.Hide();
             InitializeComponent();
-            db = new DbAppContext();
         }
 
         private void ParticipantForm_Load(object sender, EventArgs e)
@@ -40,13 +45,15 @@ namespace ScienceConferenceApp.Forms.SubForms
         private void initData()
         {
             db = new DbAppContext();
-            //conferenceController = new ConferenceController();
+            participantController = new ParticipantController(db);
             //filter = new ConferenceFilter();
 
             //conferenceCrud = new ConferenceCrud(db);
 
             //formDTO = new CUConferenceFormDTO();
             //formDTO.contex = db;
+
+            filter = new ParticipantFilter();
 
             CheckBoxDataInit dataInit = new CheckBoxDataInit(db);
 
@@ -91,14 +98,48 @@ namespace ScienceConferenceApp.Forms.SubForms
             cbSubject.SelectedIndex = 0;
             cbDegree.SelectedIndex = 0;
 
-            // filter
+            filter.participant = 0;
+            filter.subject = 0;
+            filter.theme = 0;
+            filter.degree = 0;
 
             dataGridView1.DataSource = db.ViewConferencesWithParticipants.ToList();
         }
 
-        private void ResetButton_Click(object sender, EventArgs e)
+        private void ClearButton_Click(object sender, EventArgs e)
         {
             resetData();
+        }
+
+        private void GoButton_Click(object sender, EventArgs e)
+        {
+            dataGridView1.DataSource = participantController.GetParticipants(filter);
+        }
+
+        private void cbConference_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+            filter.conference = cbConference.Text;
+
+            // filter.conference = cbConference.Text;
+        }
+
+        private void cbTheme_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            theme t = (theme)cbTheme.SelectedItem;
+            filter.theme = t.themeId;
+        }
+
+        private void cbSubject_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            subject s = (subject)cbSubject.SelectedItem;
+            filter.subject = s.subjectId;
+        }
+
+        private void cbDegree_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            academicDegree s = (academicDegree)cbDegree.SelectedItem;
+            filter.degree = s.degreeId;
         }
     }
 }

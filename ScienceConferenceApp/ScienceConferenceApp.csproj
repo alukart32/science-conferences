@@ -55,6 +55,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\ParticipantController.cs" />
     <Compile Include="CRUD\Model\AddressCrud.cs" />
     <Compile Include="CRUD\Model\ConferenceCrud.cs" />
     <Compile Include="Controllers\ConferenceController.cs" />
@@ -66,6 +67,7 @@
     <Compile Include="DataInitializer\CheckBoxDataInit.cs" />
     <Compile Include="DataInitializer\DataInit.cs" />
     <Compile Include="Filter\ConferenceFilter.cs" />
+    <Compile Include="Filter\ParticipantFilter.cs" />
     <Compile Include="Forms\Crud\CreateUpdateConferenceForm.cs">
       <SubType>Form</SubType>
     </Compile>

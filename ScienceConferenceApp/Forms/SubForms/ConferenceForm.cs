@@ -44,7 +44,7 @@ namespace ScienceConferenceApp.Forms.SubForms
         private void initData()
         {
             db = new DbAppContext();
-            conferenceController = new ConferenceController();
+            conferenceController = new ConferenceController(db);
             filter = new ConferenceFilter();
 
             conferenceCrud = new ConferenceCrud(db);

@@ -12,9 +12,9 @@ namespace ScienceConferenceApp.Controllers
     {
         DbAppContext db;
 
-        public ConferenceController()
+        public ConferenceController(DbAppContext db)
         {
-            db = new DbAppContext();
+            this.db = db;
 
         }
 
