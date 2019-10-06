@@ -57,6 +57,7 @@
   <ItemGroup>
     <Compile Include="Controllers\ParticipantController.cs" />
     <Compile Include="CRUD\DTO\Form\CUParticipantFormDTO.cs" />
+    <Compile Include="CRUD\DTO\ParticipantDTO.cs" />
     <Compile Include="CRUD\Model\AddressCrud.cs" />
     <Compile Include="CRUD\Model\ConferenceCrud.cs" />
     <Compile Include="Controllers\ConferenceController.cs" />
@@ -75,6 +76,12 @@
     </Compile>
     <Compile Include="Forms\Crud\CreateUpdateConferenceForm.Designer.cs">
       <DependentUpon>CreateUpdateConferenceForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Crud\CreateUpdateParticipantForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Crud\CreateUpdateParticipantForm.Designer.cs">
+      <DependentUpon>CreateUpdateParticipantForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Crud\CrudOpr.cs" />
     <Compile Include="Forms\MainForm.cs">
@@ -137,6 +144,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Forms\Crud\CreateUpdateConferenceForm.resx">
       <DependentUpon>CreateUpdateConferenceForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Crud\CreateUpdateParticipantForm.resx">
+      <DependentUpon>CreateUpdateParticipantForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
