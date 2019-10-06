@@ -1,4 +1,5 @@
 ﻿using ScienceConferenceApp.Forms.Utils;
+using ScienceConferenceApp.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,6 +16,7 @@ namespace ScienceConferenceApp.Forms.SubForms
     {
 
         BaseForm caller;
+        DbAppContext db;
 
         public ParticipantForm()
         {
@@ -26,18 +28,24 @@ namespace ScienceConferenceApp.Forms.SubForms
             caller = form;
             form.Hide();
             InitializeComponent();
+            db = new DbAppContext();
+
+            dataGridView1.DataSource = db.ViewConferencesWithParticipants.ToList();
         }
 
         private void ParticipantForm_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'scienceConferencesParticipantsDataSet.ViewConferencesWithParticipants' table. You can move, or remove it, as needed.
-            this.viewConferencesWithParticipantsTableAdapter.Fill(this.scienceConferencesParticipantsDataSet.ViewConferencesWithParticipants);
-
+          
         }
 
         private void ParticipantForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             caller.Show();
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

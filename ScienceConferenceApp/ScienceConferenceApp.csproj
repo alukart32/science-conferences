@@ -131,11 +131,6 @@
     <Compile Include="Model\ViewScientist.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ScienceConferencesParticipantsDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ScienceConferencesParticipantsDataSet.xsd</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="Forms\Crud\CreateUpdateConferenceForm.resx">
       <DependentUpon>CreateUpdateConferenceForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -188,17 +183,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="ScienceConferencesParticipantsDataSet.xsc">
-      <DependentUpon>ScienceConferencesParticipantsDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="ScienceConferencesParticipantsDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>ScienceConferencesParticipantsDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="ScienceConferencesParticipantsDataSet.xss">
-      <DependentUpon>ScienceConferencesParticipantsDataSet.xsd</DependentUpon>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

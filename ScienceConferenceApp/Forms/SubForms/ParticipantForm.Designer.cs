@@ -38,9 +38,7 @@
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.viewConferencesWithParticipantsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.viewConferencesWithParticipantsTableAdapter = new ScienceConferenceApp.ScienceConferencesParticipantsDataSetTableAdapters.ViewConferencesWithParticipantsTableAdapter();
-            this.scienceConferencesParticipantsDataSet = new ScienceConferenceApp.ScienceConferencesParticipantsDataSet();
+            this.viewConferencesWithParticipantBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.participantIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.firstNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.secondNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -49,12 +47,9 @@
             this.conferenceNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.subjectDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.themeNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.updateParticipant = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.DeleteParticipant = new System.Windows.Forms.DataGridViewButtonColumn();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.viewConferencesWithParticipantsBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.scienceConferencesParticipantsDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.viewConferencesWithParticipantBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // toolStripDropDownButton1
@@ -132,28 +127,17 @@
             this.companyNameDataGridViewTextBoxColumn,
             this.conferenceNameDataGridViewTextBoxColumn,
             this.subjectDataGridViewTextBoxColumn,
-            this.themeNameDataGridViewTextBoxColumn,
-            this.updateParticipant,
-            this.DeleteParticipant});
-            this.dataGridView1.DataSource = this.viewConferencesWithParticipantsBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(231, 38);
+            this.themeNameDataGridViewTextBoxColumn});
+            this.dataGridView1.DataSource = this.viewConferencesWithParticipantBindingSource;
+            this.dataGridView1.Location = new System.Drawing.Point(263, 43);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(974, 428);
+            this.dataGridView1.Size = new System.Drawing.Size(952, 321);
             this.dataGridView1.TabIndex = 3;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
-            // viewConferencesWithParticipantsBindingSource
+            // viewConferencesWithParticipantBindingSource
             // 
-            this.viewConferencesWithParticipantsBindingSource.DataMember = "ViewConferencesWithParticipants";
-            this.viewConferencesWithParticipantsBindingSource.DataSource = this.scienceConferencesParticipantsDataSet;
-            // 
-            // viewConferencesWithParticipantsTableAdapter
-            // 
-            this.viewConferencesWithParticipantsTableAdapter.ClearBeforeFill = true;
-            // 
-            // scienceConferencesParticipantsDataSet
-            // 
-            this.scienceConferencesParticipantsDataSet.DataSetName = "ScienceConferencesParticipantsDataSet";
-            this.scienceConferencesParticipantsDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.viewConferencesWithParticipantBindingSource.DataSource = typeof(ScienceConferenceApp.Model.ViewConferencesWithParticipant);
             // 
             // participantIdDataGridViewTextBoxColumn
             // 
@@ -164,57 +148,44 @@
             // firstNameDataGridViewTextBoxColumn
             // 
             this.firstNameDataGridViewTextBoxColumn.DataPropertyName = "firstName";
-            this.firstNameDataGridViewTextBoxColumn.HeaderText = "firstName";
+            this.firstNameDataGridViewTextBoxColumn.HeaderText = "FirstName";
             this.firstNameDataGridViewTextBoxColumn.Name = "firstNameDataGridViewTextBoxColumn";
             // 
             // secondNameDataGridViewTextBoxColumn
             // 
             this.secondNameDataGridViewTextBoxColumn.DataPropertyName = "secondName";
-            this.secondNameDataGridViewTextBoxColumn.HeaderText = "secondName";
+            this.secondNameDataGridViewTextBoxColumn.HeaderText = "SecondName";
             this.secondNameDataGridViewTextBoxColumn.Name = "secondNameDataGridViewTextBoxColumn";
             // 
             // degreeDataGridViewTextBoxColumn
             // 
             this.degreeDataGridViewTextBoxColumn.DataPropertyName = "degree";
-            this.degreeDataGridViewTextBoxColumn.HeaderText = "degree";
+            this.degreeDataGridViewTextBoxColumn.HeaderText = "Degree";
             this.degreeDataGridViewTextBoxColumn.Name = "degreeDataGridViewTextBoxColumn";
             // 
             // companyNameDataGridViewTextBoxColumn
             // 
             this.companyNameDataGridViewTextBoxColumn.DataPropertyName = "companyName";
-            this.companyNameDataGridViewTextBoxColumn.HeaderText = "companyName";
+            this.companyNameDataGridViewTextBoxColumn.HeaderText = "Company";
             this.companyNameDataGridViewTextBoxColumn.Name = "companyNameDataGridViewTextBoxColumn";
             // 
             // conferenceNameDataGridViewTextBoxColumn
             // 
             this.conferenceNameDataGridViewTextBoxColumn.DataPropertyName = "conferenceName";
-            this.conferenceNameDataGridViewTextBoxColumn.HeaderText = "conferenceName";
+            this.conferenceNameDataGridViewTextBoxColumn.HeaderText = "Conference";
             this.conferenceNameDataGridViewTextBoxColumn.Name = "conferenceNameDataGridViewTextBoxColumn";
             // 
             // subjectDataGridViewTextBoxColumn
             // 
             this.subjectDataGridViewTextBoxColumn.DataPropertyName = "subject";
-            this.subjectDataGridViewTextBoxColumn.HeaderText = "subject";
+            this.subjectDataGridViewTextBoxColumn.HeaderText = "Subject";
             this.subjectDataGridViewTextBoxColumn.Name = "subjectDataGridViewTextBoxColumn";
             // 
             // themeNameDataGridViewTextBoxColumn
             // 
             this.themeNameDataGridViewTextBoxColumn.DataPropertyName = "themeName";
-            this.themeNameDataGridViewTextBoxColumn.HeaderText = "themeName";
+            this.themeNameDataGridViewTextBoxColumn.HeaderText = "Theme";
             this.themeNameDataGridViewTextBoxColumn.Name = "themeNameDataGridViewTextBoxColumn";
-            // 
-            // updateParticipant
-            // 
-            this.updateParticipant.HeaderText = "";
-            this.updateParticipant.Name = "updateParticipant";
-            this.updateParticipant.UseColumnTextForButtonValue = true;
-            // 
-            // DeleteParticipant
-            // 
-            this.DeleteParticipant.HeaderText = "";
-            this.DeleteParticipant.Name = "DeleteParticipant";
-            this.DeleteParticipant.UseColumnTextForButtonValue = true;
-            this.DeleteParticipant.Width = 30;
             // 
             // ParticipantForm
             // 
@@ -232,8 +203,7 @@
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.viewConferencesWithParticipantsBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.scienceConferencesParticipantsDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.viewConferencesWithParticipantBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -249,9 +219,7 @@
         private System.Windows.Forms.ToolStripButton toolStripButton2;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.BindingSource viewConferencesWithParticipantsBindingSource;
-        private ScienceConferencesParticipantsDataSetTableAdapters.ViewConferencesWithParticipantsTableAdapter viewConferencesWithParticipantsTableAdapter;
-        private ScienceConferencesParticipantsDataSet scienceConferencesParticipantsDataSet;
+        private System.Windows.Forms.BindingSource viewConferencesWithParticipantBindingSource;
         private System.Windows.Forms.DataGridViewTextBoxColumn participantIdDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn firstNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn secondNameDataGridViewTextBoxColumn;
@@ -260,7 +228,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn conferenceNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn subjectDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn themeNameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewButtonColumn updateParticipant;
-        private System.Windows.Forms.DataGridViewButtonColumn DeleteParticipant;
     }
 }
