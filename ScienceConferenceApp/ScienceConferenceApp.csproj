@@ -56,13 +56,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\ParticipantController.cs" />
+    <Compile Include="CRUD\DTO\Form\CUParticipantFormDTO.cs" />
     <Compile Include="CRUD\Model\AddressCrud.cs" />
     <Compile Include="CRUD\Model\ConferenceCrud.cs" />
     <Compile Include="Controllers\ConferenceController.cs" />
     <Compile Include="CRUD\Model\CountryCrud.cs" />
-    <Compile Include="CRUD\Model\DTO\ConferenceDTO.cs" />
-    <Compile Include="CRUD\Model\DTO\Form\CUConferenceFormDTO.cs" />
-    <Compile Include="CRUD\Model\DTO\Form\CUFormDTO.cs" />
+    <Compile Include="CRUD\DTO\ConferenceDTO.cs" />
+    <Compile Include="CRUD\DTO\Form\CUConferenceFormDTO.cs" />
+    <Compile Include="CRUD\DTO\Form\CUFormDTO.cs" />
     <Compile Include="CRUD\Model\ParticipantCrud.cs" />
     <Compile Include="CRUD\Utils\Crud.cs" />
     <Compile Include="DataInitializer\CheckBoxDataInit.cs" />
