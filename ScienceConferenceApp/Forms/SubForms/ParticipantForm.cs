@@ -1,6 +1,8 @@
 ﻿using ScienceConferenceApp.Controllers;
+using ScienceConferenceApp.CRUD.Model.DTO;
 using ScienceConferenceApp.DataInitializer;
 using ScienceConferenceApp.Filter;
+using ScienceConferenceApp.Forms.Crud;
 using ScienceConferenceApp.Forms.Utils;
 using ScienceConferenceApp.Model;
 using System;
@@ -23,7 +25,9 @@ namespace ScienceConferenceApp.Forms.SubForms
 
         ParticipantFilter filter;
 
-        ParticipantController participantController; 
+        ParticipantController participantController;
+
+        CUConferenceFormDTO formDTO;
 
         public ParticipantForm()
         {
@@ -50,7 +54,7 @@ namespace ScienceConferenceApp.Forms.SubForms
 
             //conferenceCrud = new ConferenceCrud(db);
 
-            //formDTO = new CUConferenceFormDTO();
+            formDTO = new CUConferenceFormDTO();
             //formDTO.contex = db;
 
             filter = new ParticipantFilter();
@@ -140,6 +144,11 @@ namespace ScienceConferenceApp.Forms.SubForms
         {
             academicDegree s = (academicDegree)cbDegree.SelectedItem;
             filter.degree = s.degreeId;
+        }
+
+        private void AddConferenceButton_Click(object sender, EventArgs e)
+        {
+            formDTO.op = CrudOpr.Create;
         }
     }
 }

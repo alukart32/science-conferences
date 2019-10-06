@@ -6,21 +6,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ScienceConferenceApp.CRUD.Model.DTO
+namespace ScienceConferenceApp.CRUD.Model.DTO.Form
 {
-    /*
-     * DTO class for CreateUpdateConferenceForm
-     * 
-     */
-    public class CUConferenceFormDTO
+    abstract public class CUFormDTO<T>
     {
         public DbAppContext contex { get; set; }
         public CrudOpr op { get; set; }
-        public conference obj { get; set; }
+        public T obj { get; set; }
 
-        public CUConferenceFormDTO() { }
+        public CUFormDTO() { }
 
-        public CUConferenceFormDTO(DbAppContext db, CrudOpr opr, conference c)
+        public CUFormDTO(DbAppContext db, CrudOpr opr, T c)
         {
             this.contex = db;
             this.op = opr;

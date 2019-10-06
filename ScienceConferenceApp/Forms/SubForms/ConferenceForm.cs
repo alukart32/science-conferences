@@ -1,5 +1,6 @@
 ﻿using ScienceConferenceApp.Controllers;
 using ScienceConferenceApp.CRUD.Model.DTO;
+using ScienceConferenceApp.CRUD.Model.DTO.Form;
 using ScienceConferenceApp.DataInitializer;
 using ScienceConferenceApp.Filter;
 using ScienceConferenceApp.Forms.Crud;
@@ -31,7 +32,7 @@ namespace ScienceConferenceApp.Forms.SubForms
 
         ConferenceCrud conferenceCrud;
 
-        CUConferenceFormDTO formDTO;
+        CUFormDTO<conference> formDTO;
         DbAppContext db;
         
         public ConferenceForm(BaseForm form)
@@ -51,6 +52,8 @@ namespace ScienceConferenceApp.Forms.SubForms
 
             formDTO = new CUConferenceFormDTO();
             formDTO.contex = db;
+            formDTO.obj = new conference();
+            
             
             CheckBoxDataInit dataInit = new CheckBoxDataInit(db);
 
@@ -161,7 +164,7 @@ namespace ScienceConferenceApp.Forms.SubForms
             formDTO.op = CrudOpr.Create;
             CreateUpdateConferenceForm f = new CreateUpdateConferenceForm(this, formDTO);
             f.Show();
-            resetData();
+            //resetData();
         }
 
         private void toolStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)

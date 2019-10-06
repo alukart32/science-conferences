@@ -1,5 +1,6 @@
 ﻿using ScienceConferenceApp.Controllers;
 using ScienceConferenceApp.CRUD.Model.DTO;
+using ScienceConferenceApp.CRUD.Model.DTO.Form;
 using ScienceConferenceApp.DataInitializer;
 using ScienceConferenceApp.Forms.Utils;
 using ScienceConferenceApp.Model;
@@ -29,9 +30,9 @@ namespace ScienceConferenceApp.Forms.Crud
 
         Regex r = new Regex("^[a-zA-Z0-9]*$");
 
-        CUConferenceFormDTO formDTO;
+        CUFormDTO<conference> formDTO;
 
-        public CreateUpdateConferenceForm(BaseForm form, CUConferenceFormDTO formDTO)
+        public CreateUpdateConferenceForm(BaseForm form, CUFormDTO<conference> formDTO)
         {
             caller = form;
             form.Hide();

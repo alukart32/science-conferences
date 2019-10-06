@@ -403,6 +403,7 @@
             this.AddConferenceButton.TabIndex = 5;
             this.AddConferenceButton.Text = "Add";
             this.AddConferenceButton.UseVisualStyleBackColor = true;
+            this.AddConferenceButton.Click += new System.EventHandler(this.AddConferenceButton_Click);
             // 
             // BackButton
             // 
