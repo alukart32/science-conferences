@@ -14,7 +14,20 @@ namespace ScienceConferenceApp.CRUD
 
         public override participant create(participant obj)
         {
-            throw new NotImplementedException();
+            participant p = 
+                db.participants.Where(o => o.participantId == obj.participantId).FirstOrDefault();
+
+            if (p != null)
+            {
+                // obj is alredy existed
+                return null;
+            }
+            else
+            {
+                db.participants.Add(obj);
+                db.SaveChanges();
+                return obj;
+            }
         }
 
         public override bool delete(participant obj)
@@ -45,7 +58,15 @@ namespace ScienceConferenceApp.CRUD
 
         public override bool update(participant obj)
         {
-            throw new NotImplementedException();
+            // Find(id) выполнит запрос и найдет объект по этому ID
+            participant p = db.participants.Find(obj.participantId);
+            if (p != null)
+            {
+                //
+                db.SaveChanges();
+                return true;
+            }
+            else return false;
         }
     }
 }

@@ -67,7 +67,7 @@
     <Compile Include="CRUD\DTO\Form\CUFormDTO.cs" />
     <Compile Include="CRUD\Model\ParticipantCrud.cs" />
     <Compile Include="CRUD\Utils\Crud.cs" />
-    <Compile Include="DataInitializer\CheckBoxDataInit.cs" />
+    <Compile Include="DataInitializer\ComboBox\ComboBoxDataInit.cs" />
     <Compile Include="DataInitializer\DataInit.cs" />
     <Compile Include="Filter\ConferenceFilter.cs" />
     <Compile Include="Filter\ParticipantFilter.cs" />
@@ -84,10 +84,10 @@
       <DependentUpon>CreateUpdateParticipantForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Crud\CrudOpr.cs" />
-    <Compile Include="Forms\MainForm.cs">
+    <Compile Include="Forms\Utils\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\MainForm.Designer.cs">
+    <Compile Include="Forms\Utils\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\SubForms\ConferenceForm.cs">
@@ -114,16 +114,16 @@
     <Compile Include="Forms\Utils\BaseForm.Designer.cs">
       <DependentUpon>BaseForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Utils\Menu\ContactForm.cs">
+    <Compile Include="Forms\SubForms\Menu\ContactForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Utils\Menu\ContactForm.Designer.cs">
+    <Compile Include="Forms\SubForms\Menu\ContactForm.Designer.cs">
       <DependentUpon>ContactForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Utils\Menu\HelpForm.cs">
+    <Compile Include="Forms\SubForms\Menu\HelpForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Utils\Menu\HelpForm.Designer.cs">
+    <Compile Include="Forms\SubForms\Menu\HelpForm.Designer.cs">
       <DependentUpon>HelpForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\academicDegree.cs" />
@@ -148,7 +148,7 @@
     <EmbeddedResource Include="Forms\Crud\CreateUpdateParticipantForm.resx">
       <DependentUpon>CreateUpdateParticipantForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\MainForm.resx">
+    <EmbeddedResource Include="Forms\Utils\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\SubForms\ConferenceForm.resx">
@@ -163,10 +163,10 @@
     <EmbeddedResource Include="Forms\Utils\BaseForm.resx">
       <DependentUpon>BaseForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Utils\Menu\ContactForm.resx">
+    <EmbeddedResource Include="Forms\SubForms\Menu\ContactForm.resx">
       <DependentUpon>ContactForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Utils\Menu\HelpForm.resx">
+    <EmbeddedResource Include="Forms\SubForms\Menu\HelpForm.resx">
       <DependentUpon>HelpForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
