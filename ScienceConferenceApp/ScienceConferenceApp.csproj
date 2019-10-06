@@ -165,6 +165,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\ScienceConferenceApp.Model.academicDegree.datasource" />
     <None Include="Properties\DataSources\ScienceConferenceApp.Model.address.datasource" />
     <None Include="Properties\DataSources\ScienceConferenceApp.Model.conference.datasource" />
     <None Include="Properties\DataSources\ScienceConferenceApp.Model.country.datasource" />

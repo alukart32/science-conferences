@@ -57,5 +57,43 @@ namespace ScienceConferenceApp.DataInitializer
 
             cb.DataSource = cs;
         }
+
+        public void addThemes(ComboBox cb)
+        {
+            theme all = new theme();
+            all.themeName = "all";
+            all.themeId = 0;
+            List<theme> cs = new List<theme>();
+            cs.Add(all);
+            cs.AddRange(db.themes.ToList());
+
+            cb.DataSource = cs;
+        }
+
+        public void addSubjects(ComboBox cb)
+        {
+            subject all = new subject();
+            all.subject1 = "all";
+            all.subjectId = 0;
+            List<subject> cs = new List<subject>();
+            cs.Add(all);
+            cs.AddRange(db.subjects.ToList());
+
+            cb.DataSource = cs;
+        }
+
+        public void addDegrees(ComboBox cb)
+        {
+            academicDegree all = new academicDegree();
+            all.degree = "all";
+            all.degreeId = 0;
+            List<academicDegree> cs = new List<academicDegree>();
+            cs.Add(all);
+            cs.AddRange(db.academicDegrees.ToList());
+
+            cb.DataSource = cs;
+        }
+
+
     }
 }

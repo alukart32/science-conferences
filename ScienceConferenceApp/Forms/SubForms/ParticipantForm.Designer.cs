@@ -50,6 +50,9 @@
             this.deleteParticipant = new System.Windows.Forms.DataGridViewButtonColumn();
             this.viewConferencesWithParticipantBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
+            this.cbDegree = new System.Windows.Forms.ComboBox();
+            this.academicDegreeBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.label4 = new System.Windows.Forms.Label();
             this.ResetButton = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.ClearButton = new System.Windows.Forms.Button();
@@ -57,16 +60,22 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.cbAddress = new System.Windows.Forms.ComboBox();
+            this.cbSubject = new System.Windows.Forms.ComboBox();
+            this.subjectBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.cbTheme = new System.Windows.Forms.ComboBox();
+            this.themeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.cbConference = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.cbCountry = new System.Windows.Forms.ComboBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.viewConferenceBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.AddConferenceButton = new System.Windows.Forms.Button();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.viewConferencesWithParticipantBindingSource)).BeginInit();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.academicDegreeBindingSource)).BeginInit();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.subjectBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.themeBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.viewConferenceBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // toolStripDropDownButton1
@@ -85,21 +94,21 @@
             // conferencesToolStripMenuItem
             // 
             this.conferencesToolStripMenuItem.Name = "conferencesToolStripMenuItem";
-            this.conferencesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.conferencesToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
             this.conferencesToolStripMenuItem.Text = "Conferences";
             this.conferencesToolStripMenuItem.Click += new System.EventHandler(this.conferencesToolStripMenuItem_Click);
             // 
             // companiesToolStripMenuItem
             // 
             this.companiesToolStripMenuItem.Name = "companiesToolStripMenuItem";
-            this.companiesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.companiesToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
             this.companiesToolStripMenuItem.Text = "Companies";
             this.companiesToolStripMenuItem.Click += new System.EventHandler(this.companiesToolStripMenuItem_Click);
             // 
             // searchToolStripMenuItem
             // 
             this.searchToolStripMenuItem.Name = "searchToolStripMenuItem";
-            this.searchToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.searchToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
             this.searchToolStripMenuItem.Text = "Search";
             // 
             // toolStripButton1
@@ -152,7 +161,7 @@
             this.dataGridView1.DataSource = this.viewConferencesWithParticipantBindingSource;
             this.dataGridView1.Location = new System.Drawing.Point(235, 43);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(923, 343);
+            this.dataGridView1.Size = new System.Drawing.Size(923, 346);
             this.dataGridView1.TabIndex = 3;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -227,20 +236,46 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.panel1.Controls.Add(this.comboBox1);
+            this.panel1.Controls.Add(this.cbDegree);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.ResetButton);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.cbCountry);
-            this.panel1.Controls.Add(this.cbAddress);
+            this.panel1.Controls.Add(this.cbSubject);
+            this.panel1.Controls.Add(this.cbTheme);
             this.panel1.Controls.Add(this.cbConference);
             this.panel1.Location = new System.Drawing.Point(12, 43);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(200, 346);
             this.panel1.TabIndex = 4;
+            // 
+            // cbDegree
+            // 
+            this.cbDegree.DataSource = this.academicDegreeBindingSource;
+            this.cbDegree.DisplayMember = "degree";
+            this.cbDegree.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.cbDegree.FormattingEnabled = true;
+            this.cbDegree.Location = new System.Drawing.Point(35, 209);
+            this.cbDegree.Name = "cbDegree";
+            this.cbDegree.Size = new System.Drawing.Size(121, 23);
+            this.cbDegree.TabIndex = 12;
+            this.cbDegree.ValueMember = "degreeId";
+            // 
+            // academicDegreeBindingSource
+            // 
+            this.academicDegreeBindingSource.DataSource = typeof(ScienceConferenceApp.Model.academicDegree);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label4.Location = new System.Drawing.Point(63, 189);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(55, 17);
+            this.label4.TabIndex = 11;
+            this.label4.Text = "Degree";
             // 
             // ResetButton
             // 
@@ -316,19 +351,41 @@
             this.label1.TabIndex = 4;
             this.label1.Text = "Conference";
             // 
-            // cbAddress
+            // cbSubject
             // 
-            this.cbAddress.DisplayMember = "address1";
-            this.cbAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.cbAddress.FormattingEnabled = true;
-            this.cbAddress.Location = new System.Drawing.Point(35, 93);
-            this.cbAddress.Name = "cbAddress";
-            this.cbAddress.Size = new System.Drawing.Size(121, 23);
-            this.cbAddress.TabIndex = 1;
-            this.cbAddress.ValueMember = "addressId";
+            this.cbSubject.DataSource = this.subjectBindingSource;
+            this.cbSubject.DisplayMember = "subject1";
+            this.cbSubject.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.cbSubject.FormattingEnabled = true;
+            this.cbSubject.Location = new System.Drawing.Point(35, 152);
+            this.cbSubject.Name = "cbSubject";
+            this.cbSubject.Size = new System.Drawing.Size(121, 23);
+            this.cbSubject.TabIndex = 2;
+            this.cbSubject.ValueMember = "subjectId";
+            // 
+            // subjectBindingSource
+            // 
+            this.subjectBindingSource.DataSource = typeof(ScienceConferenceApp.Model.subject);
+            // 
+            // cbTheme
+            // 
+            this.cbTheme.DataSource = this.themeBindingSource;
+            this.cbTheme.DisplayMember = "themeName";
+            this.cbTheme.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.cbTheme.FormattingEnabled = true;
+            this.cbTheme.Location = new System.Drawing.Point(35, 93);
+            this.cbTheme.Name = "cbTheme";
+            this.cbTheme.Size = new System.Drawing.Size(121, 23);
+            this.cbTheme.TabIndex = 1;
+            this.cbTheme.ValueMember = "themeId";
+            // 
+            // themeBindingSource
+            // 
+            this.themeBindingSource.DataSource = typeof(ScienceConferenceApp.Model.theme);
             // 
             // cbConference
             // 
+            this.cbConference.DataSource = this.viewConferenceBindingSource;
             this.cbConference.DisplayMember = "conferenceName";
             this.cbConference.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.cbConference.FormattingEnabled = true;
@@ -338,43 +395,27 @@
             this.cbConference.TabIndex = 0;
             this.cbConference.ValueMember = "conferenceId";
             // 
-            // label4
+            // viewConferenceBindingSource
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label4.Location = new System.Drawing.Point(63, 189);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(55, 17);
-            this.label4.TabIndex = 11;
-            this.label4.Text = "Degree";
+            this.viewConferenceBindingSource.DataSource = typeof(ScienceConferenceApp.Model.ViewConference);
             // 
-            // cbCountry
+            // AddConferenceButton
             // 
-            this.cbCountry.DisplayMember = "code";
-            this.cbCountry.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.cbCountry.FormattingEnabled = true;
-            this.cbCountry.Location = new System.Drawing.Point(35, 152);
-            this.cbCountry.Name = "cbCountry";
-            this.cbCountry.Size = new System.Drawing.Size(121, 23);
-            this.cbCountry.TabIndex = 2;
-            this.cbCountry.ValueMember = "countryId";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.DisplayMember = "code";
-            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(35, 209);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 23);
-            this.comboBox1.TabIndex = 12;
-            this.comboBox1.ValueMember = "countryId";
+            this.AddConferenceButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.AddConferenceButton.Location = new System.Drawing.Point(235, 404);
+            this.AddConferenceButton.Margin = new System.Windows.Forms.Padding(2);
+            this.AddConferenceButton.Name = "AddConferenceButton";
+            this.AddConferenceButton.Size = new System.Drawing.Size(74, 33);
+            this.AddConferenceButton.TabIndex = 5;
+            this.AddConferenceButton.Text = "Add";
+            this.AddConferenceButton.UseVisualStyleBackColor = true;
             // 
             // ParticipantForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1171, 537);
+            this.Controls.Add(this.AddConferenceButton);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.toolStrip1);
@@ -390,7 +431,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.viewConferencesWithParticipantBindingSource)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.academicDegreeBindingSource)).EndInit();
             this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.subjectBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.themeBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.viewConferenceBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -425,10 +470,15 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox cbAddress;
+        private System.Windows.Forms.ComboBox cbTheme;
         public System.Windows.Forms.ComboBox cbConference;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cbDegree;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox cbCountry;
+        private System.Windows.Forms.ComboBox cbSubject;
+        private System.Windows.Forms.BindingSource themeBindingSource;
+        private System.Windows.Forms.BindingSource viewConferenceBindingSource;
+        private System.Windows.Forms.BindingSource subjectBindingSource;
+        private System.Windows.Forms.BindingSource academicDegreeBindingSource;
+        private System.Windows.Forms.Button AddConferenceButton;
     }
 }

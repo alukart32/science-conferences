@@ -39,7 +39,6 @@ namespace ScienceConferenceApp.Forms.SubForms
             caller = form;
             form.Hide();
             InitializeComponent();
-            initData();
         }
 
         private void initData()
@@ -65,7 +64,7 @@ namespace ScienceConferenceApp.Forms.SubForms
 
         private void ConferenceForm_Load(object sender, EventArgs e)
         {
-
+            initData();
         }
 
         private void ConferenceForm_FormClosed(object sender, FormClosedEventArgs e)

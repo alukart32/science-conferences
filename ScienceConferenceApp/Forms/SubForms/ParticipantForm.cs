@@ -1,4 +1,5 @@
-﻿using ScienceConferenceApp.Forms.Utils;
+﻿using ScienceConferenceApp.DataInitializer;
+using ScienceConferenceApp.Forms.Utils;
 using ScienceConferenceApp.Model;
 using System;
 using System.Collections.Generic;
@@ -29,13 +30,32 @@ namespace ScienceConferenceApp.Forms.SubForms
             form.Hide();
             InitializeComponent();
             db = new DbAppContext();
-
-            dataGridView1.DataSource = db.ViewConferencesWithParticipants.ToList();
         }
 
         private void ParticipantForm_Load(object sender, EventArgs e)
         {
-          
+            initData();
+        }
+
+        private void initData()
+        {
+            db = new DbAppContext();
+            //conferenceController = new ConferenceController();
+            //filter = new ConferenceFilter();
+
+            //conferenceCrud = new ConferenceCrud(db);
+
+            //formDTO = new CUConferenceFormDTO();
+            //formDTO.contex = db;
+
+            CheckBoxDataInit dataInit = new CheckBoxDataInit(db);
+
+            dataInit.addConferences(cbConference);
+            dataInit.addThemes(cbTheme);
+            dataInit.addSubjects(cbSubject);
+            dataInit.addDegrees(cbDegree);
+
+            dataGridView1.DataSource = db.ViewConferencesWithParticipants.ToList();
         }
 
         private void ParticipantForm_FormClosed(object sender, FormClosedEventArgs e)
