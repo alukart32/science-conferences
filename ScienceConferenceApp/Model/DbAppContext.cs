@@ -161,6 +161,10 @@ namespace ScienceConferenceApp.Model
                 .Property(e => e.conferenceName)
                 .IsUnicode(false);
 
+            modelBuilder.Entity<ViewConferencesWithParticipant>()
+                .Property(e => e.publication)
+                .IsUnicode(false);
+
             modelBuilder.Entity<ViewParticipant>()
                 .Property(e => e.publication)
                 .IsUnicode(false);

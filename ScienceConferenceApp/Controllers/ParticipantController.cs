@@ -19,7 +19,7 @@ namespace ScienceConferenceApp.Controllers
 
 
         public IQueryable<ViewConferencesWithParticipant>
-            GetViewConference(string conf, IQueryable<ViewConferencesWithParticipant> participants)
+            GetViewConference(int confId, IQueryable<ViewConferencesWithParticipant> participants)
         {
             IQueryable<ViewConferencesWithParticipant> viewConference;
 
@@ -31,8 +31,8 @@ namespace ScienceConferenceApp.Controllers
                 viewConference = participants;
 
             // 0 - id мнимый элемент
-            if (!conf.Equals("all"))
-                viewConference = viewConference.Where(p => p.conferenceName.Equals(conf));
+            if (confId != 0)
+                viewConference = viewConference.Where(p => p.conferenceId == confId);
 
             return viewConference;
         }

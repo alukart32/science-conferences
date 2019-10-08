@@ -16,11 +16,11 @@ namespace ScienceConferenceApp.CRUD.Model.DTO.Form
 
         public CUFormDTO() { }
 
-        public CUFormDTO(DbAppContext db, CrudOpr opr, T c)
+        public CUFormDTO(DbAppContext db, CrudOpr opr, T obj)
         {
             this.contex = db;
             this.op = opr;
-            this.obj = c;
+            this.obj = obj;
         }
     }
 }

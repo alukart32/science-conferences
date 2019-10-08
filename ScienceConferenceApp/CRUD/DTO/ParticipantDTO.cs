@@ -8,11 +8,7 @@ namespace ScienceConferenceApp.CRUD.DTO
 {
     class ParticipantDTO
     {
-
-
-
-
-        public string conference { get; set; }
+        public int conference { get; set; }
         public int participant { get; set; }
         public int theme { get; set; }
         public int subject { get; set; }

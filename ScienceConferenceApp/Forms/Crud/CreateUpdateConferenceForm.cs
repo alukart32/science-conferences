@@ -119,9 +119,7 @@ namespace ScienceConferenceApp.Forms.Crud
             c.address = conferenceDTO.address;
             c.date = conferenceDTO.date;
 
-            doCrud(c);
-
-            
+            doCrud(c);  
         }
 
         private void doCrud(conference c)

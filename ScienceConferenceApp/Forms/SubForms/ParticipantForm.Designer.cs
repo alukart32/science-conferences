@@ -38,16 +38,6 @@
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.participantIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.firstNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.secondNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.degreeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.companyNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.conferenceNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.subjectDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.themeNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.updateParticipant = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.deleteParticipant = new System.Windows.Forms.DataGridViewButtonColumn();
             this.viewConferencesWithParticipantBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
             this.cbDegree = new System.Windows.Forms.ComboBox();
@@ -67,6 +57,18 @@
             this.viewConferenceBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.AddConferenceButton = new System.Windows.Forms.Button();
             this.BackButton = new System.Windows.Forms.Button();
+            this.participantIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.firstNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.secondNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.degreeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.companyNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.conferenceNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.subjectDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.themeNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.publication = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.updateParticipant = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.deleteParticipant = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.ResetButton = new System.Windows.Forms.Button();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.viewConferencesWithParticipantBindingSource)).BeginInit();
@@ -156,78 +158,15 @@
             this.conferenceNameDataGridViewTextBoxColumn,
             this.subjectDataGridViewTextBoxColumn,
             this.themeNameDataGridViewTextBoxColumn,
+            this.publication,
             this.updateParticipant,
             this.deleteParticipant});
             this.dataGridView1.DataSource = this.viewConferencesWithParticipantBindingSource;
             this.dataGridView1.Location = new System.Drawing.Point(235, 43);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(923, 346);
+            this.dataGridView1.Size = new System.Drawing.Size(894, 346);
             this.dataGridView1.TabIndex = 3;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
-            // participantIdDataGridViewTextBoxColumn
-            // 
-            this.participantIdDataGridViewTextBoxColumn.DataPropertyName = "participantId";
-            this.participantIdDataGridViewTextBoxColumn.HeaderText = "Id";
-            this.participantIdDataGridViewTextBoxColumn.Name = "participantIdDataGridViewTextBoxColumn";
-            // 
-            // firstNameDataGridViewTextBoxColumn
-            // 
-            this.firstNameDataGridViewTextBoxColumn.DataPropertyName = "firstName";
-            this.firstNameDataGridViewTextBoxColumn.HeaderText = "FirstName";
-            this.firstNameDataGridViewTextBoxColumn.Name = "firstNameDataGridViewTextBoxColumn";
-            // 
-            // secondNameDataGridViewTextBoxColumn
-            // 
-            this.secondNameDataGridViewTextBoxColumn.DataPropertyName = "secondName";
-            this.secondNameDataGridViewTextBoxColumn.HeaderText = "SecondName";
-            this.secondNameDataGridViewTextBoxColumn.Name = "secondNameDataGridViewTextBoxColumn";
-            // 
-            // degreeDataGridViewTextBoxColumn
-            // 
-            this.degreeDataGridViewTextBoxColumn.DataPropertyName = "degree";
-            this.degreeDataGridViewTextBoxColumn.HeaderText = "Degree";
-            this.degreeDataGridViewTextBoxColumn.Name = "degreeDataGridViewTextBoxColumn";
-            // 
-            // companyNameDataGridViewTextBoxColumn
-            // 
-            this.companyNameDataGridViewTextBoxColumn.DataPropertyName = "companyName";
-            this.companyNameDataGridViewTextBoxColumn.HeaderText = "Company";
-            this.companyNameDataGridViewTextBoxColumn.Name = "companyNameDataGridViewTextBoxColumn";
-            // 
-            // conferenceNameDataGridViewTextBoxColumn
-            // 
-            this.conferenceNameDataGridViewTextBoxColumn.DataPropertyName = "conferenceName";
-            this.conferenceNameDataGridViewTextBoxColumn.HeaderText = "Conference";
-            this.conferenceNameDataGridViewTextBoxColumn.Name = "conferenceNameDataGridViewTextBoxColumn";
-            // 
-            // subjectDataGridViewTextBoxColumn
-            // 
-            this.subjectDataGridViewTextBoxColumn.DataPropertyName = "subject";
-            this.subjectDataGridViewTextBoxColumn.HeaderText = "Subject";
-            this.subjectDataGridViewTextBoxColumn.Name = "subjectDataGridViewTextBoxColumn";
-            // 
-            // themeNameDataGridViewTextBoxColumn
-            // 
-            this.themeNameDataGridViewTextBoxColumn.DataPropertyName = "themeName";
-            this.themeNameDataGridViewTextBoxColumn.HeaderText = "Theme";
-            this.themeNameDataGridViewTextBoxColumn.Name = "themeNameDataGridViewTextBoxColumn";
-            // 
-            // updateParticipant
-            // 
-            this.updateParticipant.HeaderText = "";
-            this.updateParticipant.Name = "updateParticipant";
-            this.updateParticipant.Text = "update";
-            this.updateParticipant.UseColumnTextForButtonValue = true;
-            this.updateParticipant.Width = 50;
-            // 
-            // deleteParticipant
-            // 
-            this.deleteParticipant.HeaderText = "";
-            this.deleteParticipant.Name = "deleteParticipant";
-            this.deleteParticipant.Text = "X";
-            this.deleteParticipant.UseColumnTextForButtonValue = true;
-            this.deleteParticipant.Width = 30;
             // 
             // viewConferencesWithParticipantBindingSource
             // 
@@ -236,6 +175,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.panel1.Controls.Add(this.ResetButton);
             this.panel1.Controls.Add(this.cbDegree);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.panel2);
@@ -395,20 +335,21 @@
             // 
             // AddConferenceButton
             // 
+            this.AddConferenceButton.BackColor = System.Drawing.SystemColors.ControlDark;
             this.AddConferenceButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.AddConferenceButton.Location = new System.Drawing.Point(235, 404);
+            this.AddConferenceButton.Location = new System.Drawing.Point(17, 402);
             this.AddConferenceButton.Margin = new System.Windows.Forms.Padding(2);
             this.AddConferenceButton.Name = "AddConferenceButton";
             this.AddConferenceButton.Size = new System.Drawing.Size(74, 33);
             this.AddConferenceButton.TabIndex = 5;
             this.AddConferenceButton.Text = "Add";
-            this.AddConferenceButton.UseVisualStyleBackColor = true;
+            this.AddConferenceButton.UseVisualStyleBackColor = false;
             this.AddConferenceButton.Click += new System.EventHandler(this.AddConferenceButton_Click);
             // 
             // BackButton
             // 
             this.BackButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.BackButton.Location = new System.Drawing.Point(1077, 404);
+            this.BackButton.Location = new System.Drawing.Point(1048, 402);
             this.BackButton.Name = "BackButton";
             this.BackButton.Size = new System.Drawing.Size(81, 33);
             this.BackButton.TabIndex = 6;
@@ -416,11 +357,95 @@
             this.BackButton.UseVisualStyleBackColor = true;
             this.BackButton.Click += new System.EventHandler(this.BackButton_Click);
             // 
+            // participantIdDataGridViewTextBoxColumn
+            // 
+            this.participantIdDataGridViewTextBoxColumn.DataPropertyName = "participantId";
+            this.participantIdDataGridViewTextBoxColumn.HeaderText = "Id";
+            this.participantIdDataGridViewTextBoxColumn.Name = "participantIdDataGridViewTextBoxColumn";
+            this.participantIdDataGridViewTextBoxColumn.Width = 30;
+            // 
+            // firstNameDataGridViewTextBoxColumn
+            // 
+            this.firstNameDataGridViewTextBoxColumn.DataPropertyName = "firstName";
+            this.firstNameDataGridViewTextBoxColumn.HeaderText = "FirstName";
+            this.firstNameDataGridViewTextBoxColumn.Name = "firstNameDataGridViewTextBoxColumn";
+            // 
+            // secondNameDataGridViewTextBoxColumn
+            // 
+            this.secondNameDataGridViewTextBoxColumn.DataPropertyName = "secondName";
+            this.secondNameDataGridViewTextBoxColumn.HeaderText = "SecondName";
+            this.secondNameDataGridViewTextBoxColumn.Name = "secondNameDataGridViewTextBoxColumn";
+            // 
+            // degreeDataGridViewTextBoxColumn
+            // 
+            this.degreeDataGridViewTextBoxColumn.DataPropertyName = "degree";
+            this.degreeDataGridViewTextBoxColumn.HeaderText = "Degree";
+            this.degreeDataGridViewTextBoxColumn.Name = "degreeDataGridViewTextBoxColumn";
+            // 
+            // companyNameDataGridViewTextBoxColumn
+            // 
+            this.companyNameDataGridViewTextBoxColumn.DataPropertyName = "companyName";
+            this.companyNameDataGridViewTextBoxColumn.HeaderText = "Company";
+            this.companyNameDataGridViewTextBoxColumn.Name = "companyNameDataGridViewTextBoxColumn";
+            // 
+            // conferenceNameDataGridViewTextBoxColumn
+            // 
+            this.conferenceNameDataGridViewTextBoxColumn.DataPropertyName = "conferenceName";
+            this.conferenceNameDataGridViewTextBoxColumn.HeaderText = "Conference";
+            this.conferenceNameDataGridViewTextBoxColumn.Name = "conferenceNameDataGridViewTextBoxColumn";
+            // 
+            // subjectDataGridViewTextBoxColumn
+            // 
+            this.subjectDataGridViewTextBoxColumn.DataPropertyName = "subject";
+            this.subjectDataGridViewTextBoxColumn.HeaderText = "Subject";
+            this.subjectDataGridViewTextBoxColumn.Name = "subjectDataGridViewTextBoxColumn";
+            // 
+            // themeNameDataGridViewTextBoxColumn
+            // 
+            this.themeNameDataGridViewTextBoxColumn.DataPropertyName = "themeName";
+            this.themeNameDataGridViewTextBoxColumn.HeaderText = "Theme";
+            this.themeNameDataGridViewTextBoxColumn.Name = "themeNameDataGridViewTextBoxColumn";
+            // 
+            // publication
+            // 
+            this.publication.DataPropertyName = "publication";
+            this.publication.HeaderText = "Publ.";
+            this.publication.Name = "publication";
+            this.publication.Width = 40;
+            // 
+            // updateParticipant
+            // 
+            this.updateParticipant.HeaderText = "";
+            this.updateParticipant.Name = "updateParticipant";
+            this.updateParticipant.Text = "update";
+            this.updateParticipant.UseColumnTextForButtonValue = true;
+            this.updateParticipant.Width = 50;
+            // 
+            // deleteParticipant
+            // 
+            this.deleteParticipant.HeaderText = "";
+            this.deleteParticipant.Name = "deleteParticipant";
+            this.deleteParticipant.Text = "X";
+            this.deleteParticipant.UseColumnTextForButtonValue = true;
+            this.deleteParticipant.Width = 30;
+            // 
+            // ResetButton
+            // 
+            this.ResetButton.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            this.ResetButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ResetButton.Location = new System.Drawing.Point(101, 309);
+            this.ResetButton.Name = "ResetButton";
+            this.ResetButton.Size = new System.Drawing.Size(55, 34);
+            this.ResetButton.TabIndex = 7;
+            this.ResetButton.Text = "Reset";
+            this.ResetButton.UseVisualStyleBackColor = false;
+            this.ResetButton.Click += new System.EventHandler(this.ResetButton_Click);
+            // 
             // ParticipantForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1171, 450);
+            this.ClientSize = new System.Drawing.Size(1171, 447);
             this.Controls.Add(this.BackButton);
             this.Controls.Add(this.AddConferenceButton);
             this.Controls.Add(this.panel1);
@@ -459,16 +484,6 @@
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.BindingSource viewConferencesWithParticipantBindingSource;
-        private System.Windows.Forms.DataGridViewTextBoxColumn participantIdDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn firstNameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn secondNameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn degreeDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn companyNameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn conferenceNameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn subjectDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn themeNameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewButtonColumn updateParticipant;
-        private System.Windows.Forms.DataGridViewButtonColumn deleteParticipant;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button ClearButton;
@@ -487,5 +502,17 @@
         private System.Windows.Forms.BindingSource academicDegreeBindingSource;
         private System.Windows.Forms.Button AddConferenceButton;
         private System.Windows.Forms.Button BackButton;
+        private System.Windows.Forms.DataGridViewTextBoxColumn participantIdDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn firstNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn secondNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn degreeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn companyNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn conferenceNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn subjectDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn themeNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn publication;
+        private System.Windows.Forms.DataGridViewButtonColumn updateParticipant;
+        private System.Windows.Forms.DataGridViewButtonColumn deleteParticipant;
+        private System.Windows.Forms.Button ResetButton;
     }
 }

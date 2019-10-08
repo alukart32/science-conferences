@@ -213,5 +213,11 @@ namespace ScienceConferenceApp.Forms.SubForms
 
             dataGridView1.DataSource = db.ViewConferences.ToList();
         }
+
+        private void participantsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ParticipantForm participantForm = new ParticipantForm(this);
+            participantForm.Show();
+        }
     }
 }

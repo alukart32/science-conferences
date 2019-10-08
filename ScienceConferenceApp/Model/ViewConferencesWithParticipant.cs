@@ -62,5 +62,13 @@ namespace ScienceConferenceApp.Model
         [Column(Order = 7)]
         [StringLength(100)]
         public string conferenceName { get; set; }
+
+        [Key]
+        [Column(Order = 8)]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public int conferenceId { get; set; }
+
+        [StringLength(1)]
+        public string publication { get; set; }
     }
 }

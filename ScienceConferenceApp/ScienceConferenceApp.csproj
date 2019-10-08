@@ -71,6 +71,12 @@
     <Compile Include="DataInitializer\DataInit.cs" />
     <Compile Include="Filter\ConferenceFilter.cs" />
     <Compile Include="Filter\ParticipantFilter.cs" />
+    <Compile Include="Forms\Crud\ChooseScientistForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Crud\ChooseScientistForm.Designer.cs">
+      <DependentUpon>ChooseScientistForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Crud\CreateUpdateConferenceForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -142,6 +148,9 @@
     <Compile Include="Model\ViewScientist.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\Crud\ChooseScientistForm.resx">
+      <DependentUpon>ChooseScientistForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Crud\CreateUpdateConferenceForm.resx">
       <DependentUpon>CreateUpdateConferenceForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -189,6 +198,7 @@
     <None Include="Properties\DataSources\ScienceConferenceApp.Model.ViewConference.datasource" />
     <None Include="Properties\DataSources\.datasource" />
     <None Include="Properties\DataSources\ScienceConferenceApp.Model.ViewConferencesWithParticipant.datasource" />
+    <None Include="Properties\DataSources\ScienceConferenceApp.Model.ViewScientist.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

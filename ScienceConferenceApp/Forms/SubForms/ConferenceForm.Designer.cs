@@ -48,6 +48,7 @@
             this.delButton = new System.Windows.Forms.DataGridViewButtonColumn();
             this.viewConferenceBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
+            this.cbDateInFilter = new System.Windows.Forms.CheckBox();
             this.ResetButton = new System.Windows.Forms.Button();
             this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -66,7 +67,6 @@
             this.themeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.subjectBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.AddConferenceButton = new System.Windows.Forms.Button();
-            this.cbDateInFilter = new System.Windows.Forms.CheckBox();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.viewConferenceBindingSource)).BeginInit();
@@ -122,19 +122,20 @@
             // participantsToolStripMenuItem
             // 
             this.participantsToolStripMenuItem.Name = "participantsToolStripMenuItem";
-            this.participantsToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+            this.participantsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.participantsToolStripMenuItem.Text = "Participants";
+            this.participantsToolStripMenuItem.Click += new System.EventHandler(this.participantsToolStripMenuItem_Click);
             // 
             // companiesToolStripMenuItem
             // 
             this.companiesToolStripMenuItem.Name = "companiesToolStripMenuItem";
-            this.companiesToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+            this.companiesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.companiesToolStripMenuItem.Text = "Companies";
             // 
             // searchToolStripMenuItem
             // 
             this.searchToolStripMenuItem.Name = "searchToolStripMenuItem";
-            this.searchToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+            this.searchToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.searchToolStripMenuItem.Text = "Search";
             // 
             // toolStripButton1
@@ -243,6 +244,16 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(200, 346);
             this.panel1.TabIndex = 3;
+            // 
+            // cbDateInFilter
+            // 
+            this.cbDateInFilter.AutoSize = true;
+            this.cbDateInFilter.Location = new System.Drawing.Point(54, 188);
+            this.cbDateInFilter.Name = "cbDateInFilter";
+            this.cbDateInFilter.Size = new System.Drawing.Size(15, 14);
+            this.cbDateInFilter.TabIndex = 11;
+            this.cbDateInFilter.UseVisualStyleBackColor = true;
+            this.cbDateInFilter.CheckedChanged += new System.EventHandler(this.cbDateInFilter_CheckedChanged);
             // 
             // ResetButton
             // 
@@ -411,16 +422,6 @@
             this.AddConferenceButton.Text = "Add";
             this.AddConferenceButton.UseVisualStyleBackColor = true;
             this.AddConferenceButton.Click += new System.EventHandler(this.AddConferenceButton_Click);
-            // 
-            // cbDateInFilter
-            // 
-            this.cbDateInFilter.AutoSize = true;
-            this.cbDateInFilter.Location = new System.Drawing.Point(54, 188);
-            this.cbDateInFilter.Name = "cbDateInFilter";
-            this.cbDateInFilter.Size = new System.Drawing.Size(15, 14);
-            this.cbDateInFilter.TabIndex = 11;
-            this.cbDateInFilter.UseVisualStyleBackColor = true;
-            this.cbDateInFilter.CheckedChanged += new System.EventHandler(this.cbDateInFilter_CheckedChanged);
             // 
             // ConferenceForm
             // 

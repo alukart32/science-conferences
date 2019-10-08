@@ -1,4 +1,6 @@
 ﻿using ScienceConferenceApp.Controllers;
+using ScienceConferenceApp.CRUD;
+using ScienceConferenceApp.CRUD.DTO.Form;
 using ScienceConferenceApp.CRUD.Model.DTO;
 using ScienceConferenceApp.DataInitializer;
 using ScienceConferenceApp.Filter;
@@ -6,13 +8,7 @@ using ScienceConferenceApp.Forms.Crud;
 using ScienceConferenceApp.Forms.Utils;
 using ScienceConferenceApp.Model;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ScienceConferenceApp.Forms.SubForms
@@ -27,7 +23,9 @@ namespace ScienceConferenceApp.Forms.SubForms
 
         ParticipantController participantController;
 
-        CUConferenceFormDTO formDTO;
+        ParticipantCrud crud;
+
+        CUParticipantFormDTO formDTO;
 
         public ParticipantForm()
         {
@@ -52,10 +50,10 @@ namespace ScienceConferenceApp.Forms.SubForms
             participantController = new ParticipantController(db);
             //filter = new ConferenceFilter();
 
-            //conferenceCrud = new ConferenceCrud(db);
+            crud = new ParticipantCrud(db);
 
-            formDTO = new CUConferenceFormDTO();
-            //formDTO.contex = db;
+            formDTO = new CUParticipantFormDTO();
+            formDTO.contex = db;
 
             filter = new ParticipantFilter();
 
@@ -74,11 +72,6 @@ namespace ScienceConferenceApp.Forms.SubForms
             caller.Show();
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         private void conferencesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ConferenceForm conferenceForm = new ConferenceForm(this);
@@ -87,7 +80,7 @@ namespace ScienceConferenceApp.Forms.SubForms
 
         private void companiesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void BackButton_Click(object sender, EventArgs e)
@@ -102,6 +95,7 @@ namespace ScienceConferenceApp.Forms.SubForms
             cbSubject.SelectedIndex = 0;
             cbDegree.SelectedIndex = 0;
 
+            filter.conference = 0;
             filter.participant = 0;
             filter.subject = 0;
             filter.theme = 0;
@@ -122,10 +116,8 @@ namespace ScienceConferenceApp.Forms.SubForms
 
         private void cbConference_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
-            filter.conference = cbConference.Text;
-
-            // filter.conference = cbConference.Text;
+            conference c = (conference)cbConference.SelectedItem;
+            filter.conference = c.conferenceId;
         }
 
         private void cbTheme_SelectedIndexChanged(object sender, EventArgs e)
@@ -149,6 +141,53 @@ namespace ScienceConferenceApp.Forms.SubForms
         private void AddConferenceButton_Click(object sender, EventArgs e)
         {
             formDTO.op = CrudOpr.Create;
+            CreateUpdateParticipantForm form = new CreateUpdateParticipantForm(this, formDTO);
+            form.Show();
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int id = Convert.ToInt32(dataGridView1.CurrentRow.Cells["participantIdDataGridViewTextBoxColumn"].Value);
+
+            // updating
+            if (e.ColumnIndex == 9)
+            {
+                formDTO.op = CrudOpr.Update;
+
+                ViewConferencesWithParticipant findParticipant = db.ViewConferencesWithParticipants.SingleOrDefault(o=>o.participantId == id);
+                formDTO.obj = findParticipant;
+
+                CreateUpdateParticipantForm form = new CreateUpdateParticipantForm(this, formDTO);
+                form.Show();
+            }
+
+            // deleting
+            if (e.ColumnIndex == 10)
+            {
+                // Запрашиваем подтверждение
+                string message = "Do you want to delete?";
+                string caption = "Y/n";
+                var result = MessageBox.Show(message, caption,
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+                    participant participant = new participant();
+                    participant.participantId = id;
+                    // deleting
+                    if (crud.delete(participant))
+                    {
+                        MessageBox.Show("Conference was deleted!");
+                        resetData();
+                    }
+                    else MessageBox.Show("Deleting was denied");
+                }
+            }
+        }
+
+        private void ResetButton_Click(object sender, EventArgs e)
+        {
+            resetData();
         }
     }
 }

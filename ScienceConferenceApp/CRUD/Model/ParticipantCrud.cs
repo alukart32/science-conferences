@@ -24,6 +24,10 @@ namespace ScienceConferenceApp.CRUD
             }
             else
             {
+                scientist s = (scientist)db.scientists.Find(obj.scientist);
+
+                obj.scientist1 = s;
+
                 db.participants.Add(obj);
                 db.SaveChanges();
                 return obj;
@@ -62,7 +66,13 @@ namespace ScienceConferenceApp.CRUD
             participant p = db.participants.Find(obj.participantId);
             if (p != null)
             {
-                //
+                // get conference
+                //conference c = (conference)db.conferences.Where(o => o.conferenceId == p.conference);
+                p.conference = obj.conference;
+                p.subject = obj.subject;
+                p.theme = obj.theme;
+                p.publication = obj.publication;
+                    
                 db.SaveChanges();
                 return true;
             }
