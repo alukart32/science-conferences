@@ -60,5 +60,11 @@ namespace ScienceConferenceApp.Forms
             SearchForm searchForm = new SearchForm(this);
             searchForm.Show();
         }
+
+        private void scientistsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ScientistForm scientist = new ScientistForm(this);
+            scientist.Show();
+        }
     }
 }

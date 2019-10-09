@@ -55,6 +55,18 @@ namespace ScienceConferenceApp.DataInitializer
             cb.DataSource = cs;
         }
 
+        public void addCompanies(ComboBox cb)
+        {
+            company all = new company();
+            all.companyName = "all";
+            all.companyId = 0;
+            List<company> c = new List<company>();
+            c.Add(all);
+            c.AddRange(db.companies.ToList());
+
+            cb.DataSource = c;
+        }
+
         public void addThemes(ComboBox cb)
         {
             theme all = new theme();

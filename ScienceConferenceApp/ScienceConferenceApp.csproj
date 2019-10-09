@@ -56,6 +56,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\ParticipantController.cs" />
+    <Compile Include="Controllers\ScientistController.cs" />
     <Compile Include="CRUD\DTO\Form\CUParticipantFormDTO.cs" />
     <Compile Include="CRUD\DTO\ParticipantDTO.cs" />
     <Compile Include="CRUD\Model\AddressCrud.cs" />
@@ -66,11 +67,13 @@
     <Compile Include="CRUD\DTO\Form\CUConferenceFormDTO.cs" />
     <Compile Include="CRUD\DTO\Form\CUFormDTO.cs" />
     <Compile Include="CRUD\Model\ParticipantCrud.cs" />
+    <Compile Include="CRUD\Model\ScientistCrud.cs" />
     <Compile Include="CRUD\Utils\Crud.cs" />
     <Compile Include="DataInitializer\ComboBox\ComboBoxDataInit.cs" />
     <Compile Include="DataInitializer\DataInit.cs" />
     <Compile Include="Filter\ConferenceFilter.cs" />
     <Compile Include="Filter\ParticipantFilter.cs" />
+    <Compile Include="Filter\ScientistFilter.cs" />
     <Compile Include="Forms\Crud\ChooseScientistForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -199,6 +202,7 @@
     <None Include="packages.config" />
     <None Include="Properties\DataSources\ScienceConferenceApp.Model.academicDegree.datasource" />
     <None Include="Properties\DataSources\ScienceConferenceApp.Model.address.datasource" />
+    <None Include="Properties\DataSources\ScienceConferenceApp.Model.company.datasource" />
     <None Include="Properties\DataSources\ScienceConferenceApp.Model.conference.datasource" />
     <None Include="Properties\DataSources\ScienceConferenceApp.Model.country.datasource" />
     <None Include="Properties\DataSources\ScienceConferenceApp.Model.participant.datasource" />
