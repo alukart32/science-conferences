@@ -90,6 +90,12 @@
       <DependentUpon>CreateUpdateParticipantForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Crud\CrudOpr.cs" />
+    <Compile Include="Forms\SubForms\ScientistForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SubForms\ScientistForm.Designer.cs">
+      <DependentUpon>ScientistForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Utils\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -156,6 +162,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Crud\CreateUpdateParticipantForm.resx">
       <DependentUpon>CreateUpdateParticipantForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SubForms\ScientistForm.resx">
+      <DependentUpon>ScientistForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Utils\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
