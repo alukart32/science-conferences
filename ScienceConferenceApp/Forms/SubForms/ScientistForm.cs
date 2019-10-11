@@ -100,8 +100,10 @@ namespace ScienceConferenceApp.Forms.SubForms
                 ViewScientist findScientist = db.ViewScientists.SingleOrDefault(o => o.scientistId == id);
                 formDTO.obj = findScientist;
 
-               // CreateUpdateScientistForm form = new CreateUpdateScientistForm(this, formDTO);
-                //form.Show();
+                CreateUpdateScientistForm form = new CreateUpdateScientistForm(this, formDTO);
+                form.Show();
+
+                //dataGridView1.DataSource = db.ViewScientists.ToList();
             }
 
             // deleting

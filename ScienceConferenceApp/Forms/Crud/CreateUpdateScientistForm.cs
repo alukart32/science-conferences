@@ -22,7 +22,7 @@ namespace ScienceConferenceApp.Forms.Crud
 
         CrudOpr crudOp;
 
-        Regex r = new Regex("^[a-zA-Z0-9]*$");
+        Regex r = new Regex("^[a-zA-Z]*$");
 
         CUFormDTO<ViewScientist> formDTO;
 
