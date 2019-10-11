@@ -58,6 +58,7 @@
     <Compile Include="Controllers\ParticipantController.cs" />
     <Compile Include="Controllers\ScientistController.cs" />
     <Compile Include="CRUD\DTO\Form\CUParticipantFormDTO.cs" />
+    <Compile Include="CRUD\DTO\Form\CUScientistFormDTO.cs" />
     <Compile Include="CRUD\DTO\ParticipantDTO.cs" />
     <Compile Include="CRUD\Model\AddressCrud.cs" />
     <Compile Include="CRUD\Model\ConferenceCrud.cs" />
@@ -91,6 +92,12 @@
     </Compile>
     <Compile Include="Forms\Crud\CreateUpdateParticipantForm.Designer.cs">
       <DependentUpon>CreateUpdateParticipantForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Crud\CreateUpdateScientistForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Crud\CreateUpdateScientistForm.Designer.cs">
+      <DependentUpon>CreateUpdateScientistForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Crud\CrudOpr.cs" />
     <Compile Include="Forms\SubForms\ScientistForm.cs">
@@ -165,6 +172,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Crud\CreateUpdateParticipantForm.resx">
       <DependentUpon>CreateUpdateParticipantForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Crud\CreateUpdateScientistForm.resx">
+      <DependentUpon>CreateUpdateScientistForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\SubForms\ScientistForm.resx">
       <DependentUpon>ScientistForm.cs</DependentUpon>

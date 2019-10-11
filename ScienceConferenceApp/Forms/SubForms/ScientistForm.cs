@@ -1,7 +1,9 @@
 ﻿using ScienceConferenceApp.Controllers;
+using ScienceConferenceApp.CRUD.DTO.Form;
 using ScienceConferenceApp.CRUD.Model;
 using ScienceConferenceApp.DataInitializer;
 using ScienceConferenceApp.Filter;
+using ScienceConferenceApp.Forms.Crud;
 using ScienceConferenceApp.Forms.Utils;
 using ScienceConferenceApp.Model;
 using System;
@@ -24,6 +26,8 @@ namespace ScienceConferenceApp.Forms.SubForms
         private ScientistController scientistController;
         private ScientistCrud crud;
         ScientistFilter filter;
+
+        CUScientistFormDTO formDTO;
 
         public ScientistForm()
         {
@@ -59,8 +63,8 @@ namespace ScienceConferenceApp.Forms.SubForms
 
             crud = new ScientistCrud(db);
 
-           // formDTO = new CUParticipantFormDTO();
-           // formDTO.contex = db;
+            formDTO = new CUScientistFormDTO();
+            formDTO.contex = db;
 
             filter = new ScientistFilter();
 
@@ -86,7 +90,42 @@ namespace ScienceConferenceApp.Forms.SubForms
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            int id = Convert.ToInt32(dataGridView1.CurrentRow.Cells["scientistIdDataGridViewTextBoxColumn"].Value);
 
+            // updating
+            if (e.ColumnIndex == 6)
+            {
+                formDTO.op = CrudOpr.Update;
+
+                ViewScientist findScientist = db.ViewScientists.SingleOrDefault(o => o.scientistId == id);
+                formDTO.obj = findScientist;
+
+               // CreateUpdateScientistForm form = new CreateUpdateScientistForm(this, formDTO);
+                //form.Show();
+            }
+
+            // deleting
+            if (e.ColumnIndex == 7)
+            {
+                // Запрашиваем подтверждение
+                string message = "Do you want to delete?";
+                string caption = "Y/n";
+                var result = MessageBox.Show(message, caption,
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+                    participant participant = new participant();
+                    participant.participantId = id;
+                    // deleting
+                    if (crud.delete(null))
+                    {
+                        MessageBox.Show("Conference was deleted!");
+                        resetData();
+                    }
+                    else MessageBox.Show("Deleting was denied");
+                }
+            }
         }
 
         private void GoButton_Click(object sender, EventArgs e)
@@ -138,7 +177,8 @@ namespace ScienceConferenceApp.Forms.SubForms
 
         private void AddButton_Click(object sender, EventArgs e)
         {
-
+            CreateUpdateScientistForm form = new CreateUpdateScientistForm();
+            form.Show();
         }
     }
 }
