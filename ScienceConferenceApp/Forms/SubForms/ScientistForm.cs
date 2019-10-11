@@ -177,7 +177,10 @@ namespace ScienceConferenceApp.Forms.SubForms
 
         private void AddButton_Click(object sender, EventArgs e)
         {
-            CreateUpdateScientistForm form = new CreateUpdateScientistForm();
+            formDTO.contex = db;
+            formDTO.op = CrudOpr.Create;
+            formDTO.obj = null;
+            CreateUpdateScientistForm form = new CreateUpdateScientistForm(this, formDTO);
             form.Show();
         }
     }

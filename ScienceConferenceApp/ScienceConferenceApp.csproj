@@ -101,7 +101,6 @@
       <DependentUpon>CreateUpdateScientistForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Crud\CrudOpr.cs" />
-    <Compile Include="Forms\Crud\ScientstDTO.cs" />
     <Compile Include="Forms\SubForms\ScientistForm.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -1,6 +1,9 @@
-﻿using ScienceConferenceApp.Forms.SubForms;
+﻿using ScienceConferenceApp.CRUD.DTO.Form;
+using ScienceConferenceApp.CRUD.Model.DTO.Form;
+using ScienceConferenceApp.Forms.SubForms;
 using ScienceConferenceApp.Forms.Utils;
 using ScienceConferenceApp.Forms.Utils.Menu;
+using ScienceConferenceApp.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

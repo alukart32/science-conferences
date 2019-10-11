@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CreateUpdateScientistForm));
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
@@ -37,12 +38,18 @@
             this.CompayLabel = new System.Windows.Forms.Label();
             this.CountryLabel = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.cbCountry = new System.Windows.Forms.ComboBox();
+            this.countryBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.cbDegree = new System.Windows.Forms.ComboBox();
+            this.academicDegreeBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.cbCompany = new System.Windows.Forms.ComboBox();
+            this.companyBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.FirstNameTextBox = new System.Windows.Forms.TextBox();
+            this.SecondNameTextBox = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.countryBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.academicDegreeBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.companyBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -116,11 +123,11 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.panel1.Controls.Add(this.comboBox3);
-            this.panel1.Controls.Add(this.comboBox2);
-            this.panel1.Controls.Add(this.comboBox1);
-            this.panel1.Controls.Add(this.textBox2);
-            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Controls.Add(this.cbCountry);
+            this.panel1.Controls.Add(this.cbDegree);
+            this.panel1.Controls.Add(this.cbCompany);
+            this.panel1.Controls.Add(this.FirstNameTextBox);
+            this.panel1.Controls.Add(this.SecondNameTextBox);
             this.panel1.Controls.Add(this.FirstNameLabel);
             this.panel1.Controls.Add(this.CountryLabel);
             this.panel1.Controls.Add(this.SecondNameLabel);
@@ -131,43 +138,64 @@
             this.panel1.Size = new System.Drawing.Size(443, 203);
             this.panel1.TabIndex = 7;
             // 
-            // comboBox3
+            // cbCountry
             // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(332, 35);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(64, 21);
-            this.comboBox3.TabIndex = 11;
+            this.cbCountry.DataSource = this.countryBindingSource;
+            this.cbCountry.DisplayMember = "code";
+            this.cbCountry.FormattingEnabled = true;
+            this.cbCountry.Location = new System.Drawing.Point(332, 35);
+            this.cbCountry.Name = "cbCountry";
+            this.cbCountry.Size = new System.Drawing.Size(64, 21);
+            this.cbCountry.TabIndex = 11;
+            this.cbCountry.ValueMember = "countryId";
             // 
-            // comboBox2
+            // countryBindingSource
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(331, 96);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(63, 21);
-            this.comboBox2.TabIndex = 10;
+            this.countryBindingSource.DataSource = typeof(ScienceConferenceApp.Model.country);
             // 
-            // comboBox1
+            // cbDegree
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(52, 164);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(220, 21);
-            this.comboBox1.TabIndex = 9;
+            this.cbDegree.DataSource = this.academicDegreeBindingSource;
+            this.cbDegree.DisplayMember = "degree";
+            this.cbDegree.FormattingEnabled = true;
+            this.cbDegree.Location = new System.Drawing.Point(331, 96);
+            this.cbDegree.Name = "cbDegree";
+            this.cbDegree.Size = new System.Drawing.Size(63, 21);
+            this.cbDegree.TabIndex = 10;
+            this.cbDegree.ValueMember = "degreeId";
             // 
-            // textBox2
+            // academicDegreeBindingSource
             // 
-            this.textBox2.Location = new System.Drawing.Point(52, 35);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(220, 20);
-            this.textBox2.TabIndex = 8;
+            this.academicDegreeBindingSource.DataSource = typeof(ScienceConferenceApp.Model.academicDegree);
             // 
-            // textBox1
+            // cbCompany
             // 
-            this.textBox1.Location = new System.Drawing.Point(52, 96);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(220, 20);
-            this.textBox1.TabIndex = 7;
+            this.cbCompany.DataSource = this.companyBindingSource;
+            this.cbCompany.DisplayMember = "companyName";
+            this.cbCompany.FormattingEnabled = true;
+            this.cbCompany.Location = new System.Drawing.Point(52, 164);
+            this.cbCompany.Name = "cbCompany";
+            this.cbCompany.Size = new System.Drawing.Size(220, 21);
+            this.cbCompany.TabIndex = 9;
+            this.cbCompany.ValueMember = "companyId";
+            // 
+            // companyBindingSource
+            // 
+            this.companyBindingSource.DataSource = typeof(ScienceConferenceApp.Model.company);
+            // 
+            // FirstNameTextBox
+            // 
+            this.FirstNameTextBox.Location = new System.Drawing.Point(52, 35);
+            this.FirstNameTextBox.Name = "FirstNameTextBox";
+            this.FirstNameTextBox.Size = new System.Drawing.Size(220, 20);
+            this.FirstNameTextBox.TabIndex = 8;
+            // 
+            // SecondNameTextBox
+            // 
+            this.SecondNameTextBox.Location = new System.Drawing.Point(52, 96);
+            this.SecondNameTextBox.Name = "SecondNameTextBox";
+            this.SecondNameTextBox.Size = new System.Drawing.Size(220, 20);
+            this.SecondNameTextBox.TabIndex = 7;
             // 
             // CreateUpdateScientistForm
             // 
@@ -182,9 +210,13 @@
             this.Name = "CreateUpdateScientistForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CreateUpdateScientistForm";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.CreateUpdateScientistForm_FormClosed);
             this.Load += new System.EventHandler(this.CreateUpdateScientistForm_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.countryBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.academicDegreeBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.companyBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -199,10 +231,13 @@
         private System.Windows.Forms.Label CompayLabel;
         private System.Windows.Forms.Label CountryLabel;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.ComboBox comboBox3;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.TextBox FirstNameTextBox;
+        private System.Windows.Forms.TextBox SecondNameTextBox;
+        private System.Windows.Forms.ComboBox cbCountry;
+        private System.Windows.Forms.ComboBox cbDegree;
+        private System.Windows.Forms.ComboBox cbCompany;
+        private System.Windows.Forms.BindingSource countryBindingSource;
+        private System.Windows.Forms.BindingSource academicDegreeBindingSource;
+        private System.Windows.Forms.BindingSource companyBindingSource;
     }
 }
