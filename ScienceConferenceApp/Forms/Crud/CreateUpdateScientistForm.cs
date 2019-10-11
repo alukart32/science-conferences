@@ -51,7 +51,7 @@ namespace ScienceConferenceApp.Forms.Crud
             dto.degree = formDTO.obj.degreeId;
             dto.firstName = formDTO.obj.firstName;
             dto.secondName = formDTO.obj.secondName;
-
+            
             cbCompany.Text = formDTO.obj.companyName;
             cbCountry.Text = formDTO.obj.code;
             cbDegree.Text = formDTO.obj.degree;
@@ -82,7 +82,82 @@ namespace ScienceConferenceApp.Forms.Crud
 
         private void CreateUpdateScientistForm_FormClosed(object sender, FormClosedEventArgs e)
         {
+            caller.Show();
+        }
 
+        private void ApplyButton_Click(object sender, EventArgs e)
+        {
+            // check names
+            bool isNormalNames = r.IsMatch(dto.firstName) && r.IsMatch(dto.secondName);
+
+            if (!isNormalNames)
+            {
+                MessageBox.Show("Incorrect names!");
+                return;
+            }
+
+            doCrud();
+        }
+
+        private void doCrud()
+        {
+
+            scientist s = new scientist();
+            s.firstName = dto.firstName;
+            s.secondName = dto.secondName;
+            s.academicDegree = dto.degree;
+            s.company = dto.company;
+            s.country = dto.country;
+            
+            switch (crudOp)
+            {
+                // create
+                case CrudOpr.Create:
+                    if (crud.create(s) != null)
+                    {
+                        MessageBox.Show("Scientist was added!");
+                        this.Close();
+                    }
+                    else MessageBox.Show("Adding was denied");
+                    break;
+                case CrudOpr.Update:
+                    s.scientistId = formDTO.obj.scientistId;
+                    if (crud.update(s))
+                    {
+                        MessageBox.Show("Scientist was updated!");
+                        this.Close();
+                    }
+                    else MessageBox.Show("Updating was denied");
+                    break;
+            }
+        }
+
+        private void cbCountry_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            country c = (country)cbCountry.SelectedItem;
+            dto.country = c.countryId;
+        }
+
+        private void cbDegree_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            academicDegree d = (academicDegree)cbDegree.SelectedItem;
+            dto.degree = d.degreeId;
+        }
+
+        private void cbCompany_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            company c = (company)cbCompany.SelectedItem;
+            dto.company = c.companyId;
+        }
+
+        private void FirstNameTextBox_TextChanged(object sender, EventArgs e)
+        {
+            dto.firstName = FirstNameTextBox.Text;
+        }
+
+        private void SecondNameTextBox_TextChanged(object sender, EventArgs e)
+        {
+            dto.secondName = SecondNameTextBox.Text;
         }
     }
 }

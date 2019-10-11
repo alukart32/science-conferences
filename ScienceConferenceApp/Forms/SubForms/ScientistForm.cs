@@ -115,12 +115,12 @@ namespace ScienceConferenceApp.Forms.SubForms
                 MessageBoxIcon.Question);
                 if (result == DialogResult.Yes)
                 {
-                    participant participant = new participant();
-                    participant.participantId = id;
+                    scientist s = new scientist();
+                    s.scientistId = id;
                     // deleting
-                    if (crud.delete(null))
+                    if (crud.delete(s))
                     {
-                        MessageBox.Show("Conference was deleted!");
+                        MessageBox.Show("Scientist was deleted!");
                         resetData();
                     }
                     else MessageBox.Show("Deleting was denied");

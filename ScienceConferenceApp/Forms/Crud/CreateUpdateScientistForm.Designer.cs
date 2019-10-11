@@ -30,8 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CreateUpdateScientistForm));
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.BackButton = new System.Windows.Forms.Button();
+            this.ApplyButton = new System.Windows.Forms.Button();
             this.FirstNameLabel = new System.Windows.Forms.Label();
             this.SecondNameLabel = new System.Windows.Forms.Label();
             this.DegreeLabel = new System.Windows.Forms.Label();
@@ -52,23 +52,26 @@
             ((System.ComponentModel.ISupportInitialize)(this.companyBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
-            // button1
+            // BackButton
             // 
-            this.button1.Location = new System.Drawing.Point(322, 232);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(84, 36);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.BackButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.BackButton.Location = new System.Drawing.Point(322, 232);
+            this.BackButton.Name = "BackButton";
+            this.BackButton.Size = new System.Drawing.Size(84, 36);
+            this.BackButton.TabIndex = 0;
+            this.BackButton.Text = "Back";
+            this.BackButton.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // ApplyButton
             // 
-            this.button2.Location = new System.Drawing.Point(64, 232);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(83, 36);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
+            this.ApplyButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ApplyButton.Location = new System.Drawing.Point(64, 232);
+            this.ApplyButton.Name = "ApplyButton";
+            this.ApplyButton.Size = new System.Drawing.Size(83, 36);
+            this.ApplyButton.TabIndex = 1;
+            this.ApplyButton.Text = "Apply";
+            this.ApplyButton.UseVisualStyleBackColor = true;
+            this.ApplyButton.Click += new System.EventHandler(this.ApplyButton_Click);
             // 
             // FirstNameLabel
             // 
@@ -148,6 +151,7 @@
             this.cbCountry.Size = new System.Drawing.Size(64, 21);
             this.cbCountry.TabIndex = 11;
             this.cbCountry.ValueMember = "countryId";
+            this.cbCountry.SelectedIndexChanged += new System.EventHandler(this.cbCountry_SelectedIndexChanged);
             // 
             // countryBindingSource
             // 
@@ -163,6 +167,7 @@
             this.cbDegree.Size = new System.Drawing.Size(63, 21);
             this.cbDegree.TabIndex = 10;
             this.cbDegree.ValueMember = "degreeId";
+            this.cbDegree.SelectedIndexChanged += new System.EventHandler(this.cbDegree_SelectedIndexChanged);
             // 
             // academicDegreeBindingSource
             // 
@@ -178,6 +183,7 @@
             this.cbCompany.Size = new System.Drawing.Size(220, 21);
             this.cbCompany.TabIndex = 9;
             this.cbCompany.ValueMember = "companyId";
+            this.cbCompany.SelectedIndexChanged += new System.EventHandler(this.cbCompany_SelectedIndexChanged);
             // 
             // companyBindingSource
             // 
@@ -189,6 +195,7 @@
             this.FirstNameTextBox.Name = "FirstNameTextBox";
             this.FirstNameTextBox.Size = new System.Drawing.Size(220, 20);
             this.FirstNameTextBox.TabIndex = 8;
+            this.FirstNameTextBox.TextChanged += new System.EventHandler(this.FirstNameTextBox_TextChanged);
             // 
             // SecondNameTextBox
             // 
@@ -196,6 +203,7 @@
             this.SecondNameTextBox.Name = "SecondNameTextBox";
             this.SecondNameTextBox.Size = new System.Drawing.Size(220, 20);
             this.SecondNameTextBox.TabIndex = 7;
+            this.SecondNameTextBox.TextChanged += new System.EventHandler(this.SecondNameTextBox_TextChanged);
             // 
             // CreateUpdateScientistForm
             // 
@@ -204,8 +212,8 @@
             this.ClientSize = new System.Drawing.Size(467, 284);
             this.ControlBox = false;
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.ApplyButton);
+            this.Controls.Add(this.BackButton);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "CreateUpdateScientistForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -223,8 +231,8 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button BackButton;
+        private System.Windows.Forms.Button ApplyButton;
         private System.Windows.Forms.Label FirstNameLabel;
         private System.Windows.Forms.Label SecondNameLabel;
         private System.Windows.Forms.Label DegreeLabel;
