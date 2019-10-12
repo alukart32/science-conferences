@@ -5,6 +5,7 @@ using ScienceConferenceApp.DataInitializer;
 using ScienceConferenceApp.Filter;
 using ScienceConferenceApp.Forms.Crud;
 using ScienceConferenceApp.Forms.Utils;
+using ScienceConferenceApp.Forms.Utils.Menu;
 using ScienceConferenceApp.Model;
 using System;
 using System.Collections.Generic;
@@ -27,6 +28,8 @@ namespace ScienceConferenceApp.Forms.SubForms
         }
 
         BaseForm caller;
+        BaseForm mainForm;
+
         ConferenceController conferenceController;
         ConferenceFilter filter;
 
@@ -35,16 +38,17 @@ namespace ScienceConferenceApp.Forms.SubForms
         CUFormDTO<conference> formDTO;
         DbAppContext db;
         
-        public ConferenceForm(BaseForm form)
+        public ConferenceForm(BaseForm form, BaseForm mainForm, DbAppContext db)
         {
             caller = form;
             form.Hide();
+            this.db = db;
+            this.mainForm = mainForm;
             InitializeComponent();
         }
 
         private void initData()
         {
-            db = new DbAppContext();
             conferenceController = new ConferenceController(db);
             filter = new ConferenceFilter();
 
@@ -62,7 +66,7 @@ namespace ScienceConferenceApp.Forms.SubForms
             dataInit.addAddresses(cbAddress);
             dataInit.addCountries(cbCountry);
 
-            dataGridView1.DataSource = db.ViewConferences.ToList();
+            //dataGridView1.DataSource = db.ViewConferences.ToList();
         }
 
         private void ConferenceForm_Load(object sender, EventArgs e)
@@ -72,7 +76,10 @@ namespace ScienceConferenceApp.Forms.SubForms
 
         private void ConferenceForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            caller.Show();
+            if (!menuClicked)
+                caller.Show();
+            else
+                mainForm.Show();
         }
 
         private void BackButton_Click(object sender, EventArgs e)
@@ -216,8 +223,35 @@ namespace ScienceConferenceApp.Forms.SubForms
 
         private void participantsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ParticipantForm participantForm = new ParticipantForm(this);
+            ParticipantForm participantForm = new ParticipantForm(this, mainForm, db);
             participantForm.Show();
+        }
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            ContactForm form = new ContactForm(this);
+            form.Show();
+        }
+
+        private void toolStripButton2_Click(object sender, EventArgs e)
+        {
+            HelpForm form = new HelpForm(this);
+            form.Show();
+        }
+
+        private void scientistsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ScientistForm form = new ScientistForm(this, mainForm, db);
+            form.Show();
+        }
+
+        bool menuClicked = false;
+
+        private void toolStripDropDownButton1_ButtonClick(object sender, EventArgs e)
+        {
+            mainForm.Show();
+            menuClicked = true;
+            this.Close();
         }
     }
 }

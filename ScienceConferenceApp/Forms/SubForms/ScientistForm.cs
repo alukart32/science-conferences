@@ -5,6 +5,7 @@ using ScienceConferenceApp.DataInitializer;
 using ScienceConferenceApp.Filter;
 using ScienceConferenceApp.Forms.Crud;
 using ScienceConferenceApp.Forms.Utils;
+using ScienceConferenceApp.Forms.Utils.Menu;
 using ScienceConferenceApp.Model;
 using System;
 using System.Collections.Generic;
@@ -21,6 +22,8 @@ namespace ScienceConferenceApp.Forms.SubForms
     public partial class ScientistForm : BaseForm
     {
         BaseForm caller;
+        BaseForm mainForm;
+
         DbAppContext db;
 
         private ScientistController scientistController;
@@ -41,24 +44,19 @@ namespace ScienceConferenceApp.Forms.SubForms
             InitializeComponent();
         }
 
-        public ScientistForm(BaseForm caller, DbAppContext db)
+        public ScientistForm(BaseForm caller, BaseForm mainForm, DbAppContext db)
         {
             this.caller = caller;
             caller.Hide();
             this.db = db;
+            this.mainForm = mainForm;
             InitializeComponent();
         }
 
-        private void ScientistForm_Load(object sender, EventArgs e)
-        {
-            initData();
-        }
+        private void ScientistForm_Load(object sender, EventArgs e) => initData();
 
         private  void initData()
         {
-            if (db == null)
-                db = new DbAppContext();
-
             scientistController = new ScientistController(db);
 
             crud = new ScientistCrud(db);
@@ -74,13 +72,16 @@ namespace ScienceConferenceApp.Forms.SubForms
             dataInit.addCountries(cbCountry);
             dataInit.addDegrees(cbDegree);
 
-            dataGridView1.DataSource = db.ViewScientists.ToList();
+            //dataGridView1.DataSource = db.ViewScientists.ToList();
         }
 
 
         private void ScientistForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            caller.Show();
+            if (!menuClicked)
+                caller.Show();
+            else
+                mainForm.Show();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -103,7 +104,7 @@ namespace ScienceConferenceApp.Forms.SubForms
                 CreateUpdateScientistForm form = new CreateUpdateScientistForm(this, formDTO);
                 form.Show();
 
-                //dataGridView1.DataSource = db.ViewScientists.ToList();
+                dataGridView1.DataSource = db.ViewScientists.ToList();
             }
 
             // deleting
@@ -184,6 +185,27 @@ namespace ScienceConferenceApp.Forms.SubForms
             formDTO.obj = null;
             CreateUpdateScientistForm form = new CreateUpdateScientistForm(this, formDTO);
             form.Show();
+        }
+
+        private void toolStripButton2_Click(object sender, EventArgs e)
+        {
+            HelpForm form = new HelpForm(this);
+            form.Show();
+        }
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            ContactForm form = new ContactForm(this);
+            form.Show();
+        }
+
+        bool menuClicked = false;
+
+        private void toolStripDropDownButton1_ButtonClick(object sender, EventArgs e)
+        {
+            mainForm.Show();
+            menuClicked = true;
+            this.Close();
         }
     }
 }

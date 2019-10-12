@@ -87,12 +87,26 @@ namespace ScienceConferenceApp.Forms.Crud
 
         private void ApplyButton_Click(object sender, EventArgs e)
         {
+            bool isEmptyNames = FirstNameTextBox.Text.Equals("") && SecondNameTextBox.Text.Equals("");
+            if (isEmptyNames)
+            {
+                MessageBox.Show("Incorrect names!");
+                return;
+            }
+
             // check names
             bool isNormalNames = r.IsMatch(dto.firstName) && r.IsMatch(dto.secondName);
 
             if (!isNormalNames)
             {
                 MessageBox.Show("Incorrect names!");
+                return;
+            }
+
+            int prod = cbCompany.SelectedIndex * cbCountry.SelectedIndex * cbDegree.SelectedIndex;
+            if(prod == 0)
+            {
+                MessageBox.Show("Incorrect values!");
                 return;
             }
 

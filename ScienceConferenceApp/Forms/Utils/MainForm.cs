@@ -18,6 +18,8 @@ namespace ScienceConferenceApp.Forms
 {
     public partial class MainForm : BaseForm
     {
+        DbAppContext db;
+
         public MainForm()
         {
             InitializeComponent();
@@ -25,7 +27,7 @@ namespace ScienceConferenceApp.Forms
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-
+            db = new DbAppContext();
         }
 
         private void toolStripButton1_Click(object sender, EventArgs e)
@@ -42,13 +44,13 @@ namespace ScienceConferenceApp.Forms
 
         private void conferencesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ConferenceForm conferenceForm = new ConferenceForm(this);
+            ConferenceForm conferenceForm = new ConferenceForm(this, this, db);
             conferenceForm.Show();
         }
 
         private void participantsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ParticipantForm participantForm = new ParticipantForm(this);
+            ParticipantForm participantForm = new ParticipantForm(this, this, db);
             participantForm.Show();
         }
 
@@ -66,7 +68,7 @@ namespace ScienceConferenceApp.Forms
 
         private void scientistsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ScientistForm scientist = new ScientistForm(this);
+            ScientistForm scientist = new ScientistForm(this,this, db);
             scientist.Show();
         }
     }

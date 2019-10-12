@@ -6,6 +6,7 @@ using ScienceConferenceApp.DataInitializer;
 using ScienceConferenceApp.Filter;
 using ScienceConferenceApp.Forms.Crud;
 using ScienceConferenceApp.Forms.Utils;
+using ScienceConferenceApp.Forms.Utils.Menu;
 using ScienceConferenceApp.Model;
 using System;
 using System.Linq;
@@ -17,6 +18,8 @@ namespace ScienceConferenceApp.Forms.SubForms
     {
 
         BaseForm caller;
+        BaseForm mainForm;
+
         DbAppContext db;
 
         ParticipantFilter filter;
@@ -32,10 +35,12 @@ namespace ScienceConferenceApp.Forms.SubForms
             InitializeComponent();
         }
 
-        public ParticipantForm(BaseForm form)
+        public ParticipantForm(BaseForm form, BaseForm mainForm, DbAppContext db)
         {
             caller = form;
             form.Hide();
+            this.db = db;
+            this.mainForm = mainForm;
             InitializeComponent();
         }
 
@@ -46,7 +51,6 @@ namespace ScienceConferenceApp.Forms.SubForms
 
         private void initData()
         {
-            db = new DbAppContext();
             participantController = new ParticipantController(db);
             //filter = new ConferenceFilter();
 
@@ -64,17 +68,20 @@ namespace ScienceConferenceApp.Forms.SubForms
             dataInit.addSubjects(cbSubject);
             dataInit.addDegrees(cbDegree);
 
-            dataGridView1.DataSource = db.ViewConferencesWithParticipants.ToList();
+            //dataGridView1.DataSource = db.ViewConferencesWithParticipants.ToList();
         }
 
         private void ParticipantForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            caller.Show();
+            if (!menuClicked)
+                caller.Show();
+            else
+                mainForm.Show();
         }
 
         private void conferencesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ConferenceForm conferenceForm = new ConferenceForm(this);
+            ConferenceForm conferenceForm = new ConferenceForm(this, mainForm, db);
             conferenceForm.Show();
         }
 
@@ -188,6 +195,33 @@ namespace ScienceConferenceApp.Forms.SubForms
         private void ResetButton_Click(object sender, EventArgs e)
         {
             resetData();
+        }
+
+        private void toolStripButton2_Click(object sender, EventArgs e)
+        {
+            HelpForm form = new HelpForm(this);
+            form.Show();
+        }
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            ContactForm form = new ContactForm(this);
+            form.Show();
+        }
+
+        private void scientistsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ScientistForm form = new ScientistForm(this, mainForm, db);
+            form.Show();
+        }
+
+        bool menuClicked = false;
+        private void toolStripDropDownButton1_ButtonClick(object sender, EventArgs e)
+        {
+            mainForm.Show();
+            menuClicked = true;
+
+            this.Close();
         }
     }
 }
