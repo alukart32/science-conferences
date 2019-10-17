@@ -111,29 +111,11 @@ namespace ScienceConferenceApp.Forms.Crud
         {
             conference c = new conference();
 
-            if (r.IsMatch(tbConferenceName.Text))
-                conferenceDTO.name = tbConferenceName.Text;
-            else
-            {
-                if(currentCrudOp != CrudOpr.Update)
-                    tbConferenceName.Text = "";
-                else
-                    tbConferenceName.Text = conferenceDTO.name;
-
-                MessageBox.Show("Incorrect conference name!");
-
-                return;
-            }
-
-            checkNewAddress();
-
+            checkData();
+        
             c.conferenceName = conferenceDTO.name;
             c.address = conferenceDTO.address;
-
-            if(conferenceDTO.date == DateTime.MinValue)
-                c.date = DateTime.Now;
-            else
-                c.date = conferenceDTO.date;
+            c.date = conferenceDTO.date;
 
             doCrud(c);  
         }
@@ -189,14 +171,31 @@ namespace ScienceConferenceApp.Forms.Crud
             cbAddress.DataSource = all;
         }
 
-        private void cbAddress_TextChanged(object sender, EventArgs e)
+        // checking all data for conference
+        private void checkData()
         {
+            // check name
+            if (r.IsMatch(tbConferenceName.Text))
+                conferenceDTO.name = tbConferenceName.Text;
+            else
+            {
+                if (currentCrudOp != CrudOpr.Update)
+                    tbConferenceName.Text = "";
+                else
+                    tbConferenceName.Text = conferenceDTO.name;
 
-        }
+                MessageBox.Show("Incorrect conference name!");
 
-        private void cbAddress_TextUpdate(object sender, EventArgs e)
-        {
-            
+                return;
+            }
+
+            // check data
+            if (conferenceDTO.date == DateTime.MinValue)
+                conferenceDTO.date = DateTime.Now;
+           
+            // Does user want to add a new address?
+            checkNewAddress();
+
         }
 
         private void checkNewAddress()
