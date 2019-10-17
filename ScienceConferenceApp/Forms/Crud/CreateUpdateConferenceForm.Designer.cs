@@ -39,7 +39,11 @@
             this.label2 = new System.Windows.Forms.Label();
             this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.cbCountry = new System.Windows.Forms.ComboBox();
+            this.countryBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.addressBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.countryBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // OkButton
@@ -94,12 +98,13 @@
             this.cbAddress.DisplayMember = "address1";
             this.cbAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.cbAddress.FormattingEnabled = true;
-            this.cbAddress.Location = new System.Drawing.Point(214, 115);
+            this.cbAddress.Location = new System.Drawing.Point(214, 141);
             this.cbAddress.Name = "cbAddress";
             this.cbAddress.Size = new System.Drawing.Size(200, 26);
             this.cbAddress.TabIndex = 4;
             this.cbAddress.ValueMember = "addressId";
             this.cbAddress.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.cbAddress.TextUpdate += new System.EventHandler(this.cbAddress_TextUpdate);
             // 
             // addressBindingSource
             // 
@@ -109,7 +114,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(18, 115);
+            this.label2.Location = new System.Drawing.Point(18, 141);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(80, 24);
             this.label2.TabIndex = 5;
@@ -134,13 +139,42 @@
             this.label3.TabIndex = 7;
             this.label3.Text = "Date";
             // 
-            // AddConferenceForm
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label4.Location = new System.Drawing.Point(18, 91);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(75, 24);
+            this.label4.TabIndex = 9;
+            this.label4.Text = "Country";
+            // 
+            // cbCountry
+            // 
+            this.cbCountry.DataSource = this.countryBindingSource;
+            this.cbCountry.DisplayMember = "code";
+            this.cbCountry.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.cbCountry.FormattingEnabled = true;
+            this.cbCountry.Location = new System.Drawing.Point(214, 91);
+            this.cbCountry.Name = "cbCountry";
+            this.cbCountry.Size = new System.Drawing.Size(200, 26);
+            this.cbCountry.TabIndex = 8;
+            this.cbCountry.ValueMember = "countryId";
+            this.cbCountry.SelectedIndexChanged += new System.EventHandler(this.cbCountry_SelectedIndexChanged);
+            // 
+            // countryBindingSource
+            // 
+            this.countryBindingSource.DataSource = typeof(ScienceConferenceApp.Model.country);
+            // 
+            // CreateUpdateConferenceForm
             // 
             this.AcceptButton = this.OkButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(437, 310);
             this.ControlBox = false;
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.cbCountry);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.dateTimePicker);
             this.Controls.Add(this.label2);
@@ -150,12 +184,13 @@
             this.Controls.Add(this.CancelButton);
             this.Controls.Add(this.OkButton);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "AddConferenceForm";
+            this.Name = "CreateUpdateConferenceForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AddConferenceForm";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.AddConferenceForm_FormClosed);
             this.Load += new System.EventHandler(this.AddConferenceForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.addressBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.countryBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -172,5 +207,8 @@
         private System.Windows.Forms.DateTimePicker dateTimePicker;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.BindingSource addressBindingSource;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox cbCountry;
+        private System.Windows.Forms.BindingSource countryBindingSource;
     }
 }

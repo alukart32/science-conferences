@@ -10,26 +10,14 @@ namespace ScienceConferenceApp.CRUD
 {
     class AddressCrud : Crud<address>
     {
-        public AddressCrud(DbAppContext db): base(db) { }
+        public AddressCrud(DbAppContext db) : base(db) { }
 
         public override address create(address obj)
         {
-            address a = db.addresses.Where(o => o.addressId == obj.addressId).FirstOrDefault();
-            if (a != null)
-            {
-                // obj is alredy existed
-                return null;
-            }
-            else
-            {
-                address newAddress = new address();
-                newAddress.address1 = obj.address1;
-                newAddress.country = obj.country;
+            db.addresses.Add(obj);
+            db.SaveChanges();
+            return obj;
 
-                db.addresses.Add(a);
-                db.SaveChanges();
-                return a;
-            }
         }
 
         public override bool delete(address obj)

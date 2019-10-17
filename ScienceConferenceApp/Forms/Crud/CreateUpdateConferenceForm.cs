@@ -1,4 +1,5 @@
 ﻿using ScienceConferenceApp.Controllers;
+using ScienceConferenceApp.CRUD;
 using ScienceConferenceApp.CRUD.Model.DTO;
 using ScienceConferenceApp.CRUD.Model.DTO.Form;
 using ScienceConferenceApp.DataInitializer;
@@ -32,6 +33,8 @@ namespace ScienceConferenceApp.Forms.Crud
 
         CUFormDTO<conference> formDTO;
 
+        AddressCrud addressCrud;
+
         public CreateUpdateConferenceForm(BaseForm form, CUFormDTO<conference> formDTO)
         {
             caller = form;
@@ -41,11 +44,8 @@ namespace ScienceConferenceApp.Forms.Crud
             this.db = formDTO.contex;
             conferenceDTO = new ConferenceDTO();
             crud = new ConferenceCrud(db);
-            
-            List<address> addresses = new List<address>();
-            addresses.AddRange(db.addresses);
 
-            cbAddress.DataSource = addresses;
+            addressCrud = new AddressCrud(db);
 
             currentCrudOp = formDTO.op;
             this.formDTO = formDTO;
@@ -68,6 +68,16 @@ namespace ScienceConferenceApp.Forms.Crud
 
         private void AddConferenceForm_Load(object sender, EventArgs e)
         {
+            List<address> addresses = new List<address>();
+            addresses.AddRange(db.addresses);
+
+            cbAddress.DataSource = addresses;
+
+            List<country> countries = new List<country>();
+            countries.AddRange(db.countries);
+
+            cbCountry.DataSource = countries;
+
         }
 
         private void AddConferenceForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -115,9 +125,15 @@ namespace ScienceConferenceApp.Forms.Crud
                 return;
             }
 
+            checkNewAddress();
+
             c.conferenceName = conferenceDTO.name;
             c.address = conferenceDTO.address;
-            c.date = conferenceDTO.date;
+
+            if(conferenceDTO.date == DateTime.MinValue)
+                c.date = DateTime.Now;
+            else
+                c.date = conferenceDTO.date;
 
             doCrud(c);  
         }
@@ -157,6 +173,66 @@ namespace ScienceConferenceApp.Forms.Crud
                     break;
             }
            
+        }
+
+        private void cbCountry_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            country c = (country)cbCountry.SelectedItem;
+            conferenceDTO.country = c.countryId;
+
+            List<address> all = new List<address>();
+            all.AddRange(c.addresses);
+
+            if (all.Count == 0)
+                cbAddress.Text = "";
+
+            cbAddress.DataSource = all;
+        }
+
+        private void cbAddress_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbAddress_TextUpdate(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void checkNewAddress()
+        {
+            // creating of a new address
+
+            // check possible address
+            if (!r.IsMatch(cbAddress.Text))
+            {
+                MessageBox.Show("Incorect address!");
+                return;
+            }
+
+            // check on a unique
+
+            List<address> all = new List<address>();
+            all.AddRange(db.addresses);
+
+            all = all.FindAll
+                (
+                    delegate (address a)
+                    { return a.address1.Equals(cbAddress.Text); }
+                );
+
+            if (all.Count == 0)
+            {
+                // create a new address
+                address a = new address();
+                a.address1 = cbAddress.Text;
+                a.country = conferenceDTO.country;
+
+                addressCrud.create(a);
+
+                conferenceDTO.address = a.addressId;
+            }
+            
         }
     }
 }
