@@ -49,12 +49,14 @@ namespace ScienceConferenceApp.Forms.Crud
 
             currentCrudOp = formDTO.op;
             this.formDTO = formDTO;
-            formDTO.obj.date = DateTime.Now;
-
+          
             switch (currentCrudOp)
             {
                 case CrudOpr.Update:
                     initDataForUpdate(formDTO.obj);
+                    break;
+                default:
+                    formDTO.obj.date = DateTime.Now;
                     break;
             }
         }

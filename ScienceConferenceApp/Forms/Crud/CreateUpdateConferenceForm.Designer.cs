@@ -104,7 +104,6 @@
             this.cbAddress.TabIndex = 4;
             this.cbAddress.ValueMember = "addressId";
             this.cbAddress.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
-            this.cbAddress.TextUpdate += new System.EventHandler(this.cbAddress_TextUpdate);
             // 
             // addressBindingSource
             // 

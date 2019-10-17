@@ -1,5 +1,6 @@
 ﻿using ScienceConferenceApp.CRUD.DTO.Form;
 using ScienceConferenceApp.CRUD.Model.DTO.Form;
+using ScienceConferenceApp.Forms.DTO;
 using ScienceConferenceApp.Forms.SubForms;
 using ScienceConferenceApp.Forms.Utils;
 using ScienceConferenceApp.Forms.Utils.Menu;
@@ -18,7 +19,7 @@ namespace ScienceConferenceApp.Forms
 {
     public partial class MainForm : BaseForm
     {
-        DbAppContext db;
+        DataFormDTO dataFormDTO;
 
         public MainForm()
         {
@@ -27,7 +28,11 @@ namespace ScienceConferenceApp.Forms
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            db = new DbAppContext();
+            dataFormDTO = new DataFormDTO();
+            dataFormDTO.db = new DbAppContext();
+
+            dataFormDTO.caller = this;
+            dataFormDTO.mainForm = this;
         }
 
         private void toolStripButton1_Click(object sender, EventArgs e)
@@ -44,13 +49,13 @@ namespace ScienceConferenceApp.Forms
 
         private void conferencesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ConferenceForm conferenceForm = new ConferenceForm(this, this, db);
+            ConferenceForm conferenceForm = new ConferenceForm(dataFormDTO);
             conferenceForm.Show();
         }
 
         private void participantsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ParticipantForm participantForm = new ParticipantForm(this, this, db);
+            ParticipantForm participantForm = new ParticipantForm(dataFormDTO);
             participantForm.Show();
         }
 
@@ -68,7 +73,7 @@ namespace ScienceConferenceApp.Forms
 
         private void scientistsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ScientistForm scientist = new ScientistForm(this,this, db);
+            ScientistForm scientist = new ScientistForm(dataFormDTO);
             scientist.Show();
         }
     }

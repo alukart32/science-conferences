@@ -1,10 +1,12 @@
 ﻿using ScienceConferenceApp.CRUD;
 using ScienceConferenceApp.CRUD.DTO;
+using ScienceConferenceApp.CRUD.Model;
 using ScienceConferenceApp.CRUD.Model.DTO.Form;
 using ScienceConferenceApp.DataInitializer;
 using ScienceConferenceApp.Forms.Utils;
 using ScienceConferenceApp.Model;
 using System;
+using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
@@ -17,6 +19,7 @@ namespace ScienceConferenceApp.Forms.Crud
         ParticipantDTO participantDTO;
 
         ParticipantCrud crud;
+        SubjectCrud subjectCrud;
 
         DbAppContext db;
 
@@ -39,7 +42,9 @@ namespace ScienceConferenceApp.Forms.Crud
 
             this.db = formDTO.contex;
             participantDTO = new ParticipantDTO();
+
             crud = new ParticipantCrud(db);
+            subjectCrud = new SubjectCrud(db);
 
             currentCrudOp = formDTO.op;
 
@@ -98,25 +103,7 @@ namespace ScienceConferenceApp.Forms.Crud
 
         private void OkButton_Click(object sender, EventArgs e)
         {
-            int prod = participantDTO.conference * participantDTO.subject * participantDTO.theme;
-
-            if (prod == 0)
-            {
-                MessageBox.Show("Nothing was selected!");
-                return;
-            }
-
-            switch (currentCrudOp)
-            {
-                case CrudOpr.Create:
-                    if (scientist == null)
-                    {
-                        MessageBox.Show("Scientist wasn't selected!");
-                        return;
-                    }
-                    break;
-            }
-
+            checkData();
 
             participant p = new participant();
 
@@ -213,6 +200,77 @@ namespace ScienceConferenceApp.Forms.Crud
             {
                 cbPublication.CheckState = CheckState.Unchecked;
                 isChecked = false;
+            }
+        }
+
+        private void checkData()
+        {
+            int prod = participantDTO.conference * participantDTO.subject * participantDTO.theme;
+
+            if (prod == 0 && cbSubject.Text == "")
+            {
+                MessageBox.Show("Nothing was selected!");
+                return;
+            }
+
+            switch (currentCrudOp)
+            {
+                case CrudOpr.Create:
+                    if (scientist == null)
+                    {
+                        MessageBox.Show("Scientist wasn't selected!");
+                        return;
+                    }
+                    break;
+            }
+
+            // possible new subject
+            if(cbSubject.Text == "")
+            {
+                MessageBox.Show("Subject wasn't selected!");
+                return;
+            }
+
+            checkNewSubject();
+
+
+            // possible new theme
+            if (cbTheme.Text == "")
+            {
+                MessageBox.Show("Theme wasn't selected!");
+                return;
+            }
+
+            checkNewTheme();
+        }
+
+        private void checkNewTheme()
+        {
+            throw new NotImplementedException();
+        }
+
+        private void checkNewSubject()
+        {
+            // check on a unique
+
+            List<subject> all = new List<subject>();
+            all.AddRange(db.subjects);
+
+            all = all.FindAll
+                (
+                    delegate (subject s)
+                    { return s.subject1.Equals(cbSubject.Text); }
+                );
+
+            if (all.Count == 0)
+            {
+                // create a new address
+                subject s = new subject();
+                s.subject1 = cbSubject.Text;
+               
+                subject saved = subjectCrud.create(s);
+
+                participantDTO.subject = saved.subjectId;
             }
         }
     }
