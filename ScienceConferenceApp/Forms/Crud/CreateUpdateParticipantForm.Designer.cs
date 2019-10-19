@@ -46,9 +46,6 @@
             this.cbTheme = new System.Windows.Forms.ComboBox();
             this.cbConference = new System.Windows.Forms.ComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.EditCountry = new System.Windows.Forms.Button();
-            this.EditAddress = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.subjectBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.viewConferenceBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.themeBindingSource)).BeginInit();
@@ -59,7 +56,7 @@
             // 
             this.CancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.CancelButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.CancelButton.Location = new System.Drawing.Point(329, 258);
+            this.CancelButton.Location = new System.Drawing.Point(314, 258);
             this.CancelButton.Margin = new System.Windows.Forms.Padding(2);
             this.CancelButton.Name = "CancelButton";
             this.CancelButton.Size = new System.Drawing.Size(68, 38);
@@ -72,7 +69,7 @@
             // 
             this.OkButton.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.OkButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.OkButton.Location = new System.Drawing.Point(90, 258);
+            this.OkButton.Location = new System.Drawing.Point(35, 258);
             this.OkButton.Margin = new System.Windows.Forms.Padding(2);
             this.OkButton.Name = "OkButton";
             this.OkButton.Size = new System.Drawing.Size(71, 38);
@@ -207,9 +204,6 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.panel1.Controls.Add(this.button1);
-            this.panel1.Controls.Add(this.EditCountry);
-            this.panel1.Controls.Add(this.EditAddress);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.cbTheme);
             this.panel1.Controls.Add(this.cbPublication);
@@ -222,47 +216,14 @@
             this.panel1.Controls.Add(this.ChooseScientistButton);
             this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(448, 241);
+            this.panel1.Size = new System.Drawing.Size(385, 241);
             this.panel1.TabIndex = 20;
-            // 
-            // EditCountry
-            // 
-            this.EditCountry.BackColor = System.Drawing.SystemColors.Info;
-            this.EditCountry.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.EditCountry.Location = new System.Drawing.Point(390, 12);
-            this.EditCountry.Name = "EditCountry";
-            this.EditCountry.Size = new System.Drawing.Size(42, 24);
-            this.EditCountry.TabIndex = 21;
-            this.EditCountry.Text = "Edit";
-            this.EditCountry.UseVisualStyleBackColor = false;
-            // 
-            // EditAddress
-            // 
-            this.EditAddress.BackColor = System.Drawing.SystemColors.Info;
-            this.EditAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.EditAddress.Location = new System.Drawing.Point(390, 49);
-            this.EditAddress.Name = "EditAddress";
-            this.EditAddress.Size = new System.Drawing.Size(42, 24);
-            this.EditAddress.TabIndex = 20;
-            this.EditAddress.Text = "Edit";
-            this.EditAddress.UseVisualStyleBackColor = false;
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.SystemColors.Info;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.Location = new System.Drawing.Point(390, 87);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(42, 24);
-            this.button1.TabIndex = 22;
-            this.button1.Text = "Edit";
-            this.button1.UseVisualStyleBackColor = false;
             // 
             // CreateUpdateParticipantForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(472, 307);
+            this.ClientSize = new System.Drawing.Size(409, 307);
             this.ControlBox = false;
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.OkButton);
@@ -301,8 +262,5 @@
         private System.Windows.Forms.ComboBox cbConference;
         public System.Windows.Forms.Label ScientistLabel;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button EditCountry;
-        private System.Windows.Forms.Button EditAddress;
-        private System.Windows.Forms.Button button1;
     }
 }

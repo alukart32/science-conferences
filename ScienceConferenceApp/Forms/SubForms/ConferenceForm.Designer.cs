@@ -368,7 +368,7 @@
             // 
             // addressBindingSource
             // 
-            this.addressBindingSource.DataSource = typeof(ScienceConferenceApp.Model.address);
+            this.addressBindingSource.DataSource = typeof(ScienceConferenceApp.Model.academicDegree);
             // 
             // cbConference
             // 

@@ -1,10 +1,12 @@
-﻿using ScienceConferenceApp.CRUD.DTO;
+﻿using ScienceConferenceApp.CRUD;
+using ScienceConferenceApp.CRUD.DTO;
 using ScienceConferenceApp.CRUD.Model;
 using ScienceConferenceApp.CRUD.Model.DTO.Form;
 using ScienceConferenceApp.DataInitializer;
 using ScienceConferenceApp.Forms.Utils;
 using ScienceConferenceApp.Model;
 using System;
+using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
@@ -27,6 +29,8 @@ namespace ScienceConferenceApp.Forms.Crud
         CUFormDTO<ViewScientist> formDTO;
 
         CheckBoxDataInit dataInit;
+
+        CountryCrud countryCrud;
 
         public CreateUpdateScientistForm()
         {
@@ -63,6 +67,7 @@ namespace ScienceConferenceApp.Forms.Crud
         {
             dto = new ScientistDTO();
             crud = new ScientistCrud(db);
+            countryCrud = new CountryCrud(db);
             dataInit = new CheckBoxDataInit(db);
 
             dataInit.addDegrees(cbDegree);
@@ -87,29 +92,7 @@ namespace ScienceConferenceApp.Forms.Crud
 
         private void ApplyButton_Click(object sender, EventArgs e)
         {
-            bool isEmptyNames = FirstNameTextBox.Text.Equals("") && SecondNameTextBox.Text.Equals("");
-            if (isEmptyNames)
-            {
-                MessageBox.Show("Incorrect names!");
-                return;
-            }
-
-            // check names
-            bool isNormalNames = r.IsMatch(dto.firstName) && r.IsMatch(dto.secondName);
-
-            if (!isNormalNames)
-            {
-                MessageBox.Show("Incorrect names!");
-                return;
-            }
-
-            int prod = cbCompany.SelectedIndex * cbCountry.SelectedIndex * cbDegree.SelectedIndex;
-            if(prod == 0)
-            {
-                MessageBox.Show("Incorrect values!");
-                return;
-            }
-
+            checkComboBox();
             doCrud();
         }
 
@@ -145,6 +128,113 @@ namespace ScienceConferenceApp.Forms.Crud
                     break;
             }
         }
+
+        private void checkComboBox()
+        {
+            bool isEmptyNames = FirstNameTextBox.Text.Equals("") && SecondNameTextBox.Text.Equals("");
+            if (isEmptyNames)
+            {
+                MessageBox.Show("Incorrect names!");
+                return;
+            }
+
+            // check names
+            bool isNormalNames = r.IsMatch(dto.firstName) && r.IsMatch(dto.secondName);
+
+            if (!isNormalNames)
+            {
+                MessageBox.Show("Incorrect names!");
+                return;
+            }
+
+            int prod = cbCompany.SelectedIndex * cbCountry.SelectedIndex * cbDegree.SelectedIndex;
+            if (prod == 0)
+            {
+                MessageBox.Show("Incorrect values!");
+                return;
+            }
+
+            checkNewDegree();
+            checkNewCountry();
+        }
+
+        private void checkNewDegree()
+        {
+            // creating of a new address
+
+            // check possible address
+            if (!r.IsMatch(cbDegree.Text))
+            {
+                if (!cbDegree.Text.Contains(" "))
+                {
+                    MessageBox.Show("Incorect address!");
+                    return;
+                }
+            }
+
+            // check on a unique
+
+            List<academicDegree> all = new List<academicDegree>();
+            all.AddRange(db.academicDegrees);
+
+            all = all.FindAll
+                (
+                    delegate (academicDegree a)
+                    { return a.degree.Equals(cbDegree.Text); }
+                );
+
+            if (all.Count == 0)
+            {
+                // create a new address
+                academicDegree a = new academicDegree();
+                a.degree = cbDegree.Text;
+
+                a = db.academicDegrees.Add(a);
+                db.SaveChanges();
+
+                dto.degree = a.degreeId;
+            }
+        }
+
+        private void checkNewCountry()
+        {
+            // creating of a new address
+
+            // check possible address
+            if (!r.IsMatch(cbCountry.Text))
+            {
+                if (!cbCountry.Text.Contains(" "))
+                {
+                    if (cbCountry.Text.Length > 50)
+                    {
+                        MessageBox.Show("Incorect address!");
+                        return;
+                    }
+                }
+            }
+
+            // check on a unique
+
+            List<country> all = new List<country>();
+            all.AddRange(db.countries);
+
+            all = all.FindAll
+                (
+                    delegate (country c)
+                    { return c.code.Equals(cbCountry.Text); }
+                );
+
+            if (all.Count == 0)
+            {
+                // create a new address
+                country c = new country();
+                c.code = cbCountry.Text;
+
+                c = countryCrud.create(c);
+
+                dto.country = c.countryId;
+            }
+         }
 
         private void cbCountry_SelectedIndexChanged(object sender, EventArgs e)
         {

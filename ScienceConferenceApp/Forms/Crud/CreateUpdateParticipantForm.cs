@@ -231,8 +231,14 @@ namespace ScienceConferenceApp.Forms.Crud
                 return;
             }
 
-            checkNewSubject();
-
+            if (!r.IsMatch(cbSubject.Text))
+            {
+                if (!cbSubject.Text.Contains(" "))
+                {
+                    MessageBox.Show("Subject is incorrect!");
+                    return;
+                }
+            }
 
             // possible new theme
             if (cbTheme.Text == "")
@@ -241,12 +247,41 @@ namespace ScienceConferenceApp.Forms.Crud
                 return;
             }
 
+            if (!r.IsMatch(cbTheme.Text))
+            {
+                if (!cbTheme.Text.Contains(" "))
+                {
+                    MessageBox.Show("Subject is incorrect!");
+                    return;
+                }
+            }
+
             checkNewTheme();
+            checkNewSubject();
         }
 
         private void checkNewTheme()
         {
-            throw new NotImplementedException();
+            // check on a unique
+            List<theme> all = new List<theme>();
+            all.AddRange(db.themes);
+
+            all = all.FindAll
+                (
+                    delegate (theme t)
+                    { return t.themeName.Equals(cbTheme.Text); }
+                );
+
+            if (all.Count == 0)
+            {
+                theme t = new theme();
+                t.themeName = cbTheme.Text;
+
+                theme saved = db.themes.Add(t);
+                db.SaveChanges();
+
+                participantDTO.theme = saved.themeId;
+            }
         }
 
         private void checkNewSubject()
