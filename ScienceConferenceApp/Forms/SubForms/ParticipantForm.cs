@@ -5,6 +5,7 @@ using ScienceConferenceApp.CRUD.Model.DTO;
 using ScienceConferenceApp.DataInitializer;
 using ScienceConferenceApp.Filter;
 using ScienceConferenceApp.Forms.Crud;
+using ScienceConferenceApp.Forms.DTO;
 using ScienceConferenceApp.Forms.Utils;
 using ScienceConferenceApp.Forms.Utils.Menu;
 using ScienceConferenceApp.Model;
@@ -16,11 +17,7 @@ namespace ScienceConferenceApp.Forms.SubForms
 {
     public partial class ParticipantForm : BaseForm
     {
-
-        BaseForm caller;
-        BaseForm mainForm;
-
-        DbAppContext db;
+        DataFormDTO dataFormDTO;
 
         ParticipantFilter filter;
 
@@ -35,12 +32,10 @@ namespace ScienceConferenceApp.Forms.SubForms
             InitializeComponent();
         }
 
-        public ParticipantForm(BaseForm form, BaseForm mainForm, DbAppContext db)
+        public ParticipantForm(DataFormDTO dataFormDTO)
         {
-            caller = form;
-            form.Hide();
-            this.db = db;
-            this.mainForm = mainForm;
+            this.dataFormDTO = dataFormDTO;
+            dataFormDTO.caller.Hide();
             InitializeComponent();
         }
 
@@ -51,17 +46,17 @@ namespace ScienceConferenceApp.Forms.SubForms
 
         private void initData()
         {
-            participantController = new ParticipantController(db);
+            participantController = new ParticipantController(dataFormDTO.db);
             //filter = new ConferenceFilter();
 
-            crud = new ParticipantCrud(db);
+            crud = new ParticipantCrud(dataFormDTO.db);
 
             formDTO = new CUParticipantFormDTO();
-            formDTO.contex = db;
+            formDTO.contex = dataFormDTO.db;
 
             filter = new ParticipantFilter();
 
-            CheckBoxDataInit dataInit = new CheckBoxDataInit(db);
+            CheckBoxDataInit dataInit = new CheckBoxDataInit(dataFormDTO.db);
 
             dataInit.addConferences(cbConference);
             dataInit.addThemes(cbTheme);
@@ -74,14 +69,15 @@ namespace ScienceConferenceApp.Forms.SubForms
         private void ParticipantForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             if (!menuClicked)
-                caller.Show();
+                dataFormDTO.caller.Show();
             else
-                mainForm.Show();
+                dataFormDTO.mainForm.Show();
         }
 
         private void conferencesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ConferenceForm conferenceForm = new ConferenceForm(this, mainForm, db);
+            DataFormDTO dto = new DataFormDTO(this, dataFormDTO.mainForm, dataFormDTO.db);
+            ConferenceForm conferenceForm = new ConferenceForm(dto);
             conferenceForm.Show();
         }
 
@@ -93,22 +89,6 @@ namespace ScienceConferenceApp.Forms.SubForms
         private void BackButton_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        private void resetData()
-        {
-            cbConference.SelectedIndex = 0;
-            cbTheme.SelectedIndex = 0;
-            cbSubject.SelectedIndex = 0;
-            cbDegree.SelectedIndex = 0;
-
-            filter.conference = 0;
-            filter.participant = 0;
-            filter.subject = 0;
-            filter.theme = 0;
-            filter.degree = 0;
-
-            dataGridView1.DataSource = db.ViewConferencesWithParticipants.ToList();
         }
 
         private void ClearButton_Click(object sender, EventArgs e)
@@ -161,7 +141,7 @@ namespace ScienceConferenceApp.Forms.SubForms
             {
                 formDTO.op = CrudOpr.Update;
 
-                ViewConferencesWithParticipant findParticipant = db.ViewConferencesWithParticipants.SingleOrDefault(o=>o.participantId == id);
+                ViewConferencesWithParticipant findParticipant = dataFormDTO.db.ViewConferencesWithParticipants.SingleOrDefault(o=>o.participantId == id);
                 formDTO.obj = findParticipant;
 
                 CreateUpdateParticipantForm form = new CreateUpdateParticipantForm(this, formDTO);
@@ -211,17 +191,35 @@ namespace ScienceConferenceApp.Forms.SubForms
 
         private void scientistsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ScientistForm form = new ScientistForm(this, mainForm, db);
+            DataFormDTO dto = new DataFormDTO(this, dataFormDTO.mainForm, dataFormDTO.db);
+            ScientistForm form = new ScientistForm(dto);
             form.Show();
         }
 
         bool menuClicked = false;
         private void toolStripDropDownButton1_ButtonClick(object sender, EventArgs e)
         {
-            mainForm.Show();
+            dataFormDTO.mainForm.Show();
             menuClicked = true;
 
             this.Close();
         }
+
+        private void resetData()
+        {
+            cbConference.SelectedIndex = 0;
+            cbTheme.SelectedIndex = 0;
+            cbSubject.SelectedIndex = 0;
+            cbDegree.SelectedIndex = 0;
+
+            filter.conference = 0;
+            filter.participant = 0;
+            filter.subject = 0;
+            filter.theme = 0;
+            filter.degree = 0;
+
+            dataGridView1.DataSource = dataFormDTO.db.ViewConferencesWithParticipants.ToList();
+        }
+
     }
 }

@@ -4,6 +4,7 @@ using ScienceConferenceApp.CRUD.Model;
 using ScienceConferenceApp.DataInitializer;
 using ScienceConferenceApp.Filter;
 using ScienceConferenceApp.Forms.Crud;
+using ScienceConferenceApp.Forms.DTO;
 using ScienceConferenceApp.Forms.Utils;
 using ScienceConferenceApp.Forms.Utils.Menu;
 using ScienceConferenceApp.Model;
@@ -21,10 +22,7 @@ namespace ScienceConferenceApp.Forms.SubForms
 {
     public partial class ScientistForm : BaseForm
     {
-        BaseForm caller;
-        BaseForm mainForm;
-
-        DbAppContext db;
+        DataFormDTO dataFormDTO;
 
         private ScientistController scientistController;
         private ScientistCrud crud;
@@ -37,19 +35,10 @@ namespace ScienceConferenceApp.Forms.SubForms
             InitializeComponent();
         }
 
-        public ScientistForm(BaseForm caller)
+        public ScientistForm(DataFormDTO dataFormDTO)
         {
-            this.caller = caller;
-            caller.Hide();
-            InitializeComponent();
-        }
-
-        public ScientistForm(BaseForm caller, BaseForm mainForm, DbAppContext db)
-        {
-            this.caller = caller;
-            caller.Hide();
-            this.db = db;
-            this.mainForm = mainForm;
+            this.dataFormDTO = dataFormDTO;
+            dataFormDTO.caller.Hide();
             InitializeComponent();
         }
 
@@ -57,16 +46,16 @@ namespace ScienceConferenceApp.Forms.SubForms
 
         private  void initData()
         {
-            scientistController = new ScientistController(db);
+            scientistController = new ScientistController(dataFormDTO.db);
 
-            crud = new ScientistCrud(db);
+            crud = new ScientistCrud(dataFormDTO.db);
 
             formDTO = new CUScientistFormDTO();
-            formDTO.contex = db;
+            formDTO.contex = dataFormDTO.db;
 
             filter = new ScientistFilter();
 
-            CheckBoxDataInit dataInit = new CheckBoxDataInit(db);
+            CheckBoxDataInit dataInit = new CheckBoxDataInit(dataFormDTO.db);
 
             dataInit.addCompanies(cbCompany);
             dataInit.addCountries(cbCountry);
@@ -79,9 +68,9 @@ namespace ScienceConferenceApp.Forms.SubForms
         private void ScientistForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             if (!menuClicked)
-                caller.Show();
+                dataFormDTO.caller.Show();
             else
-                mainForm.Show();
+                dataFormDTO.mainForm.Show();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -98,13 +87,13 @@ namespace ScienceConferenceApp.Forms.SubForms
             {
                 formDTO.op = CrudOpr.Update;
 
-                ViewScientist findScientist = db.ViewScientists.SingleOrDefault(o => o.scientistId == id);
+                ViewScientist findScientist = dataFormDTO.db.ViewScientists.SingleOrDefault(o => o.scientistId == id);
                 formDTO.obj = findScientist;
 
                 CreateUpdateScientistForm form = new CreateUpdateScientistForm(this, formDTO);
                 form.Show();
 
-                dataGridView1.DataSource = db.ViewScientists.ToList();
+                dataGridView1.DataSource = dataFormDTO.db.ViewScientists.ToList();
             }
 
             // deleting
@@ -146,7 +135,7 @@ namespace ScienceConferenceApp.Forms.SubForms
             filter.country = 0;
             filter.degree = 0;
 
-            dataGridView1.DataSource = db.ViewScientists.ToList();
+            dataGridView1.DataSource = dataFormDTO.db.ViewScientists.ToList();
         }
 
 
@@ -180,7 +169,7 @@ namespace ScienceConferenceApp.Forms.SubForms
 
         private void AddButton_Click(object sender, EventArgs e)
         {
-            formDTO.contex = db;
+            formDTO.contex = dataFormDTO.db;
             formDTO.op = CrudOpr.Create;
             formDTO.obj = null;
             CreateUpdateScientistForm form = new CreateUpdateScientistForm(this, formDTO);
@@ -203,9 +192,23 @@ namespace ScienceConferenceApp.Forms.SubForms
 
         private void toolStripDropDownButton1_ButtonClick(object sender, EventArgs e)
         {
-            mainForm.Show();
+            dataFormDTO.mainForm.Show();
             menuClicked = true;
             this.Close();
+        }
+
+        private void conferencesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DataFormDTO dto = new DataFormDTO(this, dataFormDTO.mainForm, dataFormDTO.db);
+            ConferenceForm form = new ConferenceForm(dto);
+            form.Show();
+        }
+
+        private void participantsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DataFormDTO dto = new DataFormDTO(this, dataFormDTO.mainForm, dataFormDTO.db);
+            ParticipantForm form = new ParticipantForm(dto);
+            form.Show();
         }
     }
 }

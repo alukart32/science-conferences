@@ -72,5 +72,25 @@ namespace ScienceConferenceApp.Controllers
             }
             else return false;
         }
+
+        public bool updateWithCountry(conference obj, bool flag)
+        {
+            // Find(id) выполнит запрос и найдет объект по этому ID
+            conference c = db.conferences.Find(obj.conferenceId);
+            if (c != null)
+            {
+                c.address = obj.address;
+
+                if(flag)
+                    c.address1 = db.addresses.Find(obj.address);
+
+                c.conferenceName = obj.conferenceName;
+                c.date = obj.date;
+
+                db.SaveChanges();
+                return true;
+            }
+            else return false;
+        }
     }
 }

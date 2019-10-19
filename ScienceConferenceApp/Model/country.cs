@@ -18,7 +18,7 @@ namespace ScienceConferenceApp.Model
 
         public int countryId { get; set; }
 
-        [StringLength(3)]
+        [StringLength(50)]
         public string code { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

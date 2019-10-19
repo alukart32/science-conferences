@@ -2,7 +2,10 @@
 using ScienceConferenceApp.CRUD;
 using ScienceConferenceApp.CRUD.Model.DTO;
 using ScienceConferenceApp.CRUD.Model.DTO.Form;
+using ScienceConferenceApp.CRUD.Utils;
 using ScienceConferenceApp.DataInitializer;
+using ScienceConferenceApp.Forms.DTO;
+using ScienceConferenceApp.Forms.Editor;
 using ScienceConferenceApp.Forms.Utils;
 using ScienceConferenceApp.Model;
 using System;
@@ -34,6 +37,9 @@ namespace ScienceConferenceApp.Forms.Crud
         CUFormDTO<conference> formDTO;
 
         AddressCrud addressCrud;
+        CountryCrud countryCrud;
+
+        bool newCountry = false;
 
         public CreateUpdateConferenceForm(BaseForm form, CUFormDTO<conference> formDTO)
         {
@@ -46,6 +52,7 @@ namespace ScienceConferenceApp.Forms.Crud
             crud = new ConferenceCrud(db);
 
             addressCrud = new AddressCrud(db);
+            countryCrud = new CountryCrud(db);
 
             currentCrudOp = formDTO.op;
             this.formDTO = formDTO;
@@ -118,6 +125,7 @@ namespace ScienceConferenceApp.Forms.Crud
             c.conferenceName = conferenceDTO.name;
             c.address = conferenceDTO.address;
             c.date = conferenceDTO.date;
+            c.address = conferenceDTO.address;
 
             doCrud(c);  
         }
@@ -138,7 +146,8 @@ namespace ScienceConferenceApp.Forms.Crud
                 case CrudOpr.Update:
 
                     c.conferenceId = formDTO.obj.conferenceId;
-                    if (crud.update(c))
+
+                    if (crud.updateWithCountry(c, newCountry))
                     {
                         MessageBox.Show("Conference was updated!");
                         this.Close();
@@ -194,10 +203,10 @@ namespace ScienceConferenceApp.Forms.Crud
             // check data
             if (conferenceDTO.date == DateTime.MinValue)
                 conferenceDTO.date = DateTime.Now;
-           
-            // Does user want to add a new address?
-            checkNewAddress();
 
+            // Does user want to add a new address?
+            checkNewCountry();
+            checkNewAddress();       
         }
 
         private void checkNewAddress()
@@ -207,8 +216,11 @@ namespace ScienceConferenceApp.Forms.Crud
             // check possible address
             if (!r.IsMatch(cbAddress.Text))
             {
-                MessageBox.Show("Incorect address!");
-                return;
+                if (!cbAddress.Text.Contains(" "))
+                {
+                    MessageBox.Show("Incorect address!");
+                    return;
+                }
             }
 
             // check on a unique
@@ -229,11 +241,69 @@ namespace ScienceConferenceApp.Forms.Crud
                 a.address1 = cbAddress.Text;
                 a.country = conferenceDTO.country;
 
-                addressCrud.create(a);
+                a = addressCrud.create(a);
 
                 conferenceDTO.address = a.addressId;
+            }         
+        }
+
+        private void checkNewCountry()
+        {
+            // creating of a new address
+
+            // check possible address
+            if (!r.IsMatch(cbCountry.Text))
+            {
+                if (!cbCountry.Text.Contains(" "))
+                {
+                    if (cbCountry.Text.Length > 50)
+                    {
+                        MessageBox.Show("Incorect address!");
+                        return;
+                    }
+                }
             }
-            
+
+            // check on a unique
+
+            List<country> all = new List<country>();
+            all.AddRange(db.countries);
+
+            all = all.FindAll
+                (
+                    delegate (country c)
+                    { return c.code.Equals(cbCountry.Text); }
+                );
+
+            if (all.Count == 0)
+            {
+                // create a new address
+                country c = new country();
+                c.code = cbCountry.Text;
+
+                c = countryCrud.create(c);
+
+                conferenceDTO.country = c.countryId;
+                newCountry = true;
+            }
+            else
+                newCountry = false;           
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            AddressEditor editor = new AddressEditor(db, (address)cbAddress.SelectedItem);
+            editor.Show();
+        }
+
+        private void cbCountry_TextChanged(object sender, EventArgs e)
+        {
+            cbAddress.Text = "";
+
+            List<address> a = new List<address>();
+           
+            a.Add(new address());
+            cbAddress.DataSource = a;
         }
     }
 }

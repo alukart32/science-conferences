@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ScienceConferenceApp.CRUD.Utils
 {
-    abstract class Crud<T>
+    public abstract class Crud<T> where T : class
     {
         public DbAppContext db;
 

@@ -46,6 +46,9 @@
             this.companyBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.FirstNameTextBox = new System.Windows.Forms.TextBox();
             this.SecondNameTextBox = new System.Windows.Forms.TextBox();
+            this.EditAddress = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.countryBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.academicDegreeBindingSource)).BeginInit();
@@ -97,7 +100,7 @@
             // 
             this.DegreeLabel.AutoSize = true;
             this.DegreeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.DegreeLabel.Location = new System.Drawing.Point(339, 76);
+            this.DegreeLabel.Location = new System.Drawing.Point(317, 76);
             this.DegreeLabel.Name = "DegreeLabel";
             this.DegreeLabel.Size = new System.Drawing.Size(55, 17);
             this.DegreeLabel.TabIndex = 4;
@@ -107,7 +110,7 @@
             // 
             this.CompayLabel.AutoSize = true;
             this.CompayLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.CompayLabel.Location = new System.Drawing.Point(24, 144);
+            this.CompayLabel.Location = new System.Drawing.Point(124, 134);
             this.CompayLabel.Name = "CompayLabel";
             this.CompayLabel.Size = new System.Drawing.Size(67, 17);
             this.CompayLabel.TabIndex = 5;
@@ -117,7 +120,7 @@
             // 
             this.CountryLabel.AutoSize = true;
             this.CountryLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.CountryLabel.Location = new System.Drawing.Point(339, 15);
+            this.CountryLabel.Location = new System.Drawing.Point(317, 15);
             this.CountryLabel.Name = "CountryLabel";
             this.CountryLabel.Size = new System.Drawing.Size(57, 17);
             this.CountryLabel.TabIndex = 6;
@@ -126,6 +129,9 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.panel1.Controls.Add(this.button2);
+            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.EditAddress);
             this.panel1.Controls.Add(this.cbCountry);
             this.panel1.Controls.Add(this.cbDegree);
             this.panel1.Controls.Add(this.cbCompany);
@@ -146,7 +152,7 @@
             this.cbCountry.DataSource = this.countryBindingSource;
             this.cbCountry.DisplayMember = "code";
             this.cbCountry.FormattingEnabled = true;
-            this.cbCountry.Location = new System.Drawing.Point(332, 35);
+            this.cbCountry.Location = new System.Drawing.Point(310, 35);
             this.cbCountry.Name = "cbCountry";
             this.cbCountry.Size = new System.Drawing.Size(64, 21);
             this.cbCountry.TabIndex = 11;
@@ -162,7 +168,7 @@
             this.cbDegree.DataSource = this.academicDegreeBindingSource;
             this.cbDegree.DisplayMember = "degree";
             this.cbDegree.FormattingEnabled = true;
-            this.cbDegree.Location = new System.Drawing.Point(331, 96);
+            this.cbDegree.Location = new System.Drawing.Point(309, 96);
             this.cbDegree.Name = "cbDegree";
             this.cbDegree.Size = new System.Drawing.Size(63, 21);
             this.cbDegree.TabIndex = 10;
@@ -178,7 +184,7 @@
             this.cbCompany.DataSource = this.companyBindingSource;
             this.cbCompany.DisplayMember = "companyName";
             this.cbCompany.FormattingEnabled = true;
-            this.cbCompany.Location = new System.Drawing.Point(52, 164);
+            this.cbCompany.Location = new System.Drawing.Point(152, 154);
             this.cbCompany.Name = "cbCompany";
             this.cbCompany.Size = new System.Drawing.Size(220, 21);
             this.cbCompany.TabIndex = 9;
@@ -205,11 +211,44 @@
             this.SecondNameTextBox.TabIndex = 7;
             this.SecondNameTextBox.TextChanged += new System.EventHandler(this.SecondNameTextBox_TextChanged);
             // 
+            // EditAddress
+            // 
+            this.EditAddress.BackColor = System.Drawing.SystemColors.Info;
+            this.EditAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.EditAddress.Location = new System.Drawing.Point(390, 151);
+            this.EditAddress.Name = "EditAddress";
+            this.EditAddress.Size = new System.Drawing.Size(42, 24);
+            this.EditAddress.TabIndex = 21;
+            this.EditAddress.Text = "Edit";
+            this.EditAddress.UseVisualStyleBackColor = false;
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.SystemColors.Info;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button1.Location = new System.Drawing.Point(390, 93);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(42, 24);
+            this.button1.TabIndex = 22;
+            this.button1.Text = "Edit";
+            this.button1.UseVisualStyleBackColor = false;
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.SystemColors.Info;
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button2.Location = new System.Drawing.Point(390, 31);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(42, 24);
+            this.button2.TabIndex = 23;
+            this.button2.Text = "Edit";
+            this.button2.UseVisualStyleBackColor = false;
+            // 
             // CreateUpdateScientistForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(467, 284);
+            this.ClientSize = new System.Drawing.Size(469, 284);
             this.ControlBox = false;
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.ApplyButton);
@@ -247,5 +286,8 @@
         private System.Windows.Forms.BindingSource countryBindingSource;
         private System.Windows.Forms.BindingSource academicDegreeBindingSource;
         private System.Windows.Forms.BindingSource companyBindingSource;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button EditAddress;
     }
 }

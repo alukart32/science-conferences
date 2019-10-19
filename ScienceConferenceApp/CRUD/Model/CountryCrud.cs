@@ -29,9 +29,9 @@ namespace ScienceConferenceApp.CRUD
                 country newCountry = new country();
                 newCountry.code = obj.code;
 
-                db.countries.Add(newCountry);
+                c = db.countries.Add(newCountry);
                 db.SaveChanges();
-                return newCountry;
+                return c;
             }
         }
 

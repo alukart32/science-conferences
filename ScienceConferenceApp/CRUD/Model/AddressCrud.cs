@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ScienceConferenceApp.CRUD
 {
-    class AddressCrud : Crud<address>
+    class AddressCrud: Crud<address>
     {
         public AddressCrud(DbAppContext db) : base(db) { }
 
