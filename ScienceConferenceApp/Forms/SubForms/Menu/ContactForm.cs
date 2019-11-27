@@ -22,7 +22,7 @@ namespace ScienceConferenceApp.Forms.Utils.Menu
         public ContactForm(BaseForm form)
         {
             caller = form;
-            form.Hide();
+            //form.Hide();
             InitializeComponent();
         }
 

@@ -14,13 +14,14 @@ namespace ScienceConferenceApp.Forms.DTO
         public BaseForm mainForm { get; set; }
         public DbAppContext db { get; set; }
 
+        public UserDataDTO userData { get; set; }
 
-
-        public DataFormDTO(BaseForm caller, BaseForm mainForm, DbAppContext db)
+        public DataFormDTO(BaseForm caller, BaseForm mainForm, DbAppContext db, UserDataDTO userData)
         {
             this.caller = caller;
             this.mainForm = mainForm;
             this.db = db;
+            this.userData = userData;
         }
 
         public DataFormDTO()

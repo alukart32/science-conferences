@@ -39,11 +39,31 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="SqlServerConnections, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SqlConnection.1.0.2\lib\SqlServerConnections.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.ConfigurationManager, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Configuration.ConfigurationManager.4.6.0\lib\net461\System.Configuration.ConfigurationManager.dll</HintPath>
+    </Reference>
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.OracleClient" />
+    <Reference Include="System.Net" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Security.AccessControl, Version=4.1.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.AccessControl.4.6.0\lib\net461\System.Security.AccessControl.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Permissions, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Permissions.4.6.0\lib\net461\System.Security.Permissions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Principal.Windows, Version=4.1.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Principal.Windows.4.6.0\lib\net461\System.Security.Principal.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -53,15 +73,20 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\CompanyController.cs" />
     <Compile Include="Controllers\ParticipantController.cs" />
     <Compile Include="Controllers\ScientistController.cs" />
+    <Compile Include="CRUD\DTO\CompanyDTO.cs" />
+    <Compile Include="CRUD\DTO\Form\CUCompanyFormDTO.cs" />
     <Compile Include="CRUD\DTO\Form\CUParticipantFormDTO.cs" />
     <Compile Include="CRUD\DTO\Form\CUScientistFormDTO.cs" />
     <Compile Include="CRUD\DTO\ParticipantDTO.cs" />
     <Compile Include="CRUD\DTO\ScientistDTO.cs" />
     <Compile Include="CRUD\Model\AddressCrud.cs" />
+    <Compile Include="CRUD\Model\CompanyCrud.cs" />
     <Compile Include="CRUD\Model\ConferenceCrud.cs" />
     <Compile Include="Controllers\ConferenceController.cs" />
     <Compile Include="CRUD\Model\CountryCrud.cs" />
@@ -71,9 +96,11 @@
     <Compile Include="CRUD\Model\ParticipantCrud.cs" />
     <Compile Include="CRUD\Model\ScientistCrud.cs" />
     <Compile Include="CRUD\Model\SubjectCrud.cs" />
+    <Compile Include="CRUD\Model\ThemeCrud.cs" />
     <Compile Include="CRUD\Utils\Crud.cs" />
     <Compile Include="DataInitializer\ComboBox\ComboBoxDataInit.cs" />
     <Compile Include="DataInitializer\DataInit.cs" />
+    <Compile Include="Filter\CompanyFilter.cs" />
     <Compile Include="Filter\ConferenceFilter.cs" />
     <Compile Include="Filter\ParticipantFilter.cs" />
     <Compile Include="Filter\ScientistFilter.cs" />
@@ -82,6 +109,12 @@
     </Compile>
     <Compile Include="Forms\Crud\ChooseScientistForm.Designer.cs">
       <DependentUpon>ChooseScientistForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Crud\CreateUpdateCompanyForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Crud\CreateUpdateCompanyForm.Designer.cs">
+      <DependentUpon>CreateUpdateCompanyForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Crud\CreateUpdateConferenceForm.cs">
       <SubType>Form</SubType>
@@ -103,11 +136,37 @@
     </Compile>
     <Compile Include="Forms\Crud\CrudOpr.cs" />
     <Compile Include="Forms\DTO\DataFormDTO.cs" />
+    <Compile Include="Forms\DTO\UserDataDTO.cs" />
+    <Compile Include="Forms\DTO\UserRole.cs" />
     <Compile Include="Forms\Editor\AddressEditor.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Editor\AddressEditor.Designer.cs">
       <DependentUpon>AddressEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Editor\CountryEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Editor\CountryEditor.Designer.cs">
+      <DependentUpon>CountryEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Editor\SubjectEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Editor\SubjectEditor.Designer.cs">
+      <DependentUpon>SubjectEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Editor\ThemeEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Editor\ThemeEditor.Designer.cs">
+      <DependentUpon>ThemeEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SubForms\CompanyForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SubForms\CompanyForm.Designer.cs">
+      <DependentUpon>CompanyForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\SubForms\ScientistForm.cs">
       <SubType>Form</SubType>
@@ -167,6 +226,7 @@
     <Compile Include="Model\scientist.cs" />
     <Compile Include="Model\subject.cs" />
     <Compile Include="Model\theme.cs" />
+    <Compile Include="Model\ViewCompany.cs" />
     <Compile Include="Model\ViewConference.cs" />
     <Compile Include="Model\ViewConferencesWithParticipant.cs" />
     <Compile Include="Model\ViewParticipant.cs" />
@@ -175,6 +235,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Forms\Crud\ChooseScientistForm.resx">
       <DependentUpon>ChooseScientistForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Crud\CreateUpdateCompanyForm.resx">
+      <DependentUpon>CreateUpdateCompanyForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Crud\CreateUpdateConferenceForm.resx">
       <DependentUpon>CreateUpdateConferenceForm.cs</DependentUpon>
@@ -187,6 +250,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Editor\AddressEditor.resx">
       <DependentUpon>AddressEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Editor\CountryEditor.resx">
+      <DependentUpon>CountryEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Editor\SubjectEditor.resx">
+      <DependentUpon>SubjectEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Editor\ThemeEditor.resx">
+      <DependentUpon>ThemeEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SubForms\CompanyForm.resx">
+      <DependentUpon>CompanyForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\SubForms\ScientistForm.resx">
       <DependentUpon>ScientistForm.cs</DependentUpon>
@@ -230,6 +305,7 @@
     <None Include="Properties\DataSources\ScienceConferenceApp.Model.participant.datasource" />
     <None Include="Properties\DataSources\ScienceConferenceApp.Model.subject.datasource" />
     <None Include="Properties\DataSources\ScienceConferenceApp.Model.theme.datasource" />
+    <None Include="Properties\DataSources\ScienceConferenceApp.Model.ViewCompany.datasource" />
     <None Include="Properties\DataSources\ScienceConferenceApp.Model.ViewConference.datasource" />
     <None Include="Properties\DataSources\.datasource" />
     <None Include="Properties\DataSources\ScienceConferenceApp.Model.ViewConferencesWithParticipant.datasource" />

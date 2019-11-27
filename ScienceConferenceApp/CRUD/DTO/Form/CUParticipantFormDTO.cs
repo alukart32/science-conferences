@@ -1,5 +1,6 @@
 ﻿using ScienceConferenceApp.CRUD.Model.DTO.Form;
 using ScienceConferenceApp.Forms.Crud;
+using ScienceConferenceApp.Forms.DTO;
 using ScienceConferenceApp.Model;
 using System;
 using System.Collections.Generic;
@@ -15,7 +16,7 @@ namespace ScienceConferenceApp.CRUD.DTO.Form
         {
         }
 
-        public CUParticipantFormDTO(DbAppContext db, CrudOpr opr, ViewConferencesWithParticipant obj) : base(db, opr, obj)
+        public CUParticipantFormDTO(DbAppContext db, CrudOpr opr, ViewConferencesWithParticipant obj, UserDataDTO userData) : base(db, opr, obj, userData)
         {
         }
     }

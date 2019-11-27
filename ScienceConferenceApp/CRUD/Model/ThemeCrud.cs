@@ -8,55 +8,57 @@ using System.Threading.Tasks;
 
 namespace ScienceConferenceApp.CRUD.Model
 {
-    class SubjectCrud : Crud<subject>
+    class ThemeCrud : Crud<theme>
     {
-        public SubjectCrud(DbAppContext db) : base(db)
-        {
-        }
+        public ThemeCrud(DbAppContext db) : base(db) { }
 
-        public override subject create(subject obj)
+        public override theme create(theme obj)
         {
-            subject c = db.subjects.Where(o => o.subject1 == obj.subject1).FirstOrDefault();
-            if (c != null)
+            theme t = db.themes.Where(o => o.themeName== obj.themeName).FirstOrDefault();
+            if (t != null)
             {
+                // obj is alredy existed
                 return null;
             }
             else
             {
-                subject saved = db.subjects.Add(obj);
+                theme tt = new theme();
+                tt.themeName = obj.themeName;
+
+                theme ttt = db.themes.Add(tt);
                 db.SaveChanges();
-                return saved;
+                return ttt;
             }
         }
 
-        public override bool delete(subject obj)
+        public override bool delete(theme obj)
         {
             // Находим объект по этому ID
-            subject s = db.subjects.Find(obj.subjectId);
-            if (s != null)
+            theme t = db.themes.Find(obj.themeId);
+            if (t != null)
             {
                 // Удаляем объект из коллекции
-                db.subjects.Remove(s);
+                db.themes.Remove(t);
                 db.SaveChanges(); // сохраняем в БД
                 return true;
             }
             else return false;
         }
 
-        public override bool update(subject obj)
+        public override bool update(theme obj)
         {
             // Find(id) выполнит запрос и найдет объект по этому ID
-            subject s = db.subjects.Find(obj.subjectId);
-            if (s != null)
+            theme t = db.themes.Find(obj.themeId);
+            if (t != null)
             {
-                subject s1 = db.subjects.Where(o => o.subject1 == obj.subject1).FirstOrDefault();
-                if(s1 != null)
+                theme t1 = db.themes.Where(o => o.themeName == obj.themeName).FirstOrDefault();
+                if( t1 != null)
                 {
+                    // obj is alredy existed
                     return false;
                 }
 
-                s.subject1 = obj.subject1;
-
+                t.themeName = obj.themeName;
                 db.SaveChanges();
                 return true;
             }

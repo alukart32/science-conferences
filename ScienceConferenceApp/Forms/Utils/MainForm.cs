@@ -11,6 +11,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -31,6 +32,45 @@ namespace ScienceConferenceApp.Forms
             dataFormDTO = new DataFormDTO();
             dataFormDTO.db = new DbAppContext();
 
+            WindowsIdentity currentUser = WindowsIdentity.GetCurrent();
+
+            UserDataDTO userData = new UserDataDTO();
+
+            bool isInSystem = false;
+
+            if (dataFormDTO.db.CheckRole("db_owner"))
+            {
+                userData.userRole = UserRole.ADMIN;
+                CurrentUserLabel.Text = "Admin";
+                isInSystem = true;
+            }
+
+
+            if (dataFormDTO.db.CheckRole("conference_manager"))
+            {
+                userData.userRole = UserRole.CONFERENCE_MANAGER;
+                CurrentUserLabel.Text = "Conference manager";
+                isInSystem = true;
+            }
+
+
+            if (dataFormDTO.db.CheckRole("scientist_manager"))
+            {
+                userData.userRole = UserRole.SCIENTIST_MANGER;
+                CurrentUserLabel.Text = "Scientist manager";
+                isInSystem = true;
+            }
+
+            if (!isInSystem)
+            {
+                userData.userRole = UserRole.GUEST;
+                CurrentUserLabel.Text = "Guest";
+            }
+
+            int pos = currentUser.Name.IndexOf("\\");
+            userData.username = currentUser.Name.Remove(0, pos + 1);
+
+            dataFormDTO.userData = userData;
             dataFormDTO.caller = this;
             dataFormDTO.mainForm = this;
         }
@@ -61,8 +101,8 @@ namespace ScienceConferenceApp.Forms
 
         private void companiesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-      //      CompanyForm companyForm = new CompanyForm(this);
-      //      companyForm.Show();
+            CompanyForm companyForm = new CompanyForm(dataFormDTO);
+            companyForm.Show();
         }
 
         private void searchToolStripMenuItem_Click(object sender, EventArgs e)

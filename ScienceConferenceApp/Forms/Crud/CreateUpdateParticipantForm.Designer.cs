@@ -46,6 +46,10 @@
             this.cbTheme = new System.Windows.Forms.ComboBox();
             this.cbConference = new System.Windows.Forms.ComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.subjectBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.viewConferenceBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.themeBindingSource)).BeginInit();
@@ -56,7 +60,7 @@
             // 
             this.CancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.CancelButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.CancelButton.Location = new System.Drawing.Point(314, 258);
+            this.CancelButton.Location = new System.Drawing.Point(314, 269);
             this.CancelButton.Margin = new System.Windows.Forms.Padding(2);
             this.CancelButton.Name = "CancelButton";
             this.CancelButton.Size = new System.Drawing.Size(68, 38);
@@ -69,7 +73,7 @@
             // 
             this.OkButton.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.OkButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.OkButton.Location = new System.Drawing.Point(35, 258);
+            this.OkButton.Location = new System.Drawing.Point(35, 269);
             this.OkButton.Margin = new System.Windows.Forms.Padding(2);
             this.OkButton.Name = "OkButton";
             this.OkButton.Size = new System.Drawing.Size(71, 38);
@@ -126,7 +130,7 @@
             // 
             this.ChooseScientistButton.BackColor = System.Drawing.SystemColors.ControlDark;
             this.ChooseScientistButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ChooseScientistButton.Location = new System.Drawing.Point(23, 192);
+            this.ChooseScientistButton.Location = new System.Drawing.Point(23, 199);
             this.ChooseScientistButton.Name = "ChooseScientistButton";
             this.ChooseScientistButton.Size = new System.Drawing.Size(126, 30);
             this.ChooseScientistButton.TabIndex = 14;
@@ -138,7 +142,7 @@
             // 
             this.ScientistLabel.AutoSize = true;
             this.ScientistLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ScientistLabel.Location = new System.Drawing.Point(205, 192);
+            this.ScientistLabel.Location = new System.Drawing.Point(162, 199);
             this.ScientistLabel.Name = "ScientistLabel";
             this.ScientistLabel.Size = new System.Drawing.Size(0, 17);
             this.ScientistLabel.TabIndex = 15;
@@ -204,6 +208,10 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.panel1.Controls.Add(this.label5);
+            this.panel1.Controls.Add(this.button3);
+            this.panel1.Controls.Add(this.button2);
+            this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.cbTheme);
             this.panel1.Controls.Add(this.cbPublication);
@@ -216,14 +224,56 @@
             this.panel1.Controls.Add(this.ChooseScientistButton);
             this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(385, 241);
+            this.panel1.Size = new System.Drawing.Size(385, 252);
             this.panel1.TabIndex = 20;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(20, 165);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(118, 13);
+            this.label5.TabIndex = 29;
+            this.label5.Text = "After More do Update!!!";
+            // 
+            // button3
+            // 
+            this.button3.BackColor = System.Drawing.SystemColors.Info;
+            this.button3.Location = new System.Drawing.Point(271, 160);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(54, 23);
+            this.button3.TabIndex = 28;
+            this.button3.Text = "Update";
+            this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.SystemColors.Info;
+            this.button2.Location = new System.Drawing.Point(165, 87);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(40, 23);
+            this.button2.TabIndex = 26;
+            this.button2.Text = "More";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.SystemColors.Info;
+            this.button1.Location = new System.Drawing.Point(165, 51);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(40, 23);
+            this.button1.TabIndex = 25;
+            this.button1.Text = "More";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // CreateUpdateParticipantForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(409, 307);
+            this.ClientSize = new System.Drawing.Size(409, 318);
             this.ControlBox = false;
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.OkButton);
@@ -262,5 +312,9 @@
         private System.Windows.Forms.ComboBox cbConference;
         public System.Windows.Forms.Label ScientistLabel;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button button3;
     }
 }

@@ -41,13 +41,14 @@ namespace ScienceConferenceApp.Controllers
             
             if (c != null)
             {
+/*
                 participant p = db.participants.Where(o => o.conference == obj.conferenceId).FirstOrDefault();
 
                 if (p != null)
                 {
                     participantCrud.deleteBeforeConference(p);
                 }
-                
+ */               
 
                 // Удаляем объект из коллекции
                 db.conferences.Remove(c);

@@ -3,6 +3,7 @@ using ScienceConferenceApp.CRUD.DTO;
 using ScienceConferenceApp.CRUD.Model;
 using ScienceConferenceApp.CRUD.Model.DTO.Form;
 using ScienceConferenceApp.DataInitializer;
+using ScienceConferenceApp.Forms.Editor;
 using ScienceConferenceApp.Forms.Utils;
 using ScienceConferenceApp.Model;
 using System;
@@ -37,7 +38,7 @@ namespace ScienceConferenceApp.Forms.Crud
         public CreateUpdateParticipantForm(BaseForm form, CUFormDTO<ViewConferencesWithParticipant> formDTO)
         {
             caller = form;
-            form.Hide();
+            //form.Hide();
             InitializeComponent();
 
             this.db = formDTO.contex;
@@ -87,11 +88,20 @@ namespace ScienceConferenceApp.Forms.Crud
 
         private void initData()
         {
-            dataInit = new CheckBoxDataInit(db);
+            List<theme> themes = new List<theme>();
+            themes.AddRange(db.themes);
 
-            dataInit.addConferences(cbConference);
-            dataInit.addThemes(cbTheme);
-            dataInit.addSubjects(cbSubject);
+            cbTheme.DataSource = themes;
+
+            List<conference> confs = new List<conference>();
+            confs.AddRange(db.conferences);
+
+            cbConference.DataSource = confs;
+
+            List<subject> subjects = new List<subject>();
+            subjects.AddRange(db.subjects);
+
+            cbSubject.DataSource = subjects;
 
             switch (currentCrudOp)
             {
@@ -135,7 +145,7 @@ namespace ScienceConferenceApp.Forms.Crud
                 case CrudOpr.Create:
                     if (crud.create(p) != null)
                     {
-                        MessageBox.Show("Conference was added!");
+                        MessageBox.Show("Participant was added!");
                         this.Close();
                     }
                     else MessageBox.Show("Adding was denied");
@@ -144,7 +154,7 @@ namespace ScienceConferenceApp.Forms.Crud
 
                     if (crud.update(p))
                     {
-                        MessageBox.Show("Conference was updated!");
+                        MessageBox.Show("Participant was updated!");
                         this.Close();
                     }
                     else MessageBox.Show("Updating was denied");
@@ -307,6 +317,38 @@ namespace ScienceConferenceApp.Forms.Crud
 
                 participantDTO.subject = saved.subjectId;
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            theme t = (theme)cbTheme.SelectedItem;
+            ThemeEditor editor = new ThemeEditor(db, t);
+            editor.Show();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            List<theme> themes = new List<theme>();
+            themes.AddRange(db.themes);
+
+            cbTheme.DataSource = themes;
+
+            List<conference> confs = new List<conference>();
+            confs.AddRange(db.conferences);
+
+            cbConference.DataSource = confs;
+
+            List<subject> subjects = new List<subject>();
+            subjects.AddRange(db.subjects);
+
+            cbSubject.DataSource = subjects;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            subject s = (subject)cbSubject.SelectedItem;
+            SubjectEditor editor = new SubjectEditor(db, s);
+            editor.Show();
         }
     }
 }

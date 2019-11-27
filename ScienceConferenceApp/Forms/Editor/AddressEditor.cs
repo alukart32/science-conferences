@@ -41,44 +41,86 @@ namespace ScienceConferenceApp.Forms.Editor
         private void AddressEditor_Load(object sender, EventArgs e)
         {
             addressTb.Text = address.address1;
-            countryTb.Text = address.country1.code;
+
+            List<country> countries = new List<country>();
+            countries.AddRange(db.countries);
+
+            countryCB.DataSource = countries;
         }
 
         private void updateButton_Click(object sender, EventArgs e)
         {
-            if (checkData())
+            if (validateData(addressTb.Text))
             {
+                address.address1 = addressTb.Text;
+                country c = (country)countryCB.SelectedItem;
+                address.country = c.countryId;
 
+                if (crud.update(address))
+                {
+                    MessageBox.Show("Address was updated!");
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Address alredy exists!!!");
+                }
             }
         }
 
         private void deleteButton_Click(object sender, EventArgs e)
         {
-            if (checkData())
+            if (crud.delete(address))
             {
-
+                MessageBox.Show("Address was deleted!");
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Something goes wrong!!!");
             }
         }
 
         private void addButton_Click(object sender, EventArgs e)
         {
-            if (checkData())
+            if (validateData(addressTb.Text))
             {
+                address a = new address();
+                a.country = country.countryId;
+                a.address1 = addressTb.Text;
 
+                if (crud.create(a) != null)
+                {
+                    MessageBox.Show("Address was added!");
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Address alredy exists!!!");
+                }
             }
         }
 
         private void backButton_Click(object sender, EventArgs e)
         {
-
+            this.Close();
         }
 
-        private bool checkData()
+        private bool validateData(string str)
         {
-            if (!r.IsMatch(addressTb.Text))
+            if (!r.IsMatch(str))
             {
-                MessageBox.Show("Wrong data!");
-                return false;
+                if (!str.Contains(" "))
+                {
+                    if (!str.Contains("-"))
+                    {
+                        if (!str.Contains("."))
+                        {
+                            MessageBox.Show("Wrong data!");
+                            return false;
+                        }
+                    }
+                }
             }
             return true;
         }
@@ -86,6 +128,16 @@ namespace ScienceConferenceApp.Forms.Editor
         private void EditCountry_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void countryCB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            country = (country)countryCB.SelectedItem;
         }
     }
 }

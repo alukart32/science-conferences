@@ -14,10 +14,19 @@ namespace ScienceConferenceApp.CRUD
 
         public override address create(address obj)
         {
-            db.addresses.Add(obj);
-            db.SaveChanges();
-            return obj;
-
+            address a = db.addresses.Where(o => o.address1 == obj.address1 
+            && o.country == obj.country).FirstOrDefault();
+            if (a != null)
+            {
+                // obj is alredy existed
+                return null;
+            }
+            else
+            {
+                address sa = db.addresses.Add(obj);
+                db.SaveChanges();
+                return sa;
+            }
         }
 
         public override bool delete(address obj)
@@ -40,6 +49,13 @@ namespace ScienceConferenceApp.CRUD
             address a = db.addresses.Find(obj.addressId);
             if (a != null)
             {
+                address a1 = db.addresses.Where(o => o.address1 == obj.address1
+                && o.country == obj.country).FirstOrDefault();
+                if(a1 != null)
+                {
+                    return false;
+                }
+
                 a.address1 = obj.address1;
                 a.country = obj.country;
 

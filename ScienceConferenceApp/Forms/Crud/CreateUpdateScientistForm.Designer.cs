@@ -55,21 +55,20 @@
             // BackButton
             // 
             this.BackButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.BackButton.Location = new System.Drawing.Point(351, 286);
-            this.BackButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BackButton.Location = new System.Drawing.Point(263, 232);
             this.BackButton.Name = "BackButton";
-            this.BackButton.Size = new System.Drawing.Size(112, 44);
+            this.BackButton.Size = new System.Drawing.Size(84, 36);
             this.BackButton.TabIndex = 0;
             this.BackButton.Text = "Back";
             this.BackButton.UseVisualStyleBackColor = true;
+            this.BackButton.Click += new System.EventHandler(this.BackButton_Click);
             // 
             // ApplyButton
             // 
             this.ApplyButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ApplyButton.Location = new System.Drawing.Point(65, 286);
-            this.ApplyButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ApplyButton.Location = new System.Drawing.Point(49, 232);
             this.ApplyButton.Name = "ApplyButton";
-            this.ApplyButton.Size = new System.Drawing.Size(111, 44);
+            this.ApplyButton.Size = new System.Drawing.Size(83, 36);
             this.ApplyButton.TabIndex = 1;
             this.ApplyButton.Text = "Apply";
             this.ApplyButton.UseVisualStyleBackColor = true;
@@ -79,10 +78,9 @@
             // 
             this.FirstNameLabel.AutoSize = true;
             this.FirstNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.FirstNameLabel.Location = new System.Drawing.Point(32, 18);
-            this.FirstNameLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.FirstNameLabel.Location = new System.Drawing.Point(24, 15);
             this.FirstNameLabel.Name = "FirstNameLabel";
-            this.FirstNameLabel.Size = new System.Drawing.Size(92, 20);
+            this.FirstNameLabel.Size = new System.Drawing.Size(76, 17);
             this.FirstNameLabel.TabIndex = 2;
             this.FirstNameLabel.Text = "First Name";
             // 
@@ -90,10 +88,9 @@
             // 
             this.SecondNameLabel.AutoSize = true;
             this.SecondNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.SecondNameLabel.Location = new System.Drawing.Point(32, 94);
-            this.SecondNameLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.SecondNameLabel.Location = new System.Drawing.Point(24, 76);
             this.SecondNameLabel.Name = "SecondNameLabel";
-            this.SecondNameLabel.Size = new System.Drawing.Size(114, 20);
+            this.SecondNameLabel.Size = new System.Drawing.Size(97, 17);
             this.SecondNameLabel.TabIndex = 3;
             this.SecondNameLabel.Text = "Second Name";
             // 
@@ -101,10 +98,9 @@
             // 
             this.DegreeLabel.AutoSize = true;
             this.DegreeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.DegreeLabel.Location = new System.Drawing.Point(423, 94);
-            this.DegreeLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.DegreeLabel.Location = new System.Drawing.Point(270, 76);
             this.DegreeLabel.Name = "DegreeLabel";
-            this.DegreeLabel.Size = new System.Drawing.Size(64, 20);
+            this.DegreeLabel.Size = new System.Drawing.Size(55, 17);
             this.DegreeLabel.TabIndex = 4;
             this.DegreeLabel.Text = "Degree";
             // 
@@ -112,10 +108,9 @@
             // 
             this.CompayLabel.AutoSize = true;
             this.CompayLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.CompayLabel.Location = new System.Drawing.Point(165, 165);
-            this.CompayLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.CompayLabel.Location = new System.Drawing.Point(24, 136);
             this.CompayLabel.Name = "CompayLabel";
-            this.CompayLabel.Size = new System.Drawing.Size(79, 20);
+            this.CompayLabel.Size = new System.Drawing.Size(67, 17);
             this.CompayLabel.TabIndex = 5;
             this.CompayLabel.Text = "Company";
             // 
@@ -123,10 +118,9 @@
             // 
             this.CountryLabel.AutoSize = true;
             this.CountryLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.CountryLabel.Location = new System.Drawing.Point(423, 18);
-            this.CountryLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.CountryLabel.Location = new System.Drawing.Point(270, 15);
             this.CountryLabel.Name = "CountryLabel";
-            this.CountryLabel.Size = new System.Drawing.Size(67, 20);
+            this.CountryLabel.Size = new System.Drawing.Size(57, 17);
             this.CountryLabel.TabIndex = 6;
             this.CountryLabel.Text = "Country";
             // 
@@ -143,10 +137,9 @@
             this.panel1.Controls.Add(this.SecondNameLabel);
             this.panel1.Controls.Add(this.CompayLabel);
             this.panel1.Controls.Add(this.DegreeLabel);
-            this.panel1.Location = new System.Drawing.Point(16, 15);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(508, 250);
+            this.panel1.Size = new System.Drawing.Size(381, 203);
             this.panel1.TabIndex = 7;
             // 
             // cbCountry
@@ -154,10 +147,9 @@
             this.cbCountry.DataSource = this.countryBindingSource;
             this.cbCountry.DisplayMember = "code";
             this.cbCountry.FormattingEnabled = true;
-            this.cbCountry.Location = new System.Drawing.Point(413, 43);
-            this.cbCountry.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbCountry.Location = new System.Drawing.Point(263, 35);
             this.cbCountry.Name = "cbCountry";
-            this.cbCountry.Size = new System.Drawing.Size(84, 24);
+            this.cbCountry.Size = new System.Drawing.Size(64, 21);
             this.cbCountry.TabIndex = 11;
             this.cbCountry.ValueMember = "countryId";
             this.cbCountry.SelectedIndexChanged += new System.EventHandler(this.cbCountry_SelectedIndexChanged);
@@ -171,10 +163,10 @@
             this.cbDegree.DataSource = this.academicDegreeBindingSource;
             this.cbDegree.DisplayMember = "degree";
             this.cbDegree.FormattingEnabled = true;
-            this.cbDegree.Location = new System.Drawing.Point(412, 118);
-            this.cbDegree.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbDegree.Location = new System.Drawing.Point(262, 96);
+            this.cbDegree.MaxLength = 3;
             this.cbDegree.Name = "cbDegree";
-            this.cbDegree.Size = new System.Drawing.Size(83, 24);
+            this.cbDegree.Size = new System.Drawing.Size(63, 21);
             this.cbDegree.TabIndex = 10;
             this.cbDegree.ValueMember = "degreeId";
             this.cbDegree.SelectedIndexChanged += new System.EventHandler(this.cbDegree_SelectedIndexChanged);
@@ -188,10 +180,9 @@
             this.cbCompany.DataSource = this.companyBindingSource;
             this.cbCompany.DisplayMember = "companyName";
             this.cbCompany.FormattingEnabled = true;
-            this.cbCompany.Location = new System.Drawing.Point(203, 190);
-            this.cbCompany.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbCompany.Location = new System.Drawing.Point(52, 156);
             this.cbCompany.Name = "cbCompany";
-            this.cbCompany.Size = new System.Drawing.Size(292, 24);
+            this.cbCompany.Size = new System.Drawing.Size(273, 21);
             this.cbCompany.TabIndex = 9;
             this.cbCompany.ValueMember = "companyId";
             this.cbCompany.SelectedIndexChanged += new System.EventHandler(this.cbCompany_SelectedIndexChanged);
@@ -202,33 +193,31 @@
             // 
             // FirstNameTextBox
             // 
-            this.FirstNameTextBox.Location = new System.Drawing.Point(69, 43);
-            this.FirstNameTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.FirstNameTextBox.Location = new System.Drawing.Point(52, 35);
             this.FirstNameTextBox.Name = "FirstNameTextBox";
-            this.FirstNameTextBox.Size = new System.Drawing.Size(292, 22);
+            this.FirstNameTextBox.Size = new System.Drawing.Size(178, 20);
             this.FirstNameTextBox.TabIndex = 8;
             this.FirstNameTextBox.TextChanged += new System.EventHandler(this.FirstNameTextBox_TextChanged);
             // 
             // SecondNameTextBox
             // 
-            this.SecondNameTextBox.Location = new System.Drawing.Point(69, 118);
-            this.SecondNameTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.SecondNameTextBox.Location = new System.Drawing.Point(52, 96);
             this.SecondNameTextBox.Name = "SecondNameTextBox";
-            this.SecondNameTextBox.Size = new System.Drawing.Size(292, 22);
+            this.SecondNameTextBox.Size = new System.Drawing.Size(178, 20);
             this.SecondNameTextBox.TabIndex = 7;
             this.SecondNameTextBox.TextChanged += new System.EventHandler(this.SecondNameTextBox_TextChanged);
             // 
             // CreateUpdateScientistForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(540, 350);
+            this.ClientSize = new System.Drawing.Size(405, 284);
             this.ControlBox = false;
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.ApplyButton);
             this.Controls.Add(this.BackButton);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(3, 3, 3, 3);
             this.Name = "CreateUpdateScientistForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CreateUpdateScientistForm";

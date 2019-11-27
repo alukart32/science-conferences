@@ -63,6 +63,20 @@ namespace ScienceConferenceApp.Forms.SubForms
             dataInit.addSubjects(cbSubject);
             dataInit.addDegrees(cbDegree);
 
+            if (!(dataFormDTO.userData.userRole == UserRole.ADMIN
+                || dataFormDTO.userData.userRole == UserRole.CONFERENCE_MANAGER))
+            {
+                AddParticipantButton.Visible = false;
+                updateParticipant.Visible = false;
+                deleteParticipant.Visible = false;
+            }
+            else
+            {
+                AddParticipantButton.Visible = true;
+                updateParticipant.Visible = true;
+                deleteParticipant.Visible = true;
+            }
+
             //dataGridView1.DataSource = db.ViewConferencesWithParticipants.ToList();
         }
 
@@ -76,7 +90,7 @@ namespace ScienceConferenceApp.Forms.SubForms
 
         private void conferencesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DataFormDTO dto = new DataFormDTO(this, dataFormDTO.mainForm, dataFormDTO.db);
+            DataFormDTO dto = new DataFormDTO(this, dataFormDTO.mainForm, dataFormDTO.db, dataFormDTO.userData);
             ConferenceForm conferenceForm = new ConferenceForm(dto);
             conferenceForm.Show();
         }
@@ -174,7 +188,16 @@ namespace ScienceConferenceApp.Forms.SubForms
 
         private void ResetButton_Click(object sender, EventArgs e)
         {
-            resetData();
+            int f = cbConference.SelectedIndex + cbDegree.SelectedIndex + cbTheme.SelectedIndex + cbSubject.SelectedIndex;
+
+            if (f == 0)
+            {
+                resetData();
+            }
+            else
+            {
+                dataGridView1.DataSource = participantController.GetParticipants(filter);
+            }
         }
 
         private void toolStripButton2_Click(object sender, EventArgs e)
@@ -191,7 +214,7 @@ namespace ScienceConferenceApp.Forms.SubForms
 
         private void scientistsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DataFormDTO dto = new DataFormDTO(this, dataFormDTO.mainForm, dataFormDTO.db);
+            DataFormDTO dto = new DataFormDTO(this, dataFormDTO.mainForm, dataFormDTO.db, dataFormDTO.userData);
             ScientistForm form = new ScientistForm(dto);
             form.Show();
         }

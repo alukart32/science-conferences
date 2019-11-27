@@ -70,5 +70,15 @@ namespace ScienceConferenceApp.Model
 
         [StringLength(1)]
         public string publication { get; set; }
+
+        [Key]
+        [Column(Order = 9, TypeName = "date")]
+        public DateTime date { get; set; }
+
+        public int? address { get; set; }
+
+        public int? scientistCountry { get; set; }
+
+        public int? companyCountry { get; set; }
     }
 }

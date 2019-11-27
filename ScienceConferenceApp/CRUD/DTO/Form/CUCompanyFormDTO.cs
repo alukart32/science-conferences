@@ -10,13 +10,13 @@ using System.Threading.Tasks;
 
 namespace ScienceConferenceApp.CRUD.DTO.Form
 {
-    class CUScientistFormDTO : CUFormDTO<ViewScientist>
+    public class CUCompanyFormDTO : CUFormDTO<ViewCompany>
     {
-        public CUScientistFormDTO()
+        public CUCompanyFormDTO()
         {
         }
 
-        public CUScientistFormDTO(DbAppContext db, CrudOpr opr, ViewScientist obj, UserDataDTO userData) : base(db, opr, obj, userData)
+        public CUCompanyFormDTO(DbAppContext db, CrudOpr opr, ViewCompany obj, UserDataDTO userData) : base(db, opr, obj, userData)
         {
         }
     }

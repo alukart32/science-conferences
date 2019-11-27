@@ -4,6 +4,8 @@ namespace ScienceConferenceApp.Model
     using System.Data.Entity;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
+    using System.Data.SqlClient;
+    using System.Data;
 
     public partial class DbAppContext : DbContext
     {
@@ -21,6 +23,7 @@ namespace ScienceConferenceApp.Model
         public virtual DbSet<scientist> scientists { get; set; }
         public virtual DbSet<subject> subjects { get; set; }
         public virtual DbSet<theme> themes { get; set; }
+        public virtual DbSet<ViewCompany> ViewCompanies { get; set; }
         public virtual DbSet<ViewConference> ViewConferences { get; set; }
         public virtual DbSet<ViewConferencesWithParticipant> ViewConferencesWithParticipants { get; set; }
         public virtual DbSet<ViewParticipant> ViewParticipants { get; set; }
@@ -121,16 +124,24 @@ namespace ScienceConferenceApp.Model
                 .WithOptional(e => e.theme1)
                 .HasForeignKey(e => e.theme);
 
+            modelBuilder.Entity<ViewCompany>()
+                .Property(e => e.companyName)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<ViewCompany>()
+                .Property(e => e.code)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<ViewConference>()
+                .Property(e => e.code)
+                .IsUnicode(false);
+
             modelBuilder.Entity<ViewConference>()
                 .Property(e => e.conferenceName)
                 .IsUnicode(false);
 
             modelBuilder.Entity<ViewConference>()
                 .Property(e => e.address)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<ViewConference>()
-                .Property(e => e.code)
                 .IsUnicode(false);
 
             modelBuilder.Entity<ViewConferencesWithParticipant>()
@@ -169,6 +180,30 @@ namespace ScienceConferenceApp.Model
                 .Property(e => e.publication)
                 .IsUnicode(false);
 
+            modelBuilder.Entity<ViewParticipant>()
+                .Property(e => e.firstName)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<ViewParticipant>()
+                .Property(e => e.secondName)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<ViewParticipant>()
+                .Property(e => e.degree)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<ViewParticipant>()
+                .Property(e => e.companyName)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<ViewParticipant>()
+                .Property(e => e.code)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<ViewParticipant>()
+                .Property(e => e.subject)
+                .IsUnicode(false);
+
             modelBuilder.Entity<ViewScientist>()
                 .Property(e => e.firstName)
                 .IsUnicode(false);
@@ -188,6 +223,25 @@ namespace ScienceConferenceApp.Model
             modelBuilder.Entity<ViewScientist>()
                 .Property(e => e.companyName)
                 .IsUnicode(false);
+        }
+        public bool CheckRole(string role)
+        {
+            // Используем старый добрый ADO.NET
+            // Сборку System.Configuration надо подключить! Проект - Добавить ссылку
+            string connectionString = System.Configuration.ConfigurationManager.
+            ConnectionStrings[1].ConnectionString;
+
+            // string connectionString = System.Configuration.ConfigurationManager.
+            // ConnectionStrings["ThemesContext"].ConnectionString;
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                SqlCommand cmd = new SqlCommand("select dbo.CheckRole(@rolename)", con);
+                cmd.CommandType = CommandType.Text;
+                cmd.Parameters.Add(new SqlParameter("@rolename", SqlDbType.VarChar, 20));
+                cmd.Parameters["@rolename"].Value = role;
+                con.Open();
+                return (bool)cmd.ExecuteScalar();
+            }
         }
     }
 }

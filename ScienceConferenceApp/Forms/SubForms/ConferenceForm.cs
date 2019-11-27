@@ -9,13 +9,7 @@ using ScienceConferenceApp.Forms.Utils;
 using ScienceConferenceApp.Forms.Utils.Menu;
 using ScienceConferenceApp.Model;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ScienceConferenceApp.Forms.SubForms
@@ -54,15 +48,31 @@ namespace ScienceConferenceApp.Forms.SubForms
             formDTO = new CUConferenceFormDTO();
             formDTO.contex = dataFormDTO.db;
             formDTO.obj = new conference();
-            
+            formDTO.userData = dataFormDTO.userData;
             
             CheckBoxDataInit dataInit = new CheckBoxDataInit(dataFormDTO.db);
 
             filter.date = DateTime.Now;
             dataInit.addConferences(cbConference);
             dataInit.addAddresses(cbAddress);
-            dataInit.addCountries(cbCountry);
+            dataInit.addCountries(cbCountry); 
 
+            if(!(dataFormDTO.userData.userRole == UserRole.ADMIN 
+                || dataFormDTO.userData.userRole == UserRole.CONFERENCE_MANAGER))
+            {
+                AddConferenceButton.Visible = false;
+
+                updButton.Visible = false;
+                delButton.Visible = false;
+            }
+            else
+            {
+                AddConferenceButton.Visible = true;
+
+                updButton.Visible = true;
+                delButton.Visible = true;
+            }
+                
             //dataGridView1.DataSource = db.ViewConferences.ToList();
         }
 
@@ -170,12 +180,22 @@ namespace ScienceConferenceApp.Forms.SubForms
 
         private void button3_Click(object sender, EventArgs e)
         {
-            resetData();
+            int f = cbAddress.SelectedIndex + cbCountry.SelectedIndex + cbConference.SelectedIndex;
+
+            if (f == 0 && !isDateInFilterChecked)
+            {
+                resetData();
+            }
+            else
+            {
+                dataGridView1.DataSource = conferenceController.GetConferences(filter);
+            }
+
         }
 
         private void participantsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DataFormDTO dto = new DataFormDTO(this, dataFormDTO.mainForm, dataFormDTO.db);
+            DataFormDTO dto = new DataFormDTO(this, dataFormDTO.mainForm, dataFormDTO.db, dataFormDTO.userData);
             ParticipantForm participantForm = new ParticipantForm(dto);
             participantForm.Show();
         }
@@ -194,7 +214,7 @@ namespace ScienceConferenceApp.Forms.SubForms
 
         private void scientistsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DataFormDTO dto = new DataFormDTO(this, dataFormDTO.mainForm, dataFormDTO.db);
+            DataFormDTO dto = new DataFormDTO(this, dataFormDTO.mainForm, dataFormDTO.db, dataFormDTO.userData);
             ScientistForm form = new ScientistForm(dto);
             form.Show();
         }

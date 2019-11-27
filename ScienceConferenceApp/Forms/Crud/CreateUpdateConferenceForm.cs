@@ -33,7 +33,7 @@ namespace ScienceConferenceApp.Forms.Crud
         CrudOpr currentCrudOp;
 
         Regex r = new Regex("^[a-zA-Z0-9]*$");
-
+        
         CUFormDTO<conference> formDTO;
 
         AddressCrud addressCrud;
@@ -44,7 +44,7 @@ namespace ScienceConferenceApp.Forms.Crud
         public CreateUpdateConferenceForm(BaseForm form, CUFormDTO<conference> formDTO)
         {
             caller = form;
-            form.Hide();
+            //form.Hide();
             InitializeComponent();
 
             this.db = formDTO.contex;
@@ -56,23 +56,25 @@ namespace ScienceConferenceApp.Forms.Crud
 
             currentCrudOp = formDTO.op;
             this.formDTO = formDTO;
-          
-            switch (currentCrudOp)
-            {
-                case CrudOpr.Update:
-                    initDataForUpdate(formDTO.obj);
-                    break;
-                default:
-                    formDTO.obj.date = DateTime.Now;
-                    break;
-            }
         }
 
         private void initDataForUpdate(conference obj)
         {
             tbConferenceName.Text = obj.conferenceName;
-            cbAddress.SelectedValue = obj.address;
+            cbCountry.Text = obj.address1.country1.code;
+            cbAddress.Text = obj.address1.address1;
             dateTimePicker.Value = obj.date;
+
+            if (!(formDTO.userData.userRole == UserRole.ADMIN
+                || formDTO.userData.userRole == UserRole.CONFERENCE_MANAGER))
+            {
+                 
+            }
+            else
+            {
+               
+            }
+
         }
 
         private void AddConferenceForm_Load(object sender, EventArgs e)
@@ -87,6 +89,15 @@ namespace ScienceConferenceApp.Forms.Crud
 
             cbCountry.DataSource = countries;
 
+            switch (currentCrudOp)
+            {
+                case CrudOpr.Update:
+                    initDataForUpdate(formDTO.obj);
+                    break;
+                default:
+                    formDTO.obj.date = DateTime.Now;
+                    break;
+            }
         }
 
         private void AddConferenceForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -120,14 +131,15 @@ namespace ScienceConferenceApp.Forms.Crud
         {
             conference c = new conference();
 
-            checkData();
-        
+            if (checkData()) { 
+
             c.conferenceName = conferenceDTO.name;
             c.address = conferenceDTO.address;
             c.date = conferenceDTO.date;
             c.address = conferenceDTO.address;
 
-            doCrud(c);  
+            doCrud(c);
+            }
         }
 
         private void doCrud(conference c)
@@ -165,7 +177,7 @@ namespace ScienceConferenceApp.Forms.Crud
                     tbConferenceName.Text = "";
                     break;
             }
-           
+
         }
 
         private void cbCountry_SelectedIndexChanged(object sender, EventArgs e)
@@ -183,21 +195,37 @@ namespace ScienceConferenceApp.Forms.Crud
         }
 
         // checking all data for conference
-        private void checkData()
+        private bool checkData()
         {
             // check name
             if (r.IsMatch(tbConferenceName.Text))
                 conferenceDTO.name = tbConferenceName.Text;
             else
             {
-                if (currentCrudOp != CrudOpr.Update)
-                    tbConferenceName.Text = "";
+                if (!(tbConferenceName.Text.Contains(" ") || tbConferenceName.Text.Contains("-")))
+                {
+                    if (currentCrudOp != CrudOpr.Update)
+                        tbConferenceName.Text = "";
+                    else
+                        tbConferenceName.Text = conferenceDTO.name;
+                    MessageBox.Show("Incorrect conference name!");
+                    return false;
+                }
                 else
-                    tbConferenceName.Text = conferenceDTO.name;
-
-                MessageBox.Show("Incorrect conference name!");
-
-                return;
+                {
+                    string s = tbConferenceName.Text.Replace(' ', '0').Replace('-','1');
+                    
+                    if (!r.IsMatch(s))
+                    {
+                        if (currentCrudOp != CrudOpr.Update)
+                            tbConferenceName.Text = "";
+                        else
+                            tbConferenceName.Text = conferenceDTO.name;
+                        MessageBox.Show("Incorrect conference name!");
+                        return false;
+                    }
+                }
+               
             }
 
             // check data
@@ -205,11 +233,16 @@ namespace ScienceConferenceApp.Forms.Crud
                 conferenceDTO.date = DateTime.Now;
 
             // Does user want to add a new address?
-            checkNewCountry();
-            checkNewAddress();       
+
+            if (checkNewCountry() || checkNewAddress())
+                return true;
+            else
+                return false;
+
+
         }
 
-        private void checkNewAddress()
+        private bool checkNewAddress()
         {
             // creating of a new address
 
@@ -219,7 +252,7 @@ namespace ScienceConferenceApp.Forms.Crud
                 if (!cbAddress.Text.Contains(" "))
                 {
                     MessageBox.Show("Incorect address!");
-                    return;
+                    return false;
                 }
             }
 
@@ -244,10 +277,12 @@ namespace ScienceConferenceApp.Forms.Crud
                 a = addressCrud.create(a);
 
                 conferenceDTO.address = a.addressId;
-            }         
+            }
+
+            return true;
         }
 
-        private void checkNewCountry()
+        private bool checkNewCountry()
         {
             // creating of a new address
 
@@ -259,7 +294,7 @@ namespace ScienceConferenceApp.Forms.Crud
                     if (cbCountry.Text.Length > 50)
                     {
                         MessageBox.Show("Incorect address!");
-                        return;
+                        return false;
                     }
                 }
             }
@@ -287,7 +322,9 @@ namespace ScienceConferenceApp.Forms.Crud
                 newCountry = true;
             }
             else
-                newCountry = false;           
+                newCountry = false;
+
+            return true;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -301,9 +338,50 @@ namespace ScienceConferenceApp.Forms.Crud
             cbAddress.Text = "";
 
             List<address> a = new List<address>();
-           
+
             a.Add(new address());
             cbAddress.DataSource = a;
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+
+            country c = (country)cbCountry.SelectedItem;
+
+            if (c != null) {
+                CountryEditor editor = new CountryEditor(db, c);
+                editor.Show();
+            }
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            List<address> addresses = new List<address>();
+            addresses.AddRange(db.addresses);
+
+            cbAddress.DataSource = addresses;
+
+            List<country> countries = new List<country>();
+            countries.AddRange(db.countries);
+
+            cbCountry.DataSource = countries;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            address a = (address)cbAddress.SelectedItem;
+
+            if (a != null)
+            {
+                AddressEditor editor = new AddressEditor(db, a);
+                editor.Show();
+            }
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

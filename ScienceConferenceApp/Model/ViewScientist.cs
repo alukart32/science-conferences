@@ -32,7 +32,7 @@ namespace ScienceConferenceApp.Model
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int countryId { get; set; }
 
-        [StringLength(3)]
+        [StringLength(50)]
         public string code { get; set; }
 
         [StringLength(50)]
@@ -42,5 +42,7 @@ namespace ScienceConferenceApp.Model
         [Column(Order = 3)]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int companyId { get; set; }
+
+        public int? companyCountry { get; set; }
     }
 }

@@ -40,7 +40,7 @@ namespace ScienceConferenceApp.Forms.Crud
         public CreateUpdateScientistForm(BaseForm caller, CUFormDTO<ViewScientist> form)
         {
             this.caller = caller;
-            caller.Hide();
+            //caller.Hide();
             this.formDTO = form;
             this.crudOp = form.op;
             this.db = form.contex;
@@ -160,9 +160,6 @@ namespace ScienceConferenceApp.Forms.Crud
 
         private void checkNewDegree()
         {
-            // creating of a new address
-
-            // check possible address
             if (!r.IsMatch(cbDegree.Text))
             {
                 if (!cbDegree.Text.Contains(" "))
@@ -185,7 +182,6 @@ namespace ScienceConferenceApp.Forms.Crud
 
             if (all.Count == 0)
             {
-                // create a new address
                 academicDegree a = new academicDegree();
                 a.degree = cbDegree.Text;
 
@@ -198,9 +194,6 @@ namespace ScienceConferenceApp.Forms.Crud
 
         private void checkNewCountry()
         {
-            // creating of a new address
-
-            // check possible address
             if (!r.IsMatch(cbCountry.Text))
             {
                 if (!cbCountry.Text.Contains(" "))
@@ -226,7 +219,6 @@ namespace ScienceConferenceApp.Forms.Crud
 
             if (all.Count == 0)
             {
-                // create a new address
                 country c = new country();
                 c.code = cbCountry.Text;
 
@@ -262,6 +254,11 @@ namespace ScienceConferenceApp.Forms.Crud
         private void SecondNameTextBox_TextChanged(object sender, EventArgs e)
         {
             dto.secondName = SecondNameTextBox.Text;
+        }
+
+        private void BackButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

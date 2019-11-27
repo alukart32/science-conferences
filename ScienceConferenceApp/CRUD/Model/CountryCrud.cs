@@ -55,6 +55,13 @@ namespace ScienceConferenceApp.CRUD
             country c = db.countries.Find(obj.countryId);
             if (c != null)
             {
+                country c1 = db.countries.Where(o => o.code == obj.code).FirstOrDefault();
+                if (c1 != null)
+                {
+                    // obj is alredy existed
+                    return false;
+                }
+
                 c.code = obj.code;
                 db.SaveChanges();
                 return true;

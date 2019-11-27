@@ -16,7 +16,7 @@ namespace ScienceConferenceApp.Model
         [Key]
         [Column(Order = 1)]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int institutionId { get; set; }
+        public int companyId { get; set; }
 
         [Key]
         [Column(Order = 2)]
@@ -47,5 +47,25 @@ namespace ScienceConferenceApp.Model
         [Column(Order = 6)]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int participantId { get; set; }
+
+        [StringLength(50)]
+        public string firstName { get; set; }
+
+        [StringLength(50)]
+        public string secondName { get; set; }
+
+        [StringLength(5)]
+        public string degree { get; set; }
+
+        public int? country { get; set; }
+
+        [StringLength(50)]
+        public string companyName { get; set; }
+
+        [StringLength(50)]
+        public string code { get; set; }
+
+        [StringLength(50)]
+        public string subject { get; set; }
     }
 }
